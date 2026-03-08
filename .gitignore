@@ -1,0 +1,20 @@
+@"
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.glg
+*.glo
+*.gls
+*.ist
+.build/
+"@ | Out-File -FilePath .gitignore -Encoding utf8

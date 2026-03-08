@@ -1,0 +1,76 @@
+\documentclass[dp]{FEIstyle}
+
+\usepackage{indentfirst}
+\usepackage{xspace}
+\usepackage{adjustbox}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{comment}
+
+
+\FEIauthor{Bc. Boris Gašparovič}
+\FEItitle{Návrh a implementácia inteligentného finančného asistenta FinanceGPT s využitím LLM pre spracovanie dotazov v prirodzenom jazyku}
+\FEItitleEn{Design and implementation of intelligent financial assistant FinanceGPT using LLM for natural language query processing}
+\FEIkeywords{inteligentný finančný asistent, fakturácia, spracovanie prirodzeného jazyka, LLM, GPT, faktúry, vizualizácia dát, integrácia API, Ruby on Rails, umelá inteligencia, NLP}
+\FEIkeywordsEn{intelligent financial assistant, invoicing, natural language processing, LLM, GPT, invoices, data visualization, API integration, Ruby on Rails, artificial intelligence, NLP}
+\FEIregNr{FEI-16607-97779}    
+\FEIsupervisor{Ing. Erich Stark, PhD.}
+\FEIschool{Slovenská technická univerzita v Bratislave}
+\FEIschoolEn{Slovak University of Technology in Bratislava}
+\FEIfaculty{Fakulta elektrotechniky a informatiky}
+\FEIfacultyEn{Faculty of Electrical Engineering and Information Technology}
+\FEIstudyProgramme{Aplikovaná informatika}
+\FEIstudyProgrammeEn{Applied Informatics}
+\FEIstudyField{9.2.9 Aplikovaná informatika}
+\FEIstudyFieldEn{9.2.9 Applied Informatics}
+\FEItrainingWorkplace{Ústav informatiky a matematiky}
+\FEItrainingWorkplaceEn{Institute of Computer Science and Mathematics}
+\FEIplace{Bratislava}
+
+
+\FEIglossaries{includes/glossary}
+\bibliography{includes/bibliography.bib}
+
+\iffalse \input{includes/glossary} \fi
+
+\begin{document}
+\frontmatter
+
+\FEIpdfInfo
+\FEIcover
+\FEItitlePage  
+% \FEIassignment{img/zadanie prace.pdf}      OBRAZOK zaxdania doplnit neskor!
+\FEIabstract{includes/abstract}
+\FEIabstractEn{includes/abstractEN}
+\FEIvyhlasenie{includes/vyhlasenie}
+\FEIthanks{includes/thanks}
+
+\FEIcontent
+\FEIlistOfFiguresAndTables
+\FEIlistOfGlossaries
+% \FEIlistOfAlgorithms
+\FEIlistOfListings
+
+
+
+
+\mainmatter
+
+\FEIintroduction{includes/introduction}
+\FEIcore{includes/core}
+\FEIconclusion{includes/conclusion}
+
+% bibliography should use UTF-8 accents (write as is ľščťžýáí...) NOT converted by BibDesk
+% http://tex.stackexchange.com/questions/57743/how-to-write-%C3%A4-and-other-umlauts-and-accented-letters-in-bibliography
+\FEIbibliography %includes/bibliography.bib
+
+\backmatter
+
+% Dokumentacia, obrazky
+\FEIlistOfAppendix
+\FEIappendix{Štruktúra elektronického nosiča\label{att:A}}{includes/attachmentA}
+\FEIappendix{Algoritmus\label{att:B}}{includes/attachmentB}
+\FEIappendix{Výpis sublime\label{att:C}}{includes/attachmentC}
+\end{document}
