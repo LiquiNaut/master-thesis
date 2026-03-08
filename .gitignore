@@ -1,4 +1,3 @@
-@"
 *.aux
 *.log
 *.out
@@ -16,5 +15,10 @@
 *.glo
 *.gls
 *.ist
+*.acn
+*.acr
+*.alg
+*.lol
+*.pri
 .build/
-"@ | Out-File -FilePath .gitignore -Encoding utf8
+*.pdf
