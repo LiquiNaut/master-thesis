@@ -10,8 +10,8 @@ pdf:
 	# No move needed as we build in root
 
 clean:
-	latexmk -c $(FILE).tex
-	rm -rf *.{acn,acr,alg,aux,bbl,bcf,blg,fdb_latexmk,fls,glg,glo,gls,ist,loa,lof,log,lol,lot,out,pri,run.xml,synctex.gz,toc} .build/*
+	latexmk -C $(FILE).tex
+	rm -rf *.acn *.acr *.alg *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.glg *.glo *.gls *.ist *.loa *.lof *.log *.lol *.lot *.out *.pri *.run.xml *.synctex.gz *.toc *.aux.bbl *.aux.blg .build/
 
 refresh: clean pdf
 
