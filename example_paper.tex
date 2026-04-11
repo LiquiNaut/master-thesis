@@ -9,13 +9,12 @@
 \usepackage{enumitem}
 \usepackage{comment}
 
-
 \FEIauthor{Bc. Boris Gašparovič}
 \FEItitle{Návrh a implementácia inteligentného finančného asistenta FinanceGPT s využitím LLM pre spracovanie dotazov v prirodzenom jazyku}
 \FEItitleEn{Design and implementation of intelligent financial assistant FinanceGPT using LLM for natural language query processing}
 \FEIkeywords{inteligentný finančný asistent, fakturácia, spracovanie prirodzeného jazyka, LLM, GPT, faktúry, vizualizácia dát, integrácia API, Ruby on Rails, umelá inteligencia, NLP}
 \FEIkeywordsEn{intelligent financial assistant, invoicing, natural language processing, LLM, GPT, invoices, data visualization, API integration, Ruby on Rails, artificial intelligence, NLP}
-\FEIregNr{FEI-16607-97779}    
+\FEIregNr{FEI-16607-97779}
 \FEIsupervisor{Ing. Erich Stark, PhD.}
 \FEIschool{Slovenská technická univerzita v Bratislave}
 \FEIschoolEn{Slovak University of Technology in Bratislava}
@@ -29,48 +28,51 @@
 \FEItrainingWorkplaceEn{Institute of Computer Science and Mathematics}
 \FEIplace{Bratislava}
 
-
 \FEIglossaries{includes/glossary}
 \bibliography{includes/bibliography.bib}
 
-\iffalse \input{includes/glossary} \fi
+\iffalse
+\input{includes/glossary}
+\fi
 
 \begin{document}
-\frontmatter
+	\frontmatter
 
-\FEIpdfInfo
-\FEIcover
-\FEItitlePage  
-% \FEIassignment{img/zadanie prace.pdf}      OBRAZOK zaxdania doplnit neskor!
-\FEIabstract{includes/abstract}
-\FEIabstractEn{includes/abstractEN}
-\FEIvyhlasenie{includes/vyhlasenie}
-\FEIthanks{includes/thanks}
+	\FEIpdfInfo \FEIcover \FEItitlePage
+	% \FEIassignment{img/zadanie prace.pdf}      OBRAZOK zaxdania doplnit neskor!
+	\FEIabstract{includes/abstract} \FEIabstractEn{includes/abstractEN}
+	\FEIvyhlasenie{includes/vyhlasenie} \FEIthanks{includes/thanks}
 
-\FEIcontent
-\FEIlistOfFiguresAndTables
-\FEIlistOfGlossaries
-% \FEIlistOfAlgorithms
-\FEIlistOfListings
+	\FEIcontent \FEIlistOfFiguresAndTables \glsaddall \FEIlistOfGlossaries
+	% \FEIlistOfAlgorithms
+	\FEIlistOfListings
 
+	\mainmatter
 
+	\FEIintroduction{includes/introduction} \FEIcore{includes/core} \FEIconclusion{includes/conclusion}
 
+	% bibliography should use UTF-8 accents (write as is ľščťžýáí...) NOT converted by BibDesk
+	% http://tex.stackexchange.com/questions/57743/how-to-write-%C3%A4-and-other-umlauts-and-accented-letters-in-bibliography
+	\FEIbibliography %includes/bibliography.bib
 
-\mainmatter
+	\backmatter
 
-\FEIintroduction{includes/introduction}
-\FEIcore{includes/core}
-\FEIconclusion{includes/conclusion}
+	% Deklaracia o pouziti AI
+	\input{includes/ai_declaration.tex}
 
-% bibliography should use UTF-8 accents (write as is ľščťžýáí...) NOT converted by BibDesk
-% http://tex.stackexchange.com/questions/57743/how-to-write-%C3%A4-and-other-umlauts-and-accented-letters-in-bibliography
-\FEIbibliography %includes/bibliography.bib
+	% Dokumentacia, obrazky
+	\FEIlistOfAppendix \FEIappendix{Štruktúra elektronického nosiča\label{att:A}}{includes/attachmentA}
+	\FEIappendix{Používateľská príručka\label{att:B}}{includes/attachmentB} \FEIappendix{Výpis sublime\label{att:C}}{includes/attachmentC}
 
-\backmatter
+	\section*{Deklarácia o použití umelej inteligencie}
+	\addcontentsline{toc}{section}{Deklarácia o použití umelej inteligencie}
 
-% Dokumentacia, obrazky
-\FEIlistOfAppendix
-\FEIappendix{Štruktúra elektronického nosiča\label{att:A}}{includes/attachmentA}
-\FEIappendix{Algoritmus\label{att:B}}{includes/attachmentB}
-\FEIappendix{Výpis sublime\label{att:C}}{includes/attachmentC}
+	V súlade s Opatrením rektora STU č. 1/2024-O o používaní umelej inteligencie
+	deklarujem nasledujúce použitie UI nástrojov pri vypracovaní tejto záverečnej
+	práce:
+
+	\begin{itemize}
+		\item Perplexity AI 2026, úpravy a reformulácie textu v kapitole o
+			možnostiach vizualizácie údajov.
+	\end{itemize}
 \end{document}
