@@ -22,3 +22,4 @@
 *.pri
 .build/
 *.pdf
+node_modules/
