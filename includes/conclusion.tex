@@ -1,2 +1,51 @@
-Conclusion is going to be where? \newline Here.
-% TODO: Záver - zhodnotiť úspešnosť implementácie v Ruby on Rails a prínos navrhovaného LLM riešenia
+\section*{Záver}
+\addcontentsline{toc}{section}{Záver}
+
+Cieľom tejto diplomovej práce bolo navrhnúť a implementovať inteligentného finančného
+asistenta, FinanceGPT, priamo integrovaného do existujúcej webovej aplikácie slúžiacej
+na správu faktúr. Asistent mal umožniť používateľom komunikovať s ich vlastnými
+finančnými dátami prostredníctvom prirodzeného jazyka, pričom výstupom nemal byť iba
+text, ale aj komplexné numerické agregácie a vizuálne reprezentácie dát.
+
+Z pohľadu teoretického a analytického sme sa zamerali na štúdium súčasných
+možností spracovania prirodzeného jazyka (NLP) s využitím veľkých jazykových
+modelov (LLM). Ako kľúčový mechanizmus integrácie umelej inteligencie do tradičných
+informačných systémov bola identifikovaná architektúra Tool Calling. Tento
+prístup, na rozdiel od klasických klasifikátorov zámerov (Intent Classifiers),
+odbremeňuje systém od nutnosti exaktne definovať všetky používateľské cesty a
+prenecháva rozhodovacie kompetencie priamo jazykovému modelu.
+
+V rámci architektonického návrhu bol zvolený prístup, ktorý plne rešpektuje konvencie
+monolitického rámca Ruby on Rails. Komunikácia s modelom bola implementovaná
+formou asynchrónneho konverzačného rozhrania, využívajúc technológiu Hotwire (Turbo
+a Stimulus), vďaka čomu sa podarilo vyhnúť nutnosti budovať komplexnú
+architektúru Single Page Application (SPA). Generovanie SQL dopytov a výpočet agregácií
+zostali bezpečne izolované na strane backendu, pričom asistent slúži len ako
+inteligentný prekladač úmyslu do relačnej algebry.
+
+V implementačnej fáze sa podarilo úspešne vyvinúť funkčný prototyp systému. Asistent
+dokáže prijímať voľný textový vstup, dynamicky extrahovať kontext z databázovej
+schémy, a v prípade zložitejších vizuálnych požiadaviek vygenerovať štruktúrovaný
+formát (JSON) určený na klientske vykreslenie interaktívnych grafov prostredníctvom
+knižnice Chart.js.
+
+Samotné testovanie a evaluácia systému poukázali na silné a slabé stránky zvoleného
+prístupu. [DOPLNIŤ PO TESTOVANÍ: Stručné zhrnutie, napr. "Ukázalo sa, že model
+dosahuje X% úspešnosť pri základných informačných dopytoch, avšak pri viacúrovňovom vnorení (multi-hop reasoning) naráža na svoje limity..."] [DOPLNIŤ PO TESTOVANÍ: Krátka veta o priemernej latencii a spotrebe tokenov.] Stabilita a bezpečnosť systému tak nestoja len na samotnej sile LLM, ale primárne na dodatočnom inžinierstve — kvalitnom prompt engineeringu, samokorekčných slučkách (Self-Correction) a validácii generovaných dopytov.
+
+Z pohľadu limitov prototypu a možností ďalšieho vývoja sa ako najkritickejšia
+ukazuje otázka bezpečnosti. Aktuálna verzia síce obsahuje základné ošetrenie proti
+deštruktívnym SQL príkazom (Guardrailing), avšak pre reálne nasadenie do
+produkčného prostredia by bolo nevyhnutné dopracovať plnohodnotnú tenančnú
+izoláciu (Tenant Isolation) a pokročilejšie auditovanie vykonaných databázových
+operácií. Rovnako by pre účely vyhľadávania netextových dokumentov (napríklad
+položiek na faktúrach) bolo prínosné implementovať vektorové vyhľadávanie pomocou
+architektúry RAG (Retrieval-Augmented Generation), pre ktorú bol v návrhu
+vytvorený technologický základ.
+
+Napriek spomenutým výzvam bol primárny cieľ práce splnený. Bol navrhnutý a implementovaný
+inovatívny prístup k interakcii používateľa s podnikovým systémom, ktorý posúva
+úroveň používateľskej skúsenosti (UX) od tradičných filtrovacích formulárov
+smerom k inteligentnému konverzačnému rozhraniu. Výsledný prototyp tak predstavuje
+pevný základ pre ďalší vývoj systémov využívajúcich generatívnu umelú inteligenciu
+v doméne finančných aplikácií.

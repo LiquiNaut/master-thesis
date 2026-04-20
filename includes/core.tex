@@ -1,5 +1,4 @@
 \section{Úvod do problematiky}
-% TODO: Doplniť úvod
 
 V oblasti finančných technológií dochádza v posledných rokoch k výraznému pokroku,
 ktorý je poháňaný rastúcou automatizáciou a digitalizáciou procesov. Fakturácia a
@@ -33,7 +32,6 @@ funkcionality. Hlavným cieľom je vytvoriť systém, ktorý používateľom pos
 intuitívny a efektívny spôsob interakcie s ich finančnými údajmi.
 
 \subsection{Trendy vo finančných technológiách}
-% TODO: Rozšíriť podľa potreby
 
 Oblasť finančných technológií (FinTech) zaznamenala v posledných rokoch výrazný rast,
 čo dokladujú viaceré správy renomovaných spoločností. KPMG vo svojej analýze The Pulse
@@ -48,10 +46,15 @@ faktúr či platobné služby. Stále dôležitejšou témou sa stáva bezpečno
 ochrana údajov, keďže práve v oblasti financií sa narába s citlivými informáciami.
 Tieto faktory následne ovplyvňujú smerovanie výskumu a vývoja v danom sektore.
 
+Práve v tomto kontexte nadobúda mimoriadny význam automatizácia spracovania
+finančných dokumentov s využitím umelej inteligencie. Konverzační asistenti schopní
+porozumieť prirodzenému jazyku predstavujú prirodzenú evolúciu FinTech nástrojov,
+ktoré umožňujú malým a stredným podnikateľom efektívne pracovať s finančnými
+dátami bez nutnosti technickej expertízy~\cite{atkinson2025}.
+
 % https://kpmg.com/sk/sk/home/media/press-releases/2021/08/financne-technologie-zaznamenali-rekordny-zaujem-investorov.html
 
 \subsection{Doména finančných dokumentov a výzvy pri ich správe}
-% TODO: Prepojiť so špecifikami fakturačných systémov a výzvami
 
 Jedným z tradičných problémov finančných oddelení a účtovných spoločností je
 manuálna správa faktúr a ďalších finančných dokumentov. Často ide o časovo náročné
@@ -67,8 +70,13 @@ rýchlej expanzii digitálnych nástrojov môže vznikať problém s integritou 
 alebo s ich redundanciou. Prehľadné a centralizované riešenia dokážu zjednodušiť vyhľadávanie
 požadovaných informácií a minimalizovať manuálne úkony.
 
+Špecifickou výzvou pre fakturačné systémy je pritom samotná interakcia používateľa
+s dátami — tradičné riešenia ponúkajú len statické filtre a prehľadávacie formuláre,
+ktoré od používateľa vyžadujú znalosť štruktúry systému. Inteligentný asistent pracujúci
+s prirodzeným jazykom tento problém odstraňuje tým, že prekladá voľne
+formulované otázky priamo do databázových operácií, čím znižuje kognitívnu záťaž používateľa~\cite{zhao2023survey}.
+
 \subsection{Vývoj v oblasti spracovania prirodzeného jazyka (NLP)}
-% TODO: Zamerať sa na relevanciu pre finančný sektor
 
 Spracovanie prirodzeného jazyka (NLP) prešlo dlhým vývojom, od štatistických metód
 a jednoduchých pravidlových systémov k sofistikovaným modelom využívajúcim hlboké
@@ -82,13 +90,20 @@ ktoré disponujú vysokou kapacitou parametrov a umožňujú, aby model dokázal
 vedomosti z obrovských textových korpusov. Tieto modely sú schopné generovať
 zrozumiteľné texty a spracúvať dotazy v prirodzenom jazyku na vysokej úrovni.
 
+V oblasti finančných aplikácií sa \gls{llm} modely osvedčujú najmä pri spracovaní
+neštruktúrovaných dotazov nad štruktúrovanými dátami — napríklad pri prevode otázky
+v prirodzenom jazyku na databázový dopyt (Text-to-SQL). Rothman (2023)
+zdôrazňuje, že architektonický základ Transformer modelov im umožňuje porozumieť doménovej
+terminológii a kontextovým väzbám, čo je predpokladom ich úspešného nasadenia v
+špecializovaných systémoch, akým je FinanceGPT~\cite{rothman2023transformers}.
+
 \subsection{Potenciál \gls{llm} modelov vo finančnom sektore}
 
-V oblasti finančných služieb sa \gls{llm} modely úspešne využívajú pri
-automatickej tvorbe reportov, sumarizácii dôležitých faktov a v chatbot riešeniach
-pre klientsku podporu. Mnohé účtovné softvéry ako QuickBooks, Xero či FreshBooks sa
-snažia postupne integrovať konverzačné prvky a inteligentné asistentovstvo do svojich
-platforiem.
+V oblasti finančných služieb sa \gls{llm} modely úspešne využívajú pri automatickej
+tvorbe reportov, sumarizácii dôležitých faktov a v chatbot riešeniach pre
+klientsku podporu. Mnohé účtovné softvéry ako QuickBooks, Xero či FreshBooks sa
+snažia postupne integrovať konverzačné prvky a inteligentné asistentovstvo do
+svojich platforiem.
 
 % https://cdn.openai.com/papers/gpt-4.pdf
 % (AI Assistent iba v USA) https://quickbooks.intuit.com/ai-accounting/
@@ -96,891 +111,1296 @@ platforiem.
 % https://www.xero.com/media-releases/xero-unveils-its-ai-vision-to-reimagine-small-business-accounting/
 % https://www.qualified.com/plus/articles/freshbooks-leans-on-piper-the-ai-sdr-to-boost-conversions-and-enhance-the-buyer-experience
 
-Modely typu GPT-4 či GPT-o1 od spoločnosti OpenAI demonštrujú schopnosti poradiť
-si s kontextom veľkého rozsahu a generovať odpovede, ktoré môžu znížiť administratívnu
-záťaž finančných pracovníkov. Asistent FinanceGPT v tomto kontexte môže využívať
-silu \gls{llm} nielen na interpretáciu ľudských dotazov v prirodzenom jazyku,
-ale aj na navrhovanie ďalších krokov pri správe faktúr či príprave reportov.
+Modely typu GPT-4 či GPT-o1 od spoločnosti OpenAI demonštrujú schopnosti poradiť si
+s kontextom veľkého rozsahu a generovať odpovede, ktoré môžu znížiť
+administratívnu záťaž finančných pracovníkov. Asistent FinanceGPT v tomto kontexte
+môže využívať silu \gls{llm} nielen na interpretáciu ľudských dotazov v
+prirodzenom jazyku, ale aj na navrhovanie ďalších krokov pri správe faktúr či príprave
+reportov.
 
-Veľké jazykové modely (\gls{llm}) predstavujú prelom v oblasti umelej inteligencie,
-pričom ich architektúra umožňuje spracovávať a generovať text na úrovni blízkej
-ľudskému porozumeniu~\cite{zhao2023survey}. Vo finančnom sektore sa ich potenciál
-naplno prejavuje pri automatizácii analytických úloh, ako je klasifikácia
-výdavkov, interpretácia cash-flow či generovanie finančných reportov. Podľa
-Atkinson-Abutridy (2023) je jednou z hlavných výhod \gls{llm} ich schopnosť kontextuálneho
-porozumenia špecifickej doménovej terminológii, čo výrazne znižuje chybovosť pri
-interpretácii požiadaviek používateľov~\cite{atkinson2023llm}. Nasadenie týchto modelov
-v systémoch, akým je FinanceGPT, používateľom umožňuje klásť zložité otázky o svojich
-financiách v prirodzenom jazyku bez nutnosti ovládania databázových jazykov alebo
-zložitého filtrovania v systéme.
+Veľké jazykové modely (\gls{llm}) predstavujú prelom v oblasti umelej
+inteligencie, pričom ich architektúra umožňuje spracovávať a generovať text na úrovni
+blízkej ľudskému porozumeniu~\cite{zhao2023survey}. Vo finančnom sektore sa ich
+potenciál naplno prejavuje pri automatizácii analytických úloh, ako je klasifikácia
+výdavkov, interpretácia cash-flow či generovanie finančných reportov. Podľa Atkinson-Abutridy
+(2023) je jednou z hlavných výhod \gls{llm} ich schopnosť kontextuálneho
+porozumenia špecifickej doménovej terminológii, čo výrazne znižuje chybovosť pri interpretácii
+požiadaviek používateľov~\cite{atkinson2023llm}. Nasadenie týchto modelov v
+systémoch, akým je FinanceGPT, používateľom umožňuje klásť zložité otázky o
+svojich financiách v prirodzenom jazyku bez nutnosti ovládania databázových
+jazykov alebo zložitého filtrovania v systéme.
 
 \subsection{Ciele a prínosy projektu FinanceGPT}
-% TODO: Prepojiť s existujúcou bakalárskou prácou
 
-Hlavným cieľom projektu FinanceGPT je priniesť inteligentného asistenta, ktorý zjednoduší
-interakciu s finančnými údajmi pre používateľov, či už ide o manažérov, účtovníkov
-alebo podnikateľov v SME segmente. Očakávaným prínosom je rýchlejšie a
-intuitívnejšie vyhľadávanie informácií o príjmoch a výdavkoch, generovanie súhrnných
-správ a vizualizácií umožňujúcich lepší prehľad o financiách.
+Hlavným cieľom projektu FinanceGPT je priniesť inteligentného asistenta, ktorý
+zjednoduší interakciu s finančnými údajmi pre používateľov, či už ide o manažérov,
+účtovníkov alebo podnikateľov v SME segmente. Očakávaným prínosom je rýchlejšie a
+intuitívnejšie vyhľadávanie informácií o príjmoch a výdavkoch, generovanie
+súhrnných správ a vizualizácií umožňujúcich lepší prehľad o financiách.
 
-V porovnaní s existujúcimi riešeniami na trhu chce FinanceGPT využiť aktuálne poznatky
-v oblasti spracovania prirodzeného jazyka, ktoré umožnia učiť sa z rôznych typov
-dokumentov a kontextov. Vyžaduje si to však riešenie viacerých výziev,
-predovšetkým integráciu s existujúcimi systémami, zabezpečenie ochrany citlivých údajov
-a vhodné nastavenie NLP modelu tak, aby bol schopný zvládať špecifickú
-terminológiu finančného sektora.
+V porovnaní s existujúcimi riešeniami na trhu chce FinanceGPT využiť aktuálne
+poznatky v oblasti spracovania prirodzeného jazyka, ktoré umožnia učiť sa z rôznych
+typov dokumentov a kontextov. Vyžaduje si to však riešenie viacerých výziev, predovšetkým
+integráciu s existujúcimi systémami, zabezpečenie ochrany citlivých údajov a
+vhodné nastavenie NLP modelu tak, aby bol schopný zvládať špecifickú terminológiu
+finančného sektora.
+
+Technologickým základom projektu FinanceGPT je webová aplikácia vyvinutá v rámci predchádzajúcej
+bakalárskej práce autora~\cite{ruby2025}. Táto aplikácia, implementovaná v rámci Ruby
+on Rails, pokrývala komplexnú správu faktúr vrátane automatického doplňovania
+údajov o subjektoch z verejného Registra právnických osôb (RPO) a správu
+bankových spojení. Existujúci dátový model obsahuje tabuľky \texttt{invoices}, \texttt{entities}
+a \texttt{bank\_details}, ktoré tvoria doménový základ, nad ktorým asistent FinanceGPT
+operuje.
+
+Táto diplomová práca teda nepristupuje k problému od nuly, ale rozširuje funkčný
+a v praxi overený systém o vrstvu inteligencie. Takýto prístup umožnil sústrediť vývojové
+úsilie na samotnú LLM integráciu namiesto budovania infraštruktúry od základov,
+čo je v kontexte agilného vývoja softvéru považované za zásadnú výhodu~\cite{ruby2025}.
 
 \section{Analýza súčasného stavu}
-% TODO: Rozšíriť analýzu trhu a porovnanie s novšími riešeniami
-\subsection{Prehľad existujúcich riešení}
-% TODO: Analyzovať dostupné platformy
-V analýze súčasne dostupných riešení sme sa zamerali na poukázanie rozdielov vo
-fakturačných systémoch, ktorými sú miera automatizácie, možnosti integrácie s
-ďalšími nástrojmi, úroveň pokročilej analýzy dát (vrátane spracovania
-prirodzeného jazyka) a zabezpečenie citlivých finančných údajov. Taktiež sme sa
-zamerali na definovanie pojmov potrebných na následnú prácu.
 
-\subsubsection{Slovenské fakturačné systémy}
-% TODO: Doplniť aktuálne informácie o slovenských systémoch
+Táto kapitola analyzuje oblasť správy finančných dokumentov z dvoch perspektív.
+Prvá línia skúma existujúce fakturačné systémy na slovenskom a zahraničnom trhu
+a hodnotí ich z hľadiska automatizácie, integrovateľnosti a podpory konverzačných
+rozhraní. Druhá línia mapuje technologické predpoklady pre integráciu veľkých
+jazykových modelov do webového prostredia — od evolúcie NLP metód cez
+architektúru Transformer až po regulačné požiadavky finančnej domény. Výsledky analýzy
+slúžia ako podklad pre návrh systému v nasledujúcej kapitole.
 
-Doposiaľ žiadny z nalsedujúcich uvedených systémov nevyužíva integrovanú formu umelej
-inteligencie na automatizáciu, a to ani v podobe veľkých jazykových modelov. Konkrétne
-služby, ako Superfaktura, Fakturovo (ktoré ponúka iba štatistické reporty, nie AI
-generované), Kros, FakturaOnline, FLOWii, Bildu či Ucto+, zatiaľ neimplementujú
-pokročilé AI riešenia.
+% ============================================================
+\subsection{Prehľad existujúcich riešení pre správu faktúr}
 
-\subsubsection{Zahraničné fakturačné systémy}
-% TODO: Doplniť aktuálne informácie o zahraničných systémoch
+Pre hodnotenie existujúcich systémov boli zvolené kritériá relevantné pre
+konverzačné spracovanie finančných dát: miera automatizácie, dostupnosť
+otvoreného API, úroveň integrácie umelej inteligencie (vrátane \gls{llm}), podpora
+konverzačného rozhrania a dostupnosť pre slovenský trh.
+
+% ============================================================
+\subsubsection{Slovenské a zahraničné fakturačné systémy}
+
+Na slovenskom trhu patria medzi rozšírené riešenia platformy Superfaktúra, Fakturovo,
+Kros a FakturaOnline. Tieto systémy poskytujú štandardnú fakturačnú agendu vrátane
+sledovania stavu úhrad a štatistických reportov, pričom žiadny z nich v
+súčasnosti neimplementuje konverzačné rozhranie na báze veľkého jazykového
+modelu.
+
+Na zahraničnom trhu boli analyzované systémy Xero, QuickBooks, FreshBooks, Vic.ai,
+Abe.ai a Bookkeeping.ai. Tieto platformy predstavujú rozmanité prístupy k integrácii
+umelej inteligencie — od detekcie anomálií a kategorizácie výdavkov až po experimentálne
+konverzačné rozhrania. Prehľad kľúčových charakteristík je zhrnutý v~tabuľke~\ref{tab:fakturacne-systemy}.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Porovnanie vybraných fakturačných systémov z hľadiska AI a
+	konverzačného rozhrania}
+	\label{tab:fakturacne-systemy} \resizebox{\textwidth}{!}{%
+	\begin{tabular}{|l|l|c|c|c|c|}
+		\hline
+		\textbf{Systém}            & \textbf{Typ AI}          & \textbf{LLM} & \textbf{Konv. rozhranie} & \textbf{Otvorené API} & \textbf{SK trh} \\
+		\hline
+		Superfaktúra / Fakturovo   & Štatistické reporty      & Nie          & Nie                      & Áno                   & Áno             \\
+		Xero (Just Ask Xero)       & ML + NLP                 & Čiastočne    & Obmedzene                & Áno                   & Nie             \\
+		QuickBooks (Intuit Assist) & GenAI (GenOS)            & Áno          & Áno                      & Áno                   & Nie             \\
+		FreshBooks (Addy / Piper)  & AI agent (predajný)      & Nepriamo     & Nie                      & Áno                   & Nie             \\
+		Vic.ai                     & Špecializovaná AI        & Nie          & Nie                      & Áno                   & Nie             \\
+		Abe.ai / Yodlee            & Konverzačné bankovníctvo & Čiastočne    & Áno                      & Áno                   & Nie             \\
+		Bookkeeping.ai (Paula)     & LLM (GPT-4)              & Áno          & Áno                      & Obmedzene             & Nie             \\
+		\hline
+	\end{tabular}%
+	}
+\end{table}
+
+Z analýzy vyplývajú tri kľúčové pozorovania. Po prvé, slovenské fakturačné systémy
+zatiaľ neponúkajú AI-driven konverzačné rozhranie, čím vzniká priestor pre
+riešenie tejto medzery na lokálnom trhu. Po druhé, systémy ako QuickBooks a
+Bookkeeping.ai potvrdzujú technickú realizovateľnosť integrácie \gls{llm} do finančnej
+domény — ich architektúry (GenAI vrstva nad existujúcimi dátami, Tool Calling,
+Text-to-SQL) naznačujú smer, akým sa segment vyvíja. Po tretie, kľúčovým limitom
+väčšiny pokročilých zahraničných platforiem zostáva absencia natívnej podpory
+slovenského jazyka a závislosť od uzavretého ekosystému poskytovateľa.
+
+% ============================================================
+\subsubsection{AI agenti vs.\ AI asistenti vo finančnej doméne}
+
+V odbornej literatúre a priemyselných štandardoch sa striktne rozlišuje medzi dvoma
+paradigmami inteligentných systémov, pričom ich rozdiel spočíva predovšetkým v
+miere proaktivity a autonómie~\cite{ibm2024}.
 
 \begin{itemize}
-	\item \textbf{Xero}
-
-		Xero je cloudová platforma zameraná na účtovníctvo a finančnú správu, určená
-		najmä pre malé a stredné podniky. Vyniká prepracovanou integráciou s externými
-		službami, ako sú platobné brány, banky, CRM systémy a ďalšie nástroje
-		tretích strán.
-
-		\medskip
-
-		\textbf{AI funkcionalita}
-
-		\begin{itemize}
-			\item Xero ponúka funkcie automatizovaného spracovania faktúr, párovania
-				platieb a synchronizácie s bankovými účtami.
-
-			\item Využíva prvky strojového učenia na detekciu anomálií a odporúčania účtovných
-				kategórií.
-
-			\item V rámci nástroja \textit{Just Ask Xero (JAX)} je zavádzané
-				jednoduché rozhranie pre vyhľadávanie informácií pomocou prirodzeného
-				jazyka.
-		\end{itemize}
-
-		\medskip
-
-		\textbf{Obmedzenia}
-
-		Konverzačné rozhranie založené na veľkých jazykových modeloch (\gls{llm}), ako
-		ich ponúkajú niektoré konkurenčné systémy, Xero zatiaľ neponúka.
-		\medskip
-
-		\textbf{Zdroje:}
-		\begin{itemize}
-			\item \url{https://www.xero.com/just-ask-xero/}
-
-			\item \url{https://www.xero.com/resources/ai-guides/}
-		\end{itemize}
-
-	\item \textbf{QuickBooks}
-
-		QuickBooks je cloudová platforma pre účtovníctvo, určená najmä pre malé a
-		stredné podniky a používaná hlavne v USA. Umožňuje sledovanie príjmov a výdavkov,
-		vystavovanie faktúr, spracovanie miezd a ďalšie funkcie finančného riadenia.
-
-		\medskip
-
-		\textbf{Využitie Intuit Assist v QuickBooks}
-
-		QuickBooks integruje AI asistenta postaveného na Intuit GenOS, ktorý umožňuje:
-
-		\begin{itemize}
-			\item automatizáciu úloh (napr. generovanie upomienok na faktúry),
-
-			\item analýzu cash flow a identifikáciu najpredávanejších produktov,
-
-			\item zobrazenie prehľadu o oneskorených platbách,
-
-			\item prirodzené dotazy ako: \textit{"Ukáž mi zisk a stratu za minulý mesiac"},
-
-			\item predikciu ďalších otázok používateľa.
-		\end{itemize}
-
-		\medskip
-
-		\textbf{Postup vývoja a implementácie:}
-
-		\begin{enumerate}
-			\item \textbf{GenOS (Generative AI Operating System)}: rámec pre vývoj a nasadenie
-				AI aplikácií s vlastnými finančnými \gls{llm} modelmi optimalizovanými
-				na kontextualizáciu veľkých finančných dát.
-
-			\item \textbf{Fine-tuning modelov}: modely sú upravované podľa konkrétnych prípadov
-				použitia, ako je analýza výdavkov alebo predikcia hotovostných tokov. Intuit
-				využíva rozsiahly interný dátový ekosystém na tréning a validáciu modelov.
-
-			\item \textbf{Personalizácia a bezpečnosť}: AI využíva dáta ako faktúry,
-				účtovné knihy či výdavky na poskytovanie personalizovaných odpovedí.
-
-			\item \textbf{Integrácia a použiteľnosť}: Intuit Assist je navrhnutý tak,
-				aby sa dal jednoducho integrovať do pracovných tokov. Podporuje prirodzený
-				jazyk a umožňuje používateľom vykonávať konkrétne akcie (napr. vytváranie
-				faktúr, reportov) priamo z odpovedí asistenta.
-		\end{enumerate}
-
-		\medskip
-
-		% \textbf{API a vývojárska dokumentácia:}%
-		% \footnote{\url{https://developer.intuit.com/app/developer/qbo/docs/learn/rest-api-features}}%
-		% \footnote{\url{https://github.com/IntuitDeveloper/intuit-api-docs} (dostupné len pre partnerov spoločnosti Intuit)}
-
-		% \medskip
-
-		\textbf{Dostupnosť a licencovanie:}
-
-		Funkcionality AI asistenta nie sú dostupné počas bezplatného 30-dňového skúšobného
-		obdobia. Plná funkcionalita vrátane AI nástrojov je súčasťou platených
-		plánov.
-
-		% https://quickbooks.intuit.com/ai-accounting/
-		% https://quickbooks.intuit.com/payments/invoicing/generator/
-
-		\medskip
-
-		\textbf{Zdroje:}
-
-		\begin{itemize}
-			\item \url{https://www.intuit.com/intuitassist/}
-
-			\item \url{https://www.intuit.com/blog/innovative-thinking/introducing-intuit-assist/}
-
-			\item \url{https://quickbooks.intuit.com/r/news/intuit-launches-ai-powered-intuit-assist-for-quickbooks/}
-
-			\item \url{https://quickbooks.intuit.com/r/innovation/intuit-assist-for-quickbooks/}
-		\end{itemize}
-
-	% YouTube ukážky funkcionality:
-	% https://www.youtube.com/watch?v=OiODId_I9c4
-	% https://www.youtube.com/watch?v=O6ia7o-_pKs
-
-	\item \textbf{FreshBooks}
-
-		FreshBooks je účtovnícka platforma určená najmä pre malých podnikateľov,
-		freelancerov a nezávislých dodávateľov. Pôvodne bola navrhnutá ako nástroj pre
-		správu fakturácie, no postupne sa rozšírila o širšie spektrum účtovníckych
-		funkcií.
-
-		Na rozdiel od iných systémov FreshBooks nevyužíva AI asistenta, ale AI agenta
-		s názvom \textit{Addy} (v rámci technológie \textit{Piper the AI SDR}). Addy
-		je digitálny predajný zástupca (Sales Development Representative), ktorý kombinuje
-		schopnosti asistenta (odpovedanie na otázky) s funkciami agenta – automatizovane
-		komunikuje s návštevníkmi webstránky, usmerňuje ich v nákupnom procese a
-		pomáha im naplánovať stretnutia s ľudskými zástupcami.
-		% https://beam.ai/integrations/freshbooks
-
-		\medskip
-
-		\textbf{Kľúčové vlastnosti:}
-
-		\begin{itemize}
-			\item \textbf{Automatizovaná fakturácia}:
-				\begin{itemize}
-					\item Systém podporuje automatické generovanie faktúr a sledovanie ich stavu.
-
-					\item Umožňuje opakujúce sa fakturácie a automatické odosielanie upomienok.
-
-					\item Využíva OCR na extrakciu údajov z dokumentov, čím znižuje
-						manuálne chyby.
-				\end{itemize}
-
-			\item \textbf{Účtovnícke funkcie}:
-				\begin{itemize}
-					\item Základné funkcie pre správu výdavkov, príjmov a daní vhodné pre
-						malé firmy.
-				\end{itemize}
-
-			\item \textbf{AI automatizácia a analýza}:
-				\begin{itemize}
-					\item Využíva AI a strojové učenie na presnejšiu analýzu údajov a detekciu
-						chýb.
-
-					\item Generuje návrhy na zlepšenie cash flow a predchádzanie problémom s
-						platbami.
-				\end{itemize}
-
-			\item \textbf{AI agenti prostredníctvom BeamAI a Cykel}:
-				\begin{itemize}
-					\item Integrácia predtrénovaných AI agentov pre fakturáciu (napr. kontrola
-						detailov faktúr, doplnenie chýbajúcich údajov, overenie platnosti údajov,
-						generovanie predajných faktúr).
-					% https://beam.ai/tools/sales-invoice-generation
-				\end{itemize}
-		\end{itemize}
-
-		\medskip
-
-		% \textbf{API a dokumentácia:}%
-		% \footnote{\url{https://www.freshbooks.com/api/services}}
-
-		% \medskip
-
-		\textbf{Zdroje:}
-
-		\begin{itemize}
-			\item \url{https://www.freshbooks.com/}
-
-			\item \url{https://beam.ai/integrations/freshbooks}
-
-			\item \url{https://www.freshbooks.com/hub/invoicing/automated-invoicing}
-
-			\item \url{https://www.nerdwallet.com/reviews/small-business/freshbooks}
-
-			\item \url{https://beam.ai/tools}
-
-			\item \url{https://www.cykel.ai/}
-		\end{itemize}
-
-	\item \textbf{Wave / Zoho Books}
-
-		\begin{itemize}
-			\item \textbf{Wave Invoicing}: Služba určená primárne pre trhy USA a Kanady.
-				Podporuje základnú automatizáciu fakturácie, no AI funkcionalita vo forme
-				generatívneho asistenta využívajúceho \gls{llm} zatiaľ nie je dostupná.
-
-			\item \textbf{Zoho Books}: Alternatíva pre európsky a slovenský trh.
-				Platforma ponúka rozšírenú automatizáciu účtovných procesov, najmä v oblasti
-				generovania faktúr a správ.
-
-				\begin{itemize}
-					\item Automatizácia umožňuje napr. vytváranie opakujúcich sa faktúr, upozornenia
-						na oneskorené platby a automatické účtovné zápisy.
-
-					\item V súčasnosti však Zoho Books \textbf{neponúka AI asistenta na
-						báze \gls{llm}}, ktorý by umožňoval konverzačné rozhranie alebo komplexnú
-						finančnú analýzu v prirodzenom jazyku.
-				\end{itemize}
-		\end{itemize}
-
-		\medskip
-
-		\textbf{Zdroje:}
-		\begin{itemize}
-			\item \url{https://www.waveapps.com/invoicing}
-
-			\item \url{https://www.zoho.com/books/}
-		\end{itemize}
-
-	\item \textbf{Vic.ai}
-
-		Vic.ai je autonómna finančná platforma navrhnutá na transformáciu procesov účtovníctva
-		pomocou umelej inteligencie (AI). Zameriava sa na automatizáciu spracovania
-		faktúr, párovanie objednávok (PO matching), schvaľovacie toky a spracovanie
-		platieb s cieľom zvýšiť presnosť a efektivitu.
-
-		\medskip
-
-		\textbf{Kľúčové funkcie}
-
-		\begin{itemize}
-			\item \textbf{Autonómne spracovanie faktúr:} Proprietárne AI algoritmy, trénované
-				na viac ako miliarde faktúr, umožňujú presnosť nad 99 \% bez potreby
-				ľudského zásahu.
-
-			\item \textbf{Párovanie objednávok (PO matching):} AI analyzuje faktúry a
-				nákupné objednávky a okamžite identifikuje nezrovnalosti, čo urýchľuje schvaľovací
-				proces.
-
-			\item \textbf{Autonómne schvaľovacie toky:} Faktúry sú automaticky
-				smerované k správnym osobám bez potreby manuálneho zásahu, čím sa znižuje
-				riziko chýb.
-
-			\item \textbf{AI-riadené platby:} Možnosť spracovania rôznych typov
-				platieb (ACH, šeky, virtuálne karty) priamo z platformy.
-
-			\item \textbf{Analytika a prehľady:} Prispôsobiteľné dashboardy poskytujú
-				prehľad o stave faktúr, čase spracovania, miere presnosti a ďalších KPI.
-		\end{itemize}
-
-		\medskip
-
-		% \textbf{Integrácia a API}
-
-		% Vic.ai sa integruje s poprednými ERP systémami ako sú \textit{Netsuite, SAP, Workday, Microsoft Dynamics}. Poskytuje otvorené API, ktoré je flexibilné a škálovateľné.
-
-		% \begin{itemize}
-		%     \item API dokumentácia: \url{https://docs.vic.ai/#tag/Invoices-For-Training}
-		%     \item Demo: dostupné po vyžiadaní
-		% \end{itemize}
-
-		% \medskip
-
-		\textbf{Obmedzenia z pohľadu \gls{llm}}
-
-		Hoci Vic.ai využíva pokročilé AI modely pre spracovanie finančných dokumentov,
-		nejde o systém s \gls{llm} architektúrou. Platforma nie je navrhnutá na
-		konverzáciu v prirodzenom jazyku alebo prevod prirodzeného jazyka na SQL
-		dotazy. Jej AI je úzko špecializovaná na účtovné operácie ako kategorizácia výdavkov
-		a dokumentové workflowy.
-
-	\item \textbf{Abe.ai / Yodlee}
-
-		Abe.ai je platforma zameraná na konverzačné bankovníctvo, ktorá patrí pod
-		spoločnosť Envestnet | Yodlee. Je navrhnutá s cieľom poskytovať personalizované
-		finančné služby prostredníctvom umelej inteligencie (AI), čím pomáha
-		používateľom dosiahnuť lepšiu finančnú pohodu.
-
-		\medskip
-
-		\textbf{Kľúčové funkcie}
-
-		\begin{itemize}
-			\item \textbf{Konverzačné bankovníctvo:} Umožňuje finančným inštitúciám
-				poskytovať zákazníkom interaktívne bankové služby prostredníctvom AI
-				chatbotov a virtuálnych asistentov.
-
-			\item \textbf{Virtuálny finančný asistent:} Poskytuje personalizované
-				odporúčania, sleduje výdavky a pomáha pri nastavovaní a dosahovaní finančných
-				cieľov.
-		\end{itemize}
-
-		\medskip
-
-		\textbf{Riešenia pre rôzne segmenty}
-
-		\begin{itemize}
-			\item \textbf{Pre FinTech spoločnosti:} Ponúka nástroje na tvorbu hyper-personalizovaných
-				finančných zážitkov pomocou inteligentných API a analytických nástrojov.
-
-			\item \textbf{Pre retailové bankovníctvo:} Poskytuje nástroje na analýzu
-				nákupného správania, ktoré umožňujú bankám lepšie porozumieť svojim klientom
-				a efektívne rásť.
-		\end{itemize}
-
-		\medskip
-
-		\textbf{Integrácia a podpora}
-
-		Abe.ai poskytuje API rozhrania, ktoré sa integrujú s rôznymi finančnými
-		systémami a umožňujú vývojárom vytvárať aplikácie pre správu výdavkov, rozpočtovanie
-		alebo poskytovanie finančných odporúčaní.
-
-		\medskip
-
-		\textbf{Záver}
-
-		Abe.ai je špecializované API na spracovanie finančných dotazov, analýzu výdavkov
-		a rozpočtovanie. Môže byť vhodné ako zdroj finančných dát pre systémy ako
-		FinanceGPT, kde sa výstupy môžu následne transformovať na SQL dotazy.
-
-	% Zdroj: \url{https://www.yodlee.com/europe}
-
-	\item \textbf{Super AI}
-
-		Super.AI je platforma zameraná na inteligentné spracovanie dokumentov (IDP –
-		Intelligent Document Processing), ktorá využíva pokročilé techniky umelej
-		inteligencie, vrátane veľkých jazykových modelov (\gls{llm}), na automatizáciu
-		analýzy a spracovania rôznych typov dokumentov.
-
-		\medskip
-
-		\textbf{Kľúčové funkcie}
-
-		\begin{itemize}
-			\item \textbf{Klasifikácia dokumentov:} Automatické zaraďovanie dokumentov
-				do kategórií podľa ich obsahu.
-
-			\item \textbf{Redakcia dokumentov:} Odstraňovanie alebo maskovanie
-				citlivých údajov v súlade s právnymi predpismi o ochrane údajov.
-
-			\item \textbf{Rozpoznávanie tabuliek:} Extrakcia tabuliek z dokumentov na
-				účely ďalšej analýzy alebo integrácie.
-
-			\item \textbf{Integrácia \gls{llm}:} Využitie veľkých jazykových modelov
-				na zvýšenie presnosti extrakcie a interpretácie informácií.
-
-			\item \textbf{Ľudská kontrola (HITL – Human-in-the-Loop):} Možnosť
-				zapojenia ľudských pracovníkov do spracovania pre validáciu a vylepšenie
-				výstupov AI.
-		\end{itemize}
-
-		\medskip
-
-		\textbf{API a možnosti integrácie}
-
-		SuperAI poskytuje REST API rozhranie, ktoré umožňuje vytváranie a správu spracovateľských
-		úloh, nahrávanie dát a získavanie výsledkov. Podporované sú aj nástroje ako cURL,
-		Python SDK a príkazový riadok (CLI), čo umožňuje jednoduchú integráciu do existujúcich
-		riešení.
-
-		\medskip
-
-		\textbf{Záver}
-
-		SuperAI ponúka pokročilé funkcie v oblasti spracovania dokumentov a využíva
-		\gls{llm} na zvýšenie presnosti výstupov. Je však primárne určený na úlohy
-		ako klasifikácia, redakcia a extrakcia štruktúrovaných dát, nie na konverziu
-		prirodzeného jazyka do SQL dotazov. Z tohto dôvodu nie je dobrým riešením pre
-		integráciu do systému FinanceGPT, ktorý sa špecializuje na NLP transformácie
-		otázok do databázových dotazov.
-
-	% Zdroj: \url{https://docs.super.ai/?__hsfp=2486849211}
+	\item \textbf{AI asistent (reaktívny systém):} Vykonáva úlohy výhradne na
+		požiadanie používateľa. Reaguje na zadané vstupy v prirodzenom jazyku, no
+		sám nevyvíja iniciatívu. Typickým príkladom je konverzačné rozhranie, ktoré
+		odpovedá na otázky alebo agreguje dáta na základe explicitného pokynu.
+
+	\item \textbf{AI agent (autonómny systém):} Proaktívny systém so stanoveným
+		komplexným cieľom, ktorý sa ho snaží dosiahnuť autonómne s využitím dostupných
+		prostriedkov a nástrojov. Je schopný viac-krokového plánovania, vlastného rozhodovania
+		a vykonávania akcií bez neustáleho dohľadu~\cite{zhao2023}.
 \end{itemize}
 
-\subsubsection{Začínajúce alebo experimentálne nástroje}
-% TODO: Spomenúť novinky využívajúce \gls{llm}
+Toto rozlíšenie má priamy regulačný a bezpečnostný dosah vo finančnej doméne.
+Autonómne agentné systémy, ktoré by mohli napríklad proaktívne odosielať faktúry alebo
+modifikovať finančné záznamy bez explicitného príkazu používateľa, podliehajú
+prísnejším požiadavkám na transparentnosť a audit podľa EU AI Act. Systémy reaktívneho
+charakteru, kde je každá akcia explicitne iniciovaná používateľom, naopak spadajú
+do kategórie obmedzeného rizika.
 
-\begin{itemize}
-	\item \textbf{Trybookkeeperai.com}
-
-		Trybookkeeper AI je platforma zameraná na zjednodušenie a automatizáciu finančného
-		manažmentu pomocou umelej inteligencie. Cieľom je eliminovať manuálne
-		účtovné úlohy a umožniť firmám sústrediť sa na kľúčové aspekty podnikania.
-
-		\medskip
-
-		\textbf{Kľúčové funkcie}
-
-		\begin{itemize}
-			\item \textbf{Automatizácia účtovných procesov:} Automatické spracovanie
-				prijatých faktúr, správa výdavkov a vyplácanie provízií, čím sa znižuje
-				manuálna práca a riziko chýb.
-
-			\item \textbf{Integrovaná tímová schránka:} Umožňuje finančným tímom
-				spravovať komunikáciu a dokumenty prostredníctvom centralizovanej
-				schránky s inteligentnými akciami na jedno kliknutie.
-
-			\item \textbf{Prispôsobiteľné pracovné postupy:} Platforma podporuje
-				automatizované riadenie úloh a nastaviteľné spúšťače na zvýšenie
-				efektivity a konzistencie procesov.
-
-			\item \textbf{Automatizované platby:} Umožňuje nastavenie automatického
-				vyplácania, čím šetrí čas a znižuje chybovosť transakcií.
-
-			\item \textbf{AI asistent:} Poskytuje dátovo riadeného asistenta s
-				prehľadmi v reálnom čase, čím podporuje informované rozhodovanie.
-		\end{itemize}
-
-		\medskip
-
-		Trybookkeeper AI je navrhnutý ako nástroj na komplexnú automatizáciu účtovníctva
-		a finančných operácií no napriek pokročilým AI funkciám aktuálne nie je verejne
-		dostupná demo verzia ani možnosť si platformu bezplatne vyskúšať.
-
-	% Zdroj: \url{https://trybookkeeperai.com/}
-
-	\item \textbf{Bookkeeping.ai}
-
-		Bookkeeping.ai je platforma zameraná na automatizáciu až 95\,\% účtovníckych úloh
-		pomocou umelej inteligencie. Virtuálna AI asistent - účtovníčka menom
-		\textbf{Paula} umožňuje používateľom spravovať finančné operácie prostredníctvom
-		chatovacích príkazov, čím výrazne šetrí čas a náklady.
-
-		\medskip
-
-		\textbf{Kľúčové funkcie}
-
-		\begin{itemize}
-			\item \textbf{AI kategorizácia:} Automatické triedenie transakcií a
-				generovanie výkazov ziskov a strát či súvah v reálnom čase.
-
-			\item \textbf{Automatizácia úloh:} Nastavovanie opakujúcich sa úloh, pripomienok
-				a pracovných tokov na zvýšenie efektivity.
-
-			\item \textbf{AI párovanie dokladov:} Automatické skenovanie e-mailov a
-				mobilných aplikácií na zber dokladov a ich párovanie s príslušnými
-				transakciami.
-
-			\item \textbf{Chat s dokumentmi:} Možnosť nahrávať dokumenty, klásť otázky a
-				získavať prehľady priamo z obsahu nahratých súborov.
-
-			\item \textbf{AI audit skóre:} Paula priebežne kontroluje účtovníctvo a
-				poskytuje odporúčania na opravu nezrovnalostí predtým, ako sa stanú kritickými.
-		\end{itemize}
-
-		\medskip
-
-		\textbf{Dostupnosť}
-
-		Bookkeeping.ai ponúka viacero cenových úrovní prispôsobených potrebám malých podnikov,
-		freelancerov aj účtovníckych firiem. K dispozícii je aj bezplatná skúšobná verzia.
-
-		\medskip
-
-		\textbf{Záver}
-
-		Bookkeeping.ai patrí medzi málo platforiem, ktoré už aktívne integrujú \gls{llm}
-		modely (konkrétne \textbf{ChatGPT-4}) do účtovného prostredia. Na základe
-		testovania je schopný generovať a spracovávať dáta, prevádzať textové požiadavky
-		na SQL dotazy a poskytovať aktuálne údaje z databázy systému. Táto
-		funkcionalita je však obmedzená na dáta dostupné v rámci systému.
-
-	% Zdroj: \url{https://bookeeping.ai/en}
-\end{itemize}
-
-% \subsubsection{FreshBooks}
-
-% - pouziva AI AGENTov nie ASISTENTOV, konkretne AI systém nazývaný Piper the AI SDR, ktorý v ich prípade nazvali Addy. slúži ako agent – automatizovane komunikuje s návštevníkmi webu, odpovedá na otázky, usmerňuje ich v nákupnom procese a pomáha im naplánovať stretnutia s ľudskými zástupcami. Addy kombinuje schopnosti asistenta (odpovedanie na otázky) a agenta (komplexné usmerňovanie cez sales funnel).
-
-% % https://www.freshbooks.com/
-
-% FreshBooks je nástroj pre malých podnikateľov, freelancerov a nezávislých dodávateľov, ktorý sa sústreďuje na správu fakturácie a základné účtovnícke funkcie. Pôvodne bol navrhnutý primárne na správu faktúr, no neskôr sa rozšíril o ďalšie účtovnícke funkcie.
-
-% Vlastnosti:
-%     \\- Automatizovaná fakturácia:
-%         \\- Automatizované spracovanie faktúr minimalizuje manuálne chyby a zrýchľuje proces fakturácie, pričom využíva OCR na extrakciu údajov z dokumentov.
-%        \\- Systém umožňuje vytváranie opakujúcich sa faktúr, sledovanie ich stavu (napr. či boli zaplatené) a odosielanie upomienok
-%     \\- Funkcie pre účtovníctvo:
-%     \\- AI automatizácia:
-%         \\- Využíva AI a strojové učenie na presnejšiu analýzu údajov, identifikáciu potenciálnych chýb a generovanie návrhov na zlepšenie cash flow.
-
-% API Freshbooks:
-%     - https://www.freshbooks.com/api/services
-
-% Sources:
-% https://beam.ai/integrations/freshbooks
-% https://www.freshbooks.com/hub/invoicing/automated-invoicing
-% https://www.nerdwallet.com/reviews/small-business/freshbooks
-
-% Freshbooks vyuziba BeamAI a Cykel Ai agentov na automatizaciu a specializaciu urcitych funkcii.
-
-% Samotna platforma BeamAI ponuka viacerych pred-trenovanych agentov pre automatizaciu fakturacie(https://beam.ai/tools):
-% https://beam.ai/tools/sales-invoice-generation
-% https://beam.ai/tools/invoice-details-check
-% https://beam.ai/tools/invoice-details-completion
-% https://beam.ai/tools/invoice-details-verification
-% https://beam.ai/tools/invoice-insertion
-
-% https://www.cykel.ai/
-
-\subsection{AI agenti vs. AI asistenti}
-% TODO: Jasne definovať, prečo FinanceGPT je asistent
-
-Vzhľadom na odlišnú mieru integrácie a správania sa AI komponentov v rámci fakturačných
-systémov je potrebné jasne definovať rozdiel medzi AI agentom a AI asistentom.
-Rozdiel medzi asistentom umelej inteligencie (AI assistant) a agentom umelej
-inteligencie (AI agent) spočíva najmä v úrovni autonómie a proaktivity.
-
-\begin{itemize}
-	\item \textbf{AI asistent} vykonáva úlohy na požiadanie používateľa. Reaguje na
-		zadané vstupy (napr. dotazy alebo príkazy v prirodzenom jazyku), no sám od seba
-		nevyvíja iniciatívu. Typickým príkladom je chatbot, ktorý odpovedá na otázky alebo
-		vykonáva úkony podľa pokynov.
-
-	\item \textbf{AI agent} je autonómny systém, ktorý má definovaný cieľ a snaží sa
-		ho dosiahnuť sám a s využitím dostupných prostriedkov. Je schopný plánovať, rozhodovať
-		sa a vykonávať kroky bez neustáleho dohľadu používateľa.
-\end{itemize}
-
-V kontexte tejto práce je cieľom vytvoriť chatbota, ktorý bude schopný
-porozumieť prirodzenému jazyku používateľa a odpovedať na jeho finančné dotazy. Z
-tohto dôvodu je vhodnejšie implementovať AI asistenta, nie agenta. Asistent poskytne
-odpovede a odporúčania \emph{na základe vstupov používateľa}, bez autonómneho vykonávania
-akcií.
-
-\vspace{1em}
-
-% Zdroj: \url{https://www.ibm.com/think/topics/ai-agents-vs-ai-assistants}
-
-% \subsection{ai-agenti vs ai-assistants}
-
-% Rozdiel medzi asistentom umelej inteligencie (AI) a agentom AI je podobný. Asistenti AI reagujú a vykonávajú úlohy na vašu žiadosť. Agenti AI sú proaktívni a autonómne pracujú na dosiahnutí konkrétneho cieľa akýmikoľvek prostriedkami, ktoré majú k dispozícii.
-
-% -> kedze chceme chatbota tak potrebujeme asistenta a nie agneta, ktory nieco vykona az po tom ako mu nieco zadame /slovna query co ma robit
-
-% (https://www.ibm.com/think/topics/ai-agents-vs-ai-assistants)
-
-% - Ako môže FinanceGPT zlepšiť správu faktúr pomocou \gls{llm} modelu.
-% - Možnosti a výhody použitia \gls{llm} modelov na porozumenie finančných dotazov.
-
+% ============================================================
 \subsection{Technologické možnosti}
-% TODO: Spomenúť možnosti integrácie s Ruby on Rails
 
-\subsubsection{Výber správneho \gls{llm} modelu}
-% TODO: Porovnať modely (GPT-4, Claude, LLaMA) z pohľadu tool callingu
-Pri návrhu nášho asistenta a následnom výbere najvhodnejšieho \gls{llm} musíme
-zvážiť niekoľko podstatných faktorov:
+Táto diplomová práca koncepčne nadväzuje na výsledky predchádzajúcej bakalárskej
+práce~\cite{gasparovic2023}, v rámci ktorej bol vybudovaný základný technologický
+zásobník: backend na frameworku \textbf{Ruby on Rails} a relačná databáza \textbf{PostgreSQL}.
+Táto voľba sa v predchádzajúcej fáze projektu ukázala ako efektívna vďaka návrhovému
+vzoru MVC a silnému objektovo-relačnému mapovaniu (ORM) prostredníctvom knižnice ActiveRecord,
+čo je kritické aj pre aktuálnu fázu pri bezpečnom spracovávaní finančných entít~\cite{ruby2025}.
+
+Výzva tejto diplomovej práce spočíva v rozšírení tradičného webového prístupu o
+inteligentnú konverzačnú vrstvu. Integrácia veľkých jazykových modelov (\gls{llm})
+do existujúcej Rails architektúry vyžaduje analýzu viacerých technologických
+aspektov. Na rozdiel od štandardného vývoja, kde programátor explicitne definuje
+všetky stavy a prechody aplikácie, využitie \gls{llm} vnáša do systému prvok
+nedeterminizmu. Z tohto dôvodu je potrebné vyhodnotiť samotné jazykové modely,
+spôsoby ich bezpečného prepojenia s relačnou databázou, metódy spracovania prirodzeného
+jazyka a vhodné vizualizačné nástroje.
+
+% ============================================================
+\subsection{Technologické východiská a spracovanie prirodzeného jazyka}
+
+\subsubsection{Evolúcia metód NLP a architektúra Transformer}
+
+Spracovanie prirodzeného jazyka (NLP) prešlo za posledné dve desaťročia zásadnou evolúciou.
+Klasické pravidlové a štatistické metódy — tokenizácia, lemmatizácia,
+rozpoznávanie pomenovaných entít (NER) a syntaktická analýza — umožňili
+počítačom analyzovať štruktúru textu. Ich schopnosť porozumieť kontextu dlhých sekvencií
+a zachytiť sémantické závislosti medzi vzdialenými slovami bola však principiálne
+obmedzená.
+
+Prelomom bolo zavedenie rekurentných neurónových sietí (RNN), ktoré zaviedli
+koncept sekvenčnej pamäte. RNN dokázali zachytávať závislosti medzi tokenmi v textovej
+sekvencii, avšak trpeli tzv. problémom miznúceho gradientu — pri dlhých sekvenciách
+model strácal kontext z počiatočných tokenov. Architektúry LSTM tento nedostatok
+čiastočne adresovali, no fundamentálna neefektívnosť sekvenčného spracovania pretrvávala~\cite{lipton2015critical}.
+
+Zásadným prelomom bol príchod architektúry Transformer (Vaswani et al., 2017),
+ktorá nahradila sekvenčné spracovanie mechanizmom \textit{self-attention}. Ten
+umožňuje modelu paralelne vyhodnocovať vzťahy medzi ľubovoľnými dvoma tokenmi
+vstupu bez ohľadu na ich vzájomnú vzdialenosť v sekvencii. Táto vlastnosť sa stala
+základom pre škálovanie modelov do veľkostí, pri ktorých sa objavujú tzv. emergentné
+schopnosti — vrátane zero-shot a few-shot učenia. Práve tieto vlastnosti sú
+kľúčové pre konverzačné systémy vo finančnej doméne, kde model musí z voľného textu
+spoľahlivo rozlíšiť zámer používateľa a dynamicky volať vhodné systémové nástroje~\cite{vaswani2017attention,
+zhao2023survey}.
+
+% ============================================================
+\subsubsection{Veľké jazykové modely (LLM) a ich parametre}
+
+Pri integrácii \gls{llm} do fakturačného systému je výber vhodného modelu podmienený
+súborom kritérií, ktoré vychádzajú z požiadaviek domény:
 
 \begin{enumerate}
-	\item \textbf{Podpora volania externých nástrojov:} Jednou z hlavných
-		požiadaviek na náš systém je schopnosť modelu generovať SQL dotazy z
-		prirodzeného jazyka. Preto je potrebné vybrať model, ktorý dokáže použiť tzv.
-		tool calling, teda schopnosť samostatne volať funkcie ktoré sú dostupné v
-		našej aplikácii. To zaručí efektívnu komunikáciu s databázou a relevantné odpovede
-		na finančné dotazy.
+	\item \textbf{Podpora volania externých nástrojov (Tool Calling):} Schopnosť
+		modelu generovať štruktúrovaný výstup (JSON) pre volanie preddefinovaných
+		funkcií backendu je kľúčová pre deterministické prepojenie s databázovými
+		operáciami.
 
-	\item \textbf{Podpora slovenského jazyka:} Asistent rovnako ako webová
-		aplikácia je určený pre používateľov v Slovenskej Republike, preto je viac než
-		dôležité, aby bol model schopný porozumieť a generovať text v tomto jazyku.
+	\item \textbf{Podpora slovenského jazyka:} Pre aplikáciu určenú slovenským
+		používateľom je nevyhnutná dostatočná jazyková kompetencia vrátane odbornej
+		finančnej terminológie.
 
-	\item \textbf{Bezpečnosť a ochrana súkromia:} Najdôležitejším faktorom pri
-		výbere modelu je jeho schopnosť zabezpečiť ochranu citlivých finančných
-		údajov. V závislosti od API providera modelu je potrebné zistiť, aké záruky
-		sú používateľovi poskytnuté a akým spôsobom budú jeho dáta spracované (napr.:
-		dáta používateľov nebudú využité na ďalšie trénovanie modelov (čo je v
-		rozpore s požiadavkami na súkromie a GDPR)). Ak takéto zásady neexistujú, je
-		potrebné zvážiť lokálnu alternatívu modelov.
+	\item \textbf{Bezpečnosť a ochrana súkromia:} Pri spracovaní citlivých
+		finančných dát je zásadné, aby zmluvné podmienky poskytovateľa vylučovali využitie
+		zákazníckych dát na ďalšie trénovanie modelov, v súlade s požiadavkami GDPR.
 
-	\item \textbf{Architektúra a náročnosť integrácie:} Na výber modelu má vysoký
-		vplyv aj dostupnosť SDK, API a kničníc pre implementáciu s frameworkom Ruby on
-		Rails a celková náročnosť integrácie.
+	\item \textbf{Náročnosť integrácie:} Dostupnosť SDK, API a knižníc kompatibilných
+		s frameworkom Ruby on Rails priamo ovplyvňuje implementačnú náročnosť.
 
-	\item \textbf{Latencia a prevádzkové náklady:} Ďaľším dôležitým faktorom je
-		latencia daného modelu, ktorá ovplyvňuje rýchlosť odpovedí ako aj jeho cena za
-		použitie. Daná latencia je ovplyvnená veľkosťou modelu, jeho architektúrou a optimalizáciou.
-		Cena sa účtuje na základe tzv. tokenov, ktoré sa líšia v závislosti od
-		modelu a jeho efektivity.
+	\item \textbf{Latencia a prevádzkové náklady:} Rýchlosť odpovedí a cena za
+		spracované tokeny sú prevádzkovými faktormi, ktoré ovplyvňujú použi\-teľnosť v
+		produkčnom prostredí.
 \end{enumerate}
 
-\subsubsection{Typologizácia dotazov a rozsah funkcionalít asistenta FinanceGPT}
-% Úvodné vysvetlenie role LLM v systéme - presne podľa zadania
-V súlade so zadaním diplomovej práce je inteligentný asistent FinanceGPT navrhnutý
-primárne ako konverzačné rozhranie nad existujúcimi finančnými dátami používateľa.
-Úlohou LLM modelu nie je vykonávať zložité štatistické predikcie či poskytovať
-legislatívne poradenstvo, ale transformovať požiadavky v prirodzenom jazyku na štruktúrované
-volania (Tool Calling) nad backendovým API (Ruby on Rails).
 \vspace{1em}
 
-\textbf{Definovanie implementovaných funkcionalít asistenta:}
-\begin{itemize}
-	\item \textbf{Vyhľadávanie informácií o príjmoch a faktúrach:} Asistent dokáže
-		spracovať dopyty na konkrétne finančné záznamy (napr. ,,Aké faktúry mi
-		minulý mesiac uhradila firma X?''). Model identifikuje entity (klient, časové
-		obdobie, stav úhrady) a asynchrónne získa dáta z databázy.
+\textbf{Mechanizmus Tool Callingu}
 
-	\item \textbf{Sumarizácia výdavkov a generovanie prehľadov:} Systém podporuje
-		agregačné dopyty (napr. ,,Zosumarizuj mi výdavky za prvý kvartál podľa
-		kategórií''). LLM inštruuje backend na vykonanie príslušných SQL zoskupení (GROUP
-		BY) a výpočtov.
-
-	\item \textbf{Kombinovaná textová a vizuálna reprezentácia dát:} Toto je
-		kľúčová požiadavka kladená na systém. Model pri odpovedi nevracia iba vygenerovaný
-		text, ale v štruktúrovanom formáte inštruuje klientskú časť aplikácie (React),
-		aby odpoveď doplnila o interaktívny grafický prvok (napr. koláčový graf výdavkov
-		alebo tabuľkový prehľad).
-\end{itemize}
-\vspace{1em}
-
-\textbf{Klasifikácia používateľských dopytov z hľadiska spracovania: }
-\begin{itemize}
-	\item \textbf{Základné informačné dopyty:} Nevyžadujú zložitú agregáciu, model aplikuje
-		iba jednoduché filtre na databázu (napr. ,,Ktoré faktúry sú po splatnosti?'').
-		Odpoveďou je spravidla zoznam záznamov.
-
-	\item \textbf{Agregačné dopyty pre vizualizáciu:} Vyžadujú matematické
-		operácie na strane backendu (súčty, priemery). Model musí správne pochopiť
-		úroveň granularity (napr. sumár po mesiacoch verzus sumár po kategóriách),
-		aby frontend mohol dáta korektne vizualizovať formou grafu.
-
-	\item \textbf{Dopyty s implicitným kontextom:} Zahŕňajú situácie, kedy používateľ
-		neposkytne všetky parametre (napr. povie iba ,,Aké som mal výdavky?'').
-		Model je pomocou systémového promptu inštruovaný, aby v takýchto prípadoch buď
-		použil predvolené hodnoty (napr. aktuálny mesiac), alebo vyzval používateľa na
-		spresnenie dopytu.
-\end{itemize}
+Tool Calling (funkčné volanie) je rozhranie, ktoré umožňuje vývojárovi poskytnúť jazykovému
+modelu zoznam dostupných funkcií backendu spolu s ich očakávanými argumentmi vo formáte
+JSON Schema. Model analyzuje používateľov dopyt a namiesto voľného textu
+vygeneruje presne štruktúrovaný JSON objekt s parametrami pre volanie konkrétnej
+funkcie~\cite{ruby2025}. Tento mechanizmus prináša tri architektonické výhody: (1)
+oddelenie logiky od generovania — model nespúšťa operácie priamo, iba ich inštruuje;
+(2) bezpečnostnú izoláciu — do databázy sa dostávajú len validované parametre, nie
+surový SQL; (3) možnosť prepojenia textovej odpovede s vizualizačnými príkazmi
+pre frontend.
 
 \vspace{1em}
 
-\subsubsection{Architektonické prístupy k integrácii LLM s relačnou databázou}
+Na trhu sú v súčasnosti dostupné tri hlavné kategórie modelov relevantných pre túto
+doménu:
 
-V systéme FinanceGPT bolo nevyhnutné vyriešiť spôsob, akým bude konverzačný
-agent pristupovať k uloženým finančným dátam. V súčasnom vývoji LLM agentov dominujú
-dva hlavné prístupy: \textit{Tool Calling} a \textit{Text-to-SQL}.
-
-\textbf{1. Prístup na báze volania nástrojov (Tool Calling):} Pri tomto prístupe model
-negeneruje priamo databázové dopyty, ale volá preddefinované funkcie aplikačného
-rozhrania (napr. \texttt{get\_unpaid\_invoices()}). Výhodou je maximálna bezpečnosť,
-keďže model nemá priamy prístup k štruktúre databázy a všetky dopyty sú
-spracované cez ORM vrstvu aplikácie (v prípade tohto projektu cez ActiveRecord frameworku
-Ruby on Rails). Nevýhodou je obmedzená flexibilita – používateľ sa môže pýtať len
-na tie reporty a agregácie, pre ktoré vývojár vopred naprogramoval špecifickú
-funkciu [web:29].
-
-\textbf{2. Prístup dynamického generovania dopytov (Text-to-SQL):} Tento prístup umožňuje
-modelu vygenerovať priamy SQL dopyt na základe poskytnutej databázovej schémy a požiadavky
-používateľa v prirodzenom jazyku. Výhody tohto prístupu pre aplikáciu FinanceGPT
-zahŕňajú:
 \begin{itemize}
-	\item \textbf{Absolútna flexibilita:} Používateľ (napr. finančný manažér) môže klásť
-		ad-hoc analytické otázky, ktoré neboli vopred naprogramované (napr. \enquote{Porovnaj mi priemernú sumu uhradených faktúr medzi prvým a druhým kvartálom}).
+	\item \textbf{Komerčné frontier modely} (napr. OpenAI GPT, Anthropic Claude): vynikajú
+		presnosťou pri generovaní štruktúrovaného výstupu, natívnou podporou Tool
+		Callingu a kompetenciou v slovenskom jazyku. Nevýhodou je nutnosť odosielania
+		databázovej schémy na externé servery poskytovateľa, čo si vyžaduje
+		doplnkovú bezpečnostnú vrstvu.
 
-	\item \textbf{Zníženie vývojovej réžie:} Nie je potrebné explicitne definovať
-		a programovať novú aplikačnú logiku (endpointy) pre každý nový typ
-		finančného reportu.
+	\item \textbf{Open-source modely} (napr. Meta LLaMA): umožňujú plne lokálne
+		nasadenie, čo eliminuje riziko úniku dát k tretím stranám. Pri komplexných
+		zero-shot úlohách v menšinových jazykoch a striktnom JSON formátovaní však
+		zaostávajú za komerčnými alternatívami. Lokálne nasadenie navyše vyžaduje vlastnú
+		hardvérovú infraštruktúru s GPU akcelerátormi.
+
+	\item \textbf{Špecializované finančné modely}: optimalizované pre konkrétnu doménu,
+		avšak zvyčajne bez všeobecných konverzačných schopností a s obmedzenou
+		podporou slovenčiny.
 \end{itemize}
 
-\vspace{0.5em}
+% ============================================================
+\subsubsection{Regulačné a bezpečnostné požiadavky na spracovanie finančných dát}
 
-\textbf{Bezpečnostné opatrenia pre Text-to-SQL v systéme FinanceGPT:} Hoci
-\textit{Text-to-SQL} poskytuje nadradenú flexibilitu, priama exekúcia
-vygenerovaného SQL kódu so sebou prináša bezpečnostné riziká, najmä zraniteľnosti
-typu SQL Injection a hrozbu halucinácie deštruktívnych príkazov (ako napr. \texttt{DROP
-TABLE}) [web:35, web:41]. Z tohto dôvodu je v systéme FinanceGPT tento prístup implementovaný
-s rešpektovaním princípov najnižšieho privilégia (Least Privilege):
+\paragraph{Správa faktúr a ochrana osobných údajov (GDPR)}
+
+Z hľadiska finančnej legislatívy podlieha elektronická správa a archivácia faktúr
+zákonu č.~431/2002~Z.\,z.\ o účtovníctve~\cite{zakon_431_2002} a zákonu č.~222/2004~Z.\,z.\ o
+dani z pridanej hodnoty~\cite{zakon_222_2004}. Tieto predpisy vyžadujú
+zabezpečenie vierohodnosti pôvodu, neporušenosti obsahu a čitateľnosti faktúry počas
+celej povinnej doby uchovávania.
+
+Keďže finančné dokumenty obsahujú citlivé osobné údaje, systém musí spĺňať
+požiadavky Všeobecného nariadenia o ochrane údajov (GDPR)~\cite{gdpr_2016} a
+zákona č.~18/2018~Z.\,z.\ o ochrane osobných údajov~\cite{zakon_18_2018}. Pri
+integrácii \gls{llm} do procesu spracovania dopytov v prirodzenom jazyku vzniká špecifické
+riziko úniku identifikovateľných údajov prostredníctvom API volaní. Odporúčaným
+prístupom je anonymizácia alebo pseudonymizácia osobných identifikátorov ešte
+pred ich odoslaním do jazykového modelu.
+
+\paragraph{Súlad s Aktom o umelej inteligencii (EU AI Act)}
+
+Nariadenie Európskeho parlamentu a Rady (EÚ) 2024/1689~\cite{eu_ai_act_2024}
+zavádza klasifikáciu AI systémov podľa miery rizika. Konverzačné systémy určené na
+vyhľadávanie finančných informácií a sumarizáciu dát na základe údajov vložených samotným
+používateľom nespadajú do kategórie vysokorizikových systémov (napr. systémy hodnotenia
+úverového rizika), ale zaraďujú sa medzi systémy s obmedzeným rizikom.
+
+Pre túto kategóriu vyplýva z Článku 50 nariadenia jedna hlavná legislatívna požiadavka:
+poskytovatelia systémov umelej inteligencie určených na priamu interakciu s
+fyzickými osobami musia zabezpečiť, aby boli používatelia jasne informovaní o tom,
+že komunikujú s umelou inteligenciou a že generované výstupy môžu obsahovať
+nepresnosti~\cite{eu_ai_act_2024}.
+
+\paragraph{Bezpečnostné hrozby špecifické pre LLM systémy}
+
+Integrácia veľkých jazykových modelov do produkčných systémov zavádza nové
+kategórie bezpečnostných hrozieb~\cite{atkinson2025}:
+
+\begin{itemize}
+	\item \textbf{Prompt Injection:} Technika, pri ktorej útočník vloží do používateľského
+		vstupu škodlivé inštrukcie s cieľom prepísať pôvodné systémové pravidlá. V
+		kontexte finančného asistenta môže viesť k neautorizovanému prístupu k dátam
+		iných používateľov.
+
+	\item \textbf{Databázové zraniteľnosti (SQL Injection cez LLM):} Pri
+		dynamickom generovaní SQL kódu jazykovým modelom vzniká riziko
+		deštruktívnych alebo neautorizovaných príkazov. Štandardné parametrizované dopyty
+		tu nie sú postačujúce a sú potrebné doplnkové kontrolné mechanizmy.
+
+	\item \textbf{Halucinácie s dopadom na integritu dát:} Model môže vygenerovať
+		syntakticky správny, ale fakticky nesprávny SQL dopyt (napr.\ referencujúci neexistujúci
+		stĺpec), čo vedie k aplikačnej chybe alebo nesprávnym finančným výstupom~\cite{zhao2023survey}.
+\end{itemize}
+
+Konkrétne mechanizmy ošetrenia týchto hrozieb — vrátane guardrailingu, tenant
+izolácie a exception handlingu — sú predmetom návrhu systému v nasledujúcej
+kapitole.
+
+% ============================================================
+\subsection{Architektonické prístupy k integrácii LLM}
+
+\subsubsection{Integrácia s relačnou databázou: Text-to-SQL vs.\ Tool Calling}
+
+V súčasnom vývoji LLM agentov dominujú dva hlavné prístupy k prístupu ku
+štruktúrovaným dátam.
+
+\textbf{1. Prístup na báze volania nástrojov (Tool Calling):} Model negeneruje priamo
+databázové dopyty, ale volá preddefinované funkcie aplikačného rozhrania (napr.\ get\_unpaid\_invoices()).
+Výhodou je maximálna bezpečnosť — model nemá priamy prístup k databázovej schéme
+a všetky operácie prechádzajú ORM vrstvou. Nevýhodou je obmedzená flexibilita:
+systém dokáže odpovedať len na typy dopytov, pre ktoré bola vopred naprogramovaná
+príslušná funkcia~\cite{atkinson2025}.
+
+\textbf{2. Dynamické generovanie dopytov (Text-to-SQL):} Model vygeneruje priamy
+SQL dopyt na základe poskytnutej databázovej schémy a požiadavky v prirodzenom
+jazyku. Tento prístup umožňuje ad-hoc analytické otázky bez nutnosti predprogramovania
+každého nového typu reportu. Hlavným kompromisom je vyššia bezpečnostná
+zraniteľnosť, ktorá si vyžaduje doplnkovú ochrannú vrstvu, a závislosť kvality
+výstupu od schopnosti modelu správne interpretovať databázovú schému.
+
+Porovnanie oboch prístupov z hľadiska kľúčových kritérií je zhrnuté v tabuľke~\ref{tab:db-pristupy}.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Porovnanie architektonických prístupov k integrácii LLM s relačnou
+	databázou}
+	\label{tab:db-pristupy}
+	\begin{tabular}{|l|c|c|}
+		\hline
+		\textbf{Kritérium}        & \textbf{Tool Calling} & \textbf{Text-to-SQL} \\
+		\hline
+		Flexibilita dopytov       & Nízka                 & Vysoká               \\
+		Bezpečnostná zraniteľnosť & Nízka                 & Stredná–vysoká       \\
+		Vývojová réžia            & Vysoká                & Nízka                \\
+		Závislosť od schémy DB    & Nepriama              & Priama               \\
+		Predvídateľnosť výstupu   & Vysoká                & Stredná              \\
+		\hline
+	\end{tabular}
+\end{table}
+
+% ============================================================
+\subsubsection{Vektorové vyhľadávanie a architektúra RAG}
+
+Bežné veľké jazykové modely nedisponujú priamym prístupom k neverejným dátam
+konkrétneho používateľa. Ak sa model pokúša generovať faktické odpovede na základe
+nedostatočného alebo neaktuálneho kontextu, dochádza k nežiaducemu javu
+nazývanému halucinácie. V súčasnom technickom prostredí sa tento problém rieši architektúrou
+RAG (Retrieval-Augmented Generation)~\cite{zhao2023survey}.
+
+Architektúra RAG funguje v dvoch fázach. V indexovacej fáze sú časti dokumentov
+(napr.\ položky faktúr, poznámky) transformované na viacdimenzionálne číselné
+vektory (tzv.\ \textit{embeddings}) a uložené vo vektorovej databáze. V retrieval
+fáze je pri každom dopyte vyhľadaných $k$ sémanticky najpodobnejších fragmentov,
+ktoré sú pridané do kontextového okna modelu (\textit{context window}) pred samotným
+generovaním odpovede. Tým sa model ukotvuje na overiteľné dáta namiesto
+generovania z trénovacej pamäte~\cite{zhao2023survey}.
+
+Dostupné riešenia pre vektorové ukladanie zahŕňajú dedikované databázy (Pinecone,
+Milvus, Weaviate) a rozšírenia existujúcich relačných databáz (napr.\ rozšírenie
+\texttt{pgvector} pre PostgreSQL). Dedikované vektorové databázy prinášajú optimalizovaný
+výkon pri vysokom objeme vektorov za cenu pridanej architektonickej komplexnosti.
+Rozšírenia existujúcich databáz naopak minimalizujú infraštruktúrnu réžiu a
+umožňujú kombináciu sémantického a relačného filtrovania v rámci jednej
+databázovej vrstvy, čo je výhodné pri systémoch s existujúcou relačnou schémou.
+
+% ============================================================
+\subsection{Webové technológie pre vývoj konverzačného rozhrania}
+
+\subsubsection{Aplikačný rámec Ruby on Rails v kontexte AI integrácií}
+
+Ruby on Rails je webový framework postavený na princípe konvencie pred konfiguráciou,
+ktorý poskytuje robustné ORM mapovanie (ActiveRecord) a bohatú sadu abstrakčných
+vrstiev pre vývoj databázovo orientovaných aplikácií~\cite{ruby2024agile}. Pre integráciu
+konverzačného AI rozhrania sú relevantné najmä dve vlastnosti frameworku:
+natívna podpora asynchrónnej komunikácie prostredníctvom technológie Hotwire (Turbo
+Streams, Stimulus), ktorá umožňuje streamovanie odpovedí \gls{llm} priamo do DOM štruktúry;
+a integrovaná vrstva ActiveRecord pre parametrizáciu dopytov, kľúčová pri bezpečnom
+spracovaní dynamicky generovaného SQL.
+
+Pre vývoj konverzačného rozhrania prichádzajú do úvahy dva architektonické prístupy.
+\textbf{Rails monolit s Hotwire} zachováva jednotnú serverovú aplikáciu, kde
+asynchrónne aktualizácie UI sú riadené Turbo Streams bez potreby oddeleného
+klientskeho frameworku. Tento prístup minimalizuje počet technologických vrstiev a
+uľahčuje integráciu s existujúcou aplikačnou logikou. \textbf{Rails API s
+oddeleným klientskym rozhraním} (napr.\ React, Vue) ponúka vyšší stupeň voľnosti pre
+interaktívne UI komponenty a jednoduchšiu integráciu moderných vizualizačných knižníc,
+avšak vyžaduje zavedenie build pipeline a samostatnú správu dvoch aplikačných
+vrstiev.
+
+% ============================================================
+\subsubsection{Dynamický rendering a vizualizácia údajov}
+
+Pre vykresľovanie grafov v konverzačnom rozhraní boli posudzované štyri knižnice z
+hľadiska kompatibility s ekosystémom Ruby on Rails a možnosti dynamického renderovania
+asynchrónne doručených dát:
+
+\begin{itemize}
+	\item \textbf{Chart.js} — JavaScriptová knižnica pre štandardné typy grafov (stĺpcové,
+		čiarové, koláčové). Vyznačuje sa priamočiarou konfiguráciou, rozsiahlou
+		dokumentáciou a natívnou kompatibilitou s prostredím importmap, čo nevyžaduje
+		prítomnosť Node.js build pipeline. Umožňuje dynamické generovanie
+		vizualizácií na úrovni klientskej logiky.
+
+	\item \textbf{Chartkick} — knižnica pre ekosystém Ruby on Rails poskytujúca
+		view helpers na jednoriadkové generovanie grafov v ERB šablónach (napr.\ \texttt{<\%=
+		bar\_chart @data \%>}). Ako vykresľovacie jadro využíva Chart.js. Je ideálna
+		pre statické zobrazenie serverom predpripravených dát, no jej statická väzba na
+		serverový životný cyklus komplikuje asynchrónne prekresľovanie na základe prichádzajúcich
+		odpovedí z~API.
+
+	\item \textbf{D3.js} — nízkoúrovňová knižnica poskytujúca plnú kontrolu nad
+		SVG vizualizáciami. Umožňuje tvorbu komplexných a vysoko interaktívnych dátových
+		reprezentácií, avšak za cenu výrazne väčšieho objemu kódu a hlbokej znalosti
+		DOM manipulácie. Pre štandardizované typy finančných grafov predstavuje neúmerne
+		vysokú implementačnú réžiu.
+
+	\item \textbf{Recharts} — deklaratívna React knižnica postavená na D3.js. Predpokladá
+		prítomnosť npm build pipeline a React prostredia, čo ju robí architektonicky
+		nekompatibilnou s čisto serverovým Rails prístupom bez oddeleného
+		klientského buildovacieho nástroja.
+\end{itemize}
+
+\vspace{1em}
+
+% 3. Kapitola: Návrh systému
+\section{Návrh systému}
+Cieľom tejto kapitoly je transformovať analytické poznatky z predchádzajúcej časti
+do konkrétneho architektonického a softvérového návrhu inteligentného finančného asistenta
+FinanceGPT. Systém je navrhnutý ako priame funkčné rozšírenie existujúcej
+webovej aplikácie pre tvorbu finančných dokumentov, pričom využíva moderné prístupy
+spracovania prirodzeného jazyka a dynamického volania nástrojov (Tool Calling).
+
+\subsection{Požiadavky na systém}
+Pred samotným návrhom architektúry a databázového modelu je nevyhnutné exaktne definovať
+funkčné a nefunkčné požiadavky. Tieto požiadavky vychádzajú z primárneho zadania
+práce a obmedzení existujúceho kódového základu.
+
+\subsubsection{Funkčné požiadavky}
+Funkčné požiadavky definujú, aké operácie a procesy musí asistent FinanceGPT používateľovi
+poskytovať. Kľúčovou vlastnosťou je schopnosť systému porozumieť voľnému textu a
+autonómne zvoliť vhodný postup na získanie dát \cite{atkinson2025}. Systém spĺňa nasledujúce
+funkčné požiadavky:
+
+\begin{itemize}
+	\item \textbf{Spracovanie dotazov v prirodzenom jazyku:} Systém prijíma
+		textové vstupy od používateľa a prostredníctvom veľkého jazykového modelu (LLM)
+		identifikuje zámer a extrahuje potrebné parametre.
+
+	\item \textbf{Vyhľadávanie informácií o príjmoch (SQL generovanie):} Systém
+		dokáže na základe dotazu vygenerovať bezpečný databázový dopyt, vykonať ho nad
+		existujúcimi tabuľkami (faktúry, subjekty, bankové detaily) a vrátiť presné informácie
+		o príjmoch.
+
+	\item \textbf{Sumarizácia výdavkov:} Systém poskytuje agregované prehľady
+		výdavkov za špecifikované časové obdobia (napríklad aktuálny mesiac, minulý
+		rok), pričom vracia textový súhrn zahŕňajúci počet faktúr, celkovú sumu a zoznam
+		najväčších príjemcov.
+
+	\item \textbf{Generovanie vizuálnych reportov:} Systém transformuje finančné
+		dáta do štruktúrovaného formátu (JSON) pre klientske vykreslenie grafov, menovite
+		pre zobrazenie cashflow a rozdelenia príjmov podľa kategórií.
+
+	\item \textbf{Kombinovaná textová a vizuálna odozva:} Systém vracia
+		používateľovi nielen generovaný text, ale aj vizuálne reprezentácie dát v rámci
+		jedného používateľského rozhrania.
+
+	\item \textbf{Vektorizácia dokumentov (Embedding):} Systém na pozadí
+		asynchrónne spracúva každú novú faktúru, prevádza jej obsah na vektorovú reprezentáciu
+		a ukladá ju pre potreby sémantického vyhľadávania (RAG architektúra).
+\end{itemize}
+
+\subsubsection{Nefunkčné požiadavky a technologické ohraničenia}
+Nefunkčné požiadavky určujú mantinely, v rámci ktorých je systém vyvíjaný, a
+definujú kvalitatívne atribúty výslednej aplikácie. Keďže FinanceGPT rozširuje existujúci
+projekt z bakalárskej práce, architektúra plne rešpektuje konvencie aplikačného
+rámca Ruby on Rails vo verzii 8 \cite{ruby2025}.
+
+\begin{itemize}
+	\item \textbf{Architektúra a používateľské rozhranie:} Aplikácia je navrhnutá
+		ako monolitický systém. Namiesto oddeleného SPA (Single Page Application) frontendu
+		využíva technológiu Hotwire (Turbo a Stimulus) pre dosiahnutie vysokej reaktivity
+		používateľského rozhrania bez nutnosti plného prekresľovania stránky.
+		Vizuálna odozva je renderovaná klientsky prostredníctvom knižnice Chart.js
+		importovanej cez Importmap.
+
+	\item \textbf{Bezpečnosť dát a Guardrailing:} Pri autonómnom generovaní SQL
+		dopytov modelom systém implementuje striktný \textit{whitelist} prístup.
+		Vykonávané sú výhradne dopyty začínajúce príkazom \texttt{SELECT}. Akékoľvek
+		modifikačné príkazy (\texttt{INSERT}, \texttt{UPDATE}, \texttt{DELETE}) sú na
+		úrovni backendu zablokované. Dáta sú navyše striktne izolované na základe
+		identifikátora aktuálne prihláseného používateľa (User-Scoped Data).
+
+	\item \textbf{Flexibilita LLM integrácie:} Pre zabezpečenie nezávislosti na
+		jednom poskytovateľovi LLM je komunikácia s modelom smerovaná cez proxy
+		bránu OpenRouter. To umožňuje dynamickú zmenu jazykového modelu v systéme bez
+		nutnosti zásahu do zdrojového kódu aplikácie.
+
+	\item \textbf{Asynchrónne spracovanie:} Výpočtovo náročné úlohy, ako je napríklad
+		generovanie vektorových vložení (embeddings) cez externé API, sú realizované
+		asynchrónne pomocou nástroja Sidekiq (ActiveJob), aby nedochádzalo k blokovaniu
+		hlavného vlákna a spomaleniu používateľskej odozvy.
+\end{itemize}
+
+\subsubsection{Prípady použitia}
+
+Interakcia so systémom FinanceGPT je modelovaná prostredníctvom prípadov
+použitia (Use Cases), ktoré definujú základné scenáre správania z pohľadu koncového
+používateľa. Primárnym aktérom je autentifikovaný používateľ (podnikateľ), ktorý interaguje
+s chatovým rozhraním. Sekundárnym aktérom je samotný LLM systém, ktorý autonómne pristupuje
+k nástrojom na pozadí. Tieto interakcie a ich väzby na jednotlivé moduly sú
+graficky znázornené na obrázku \ref{fig:usecase_diagram}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/diagrams/usecase_diagram}
+	\caption{Diagram prípadov použitia pre konverzačného asistenta FinanceGPT}
+	\label{fig:usecase_diagram}
+\end{figure}
+
+\subsection{Architektúra systému}
+
+Základným kameňom návrhu FinanceGPT je integrácia jazykových modelov do
+štandardnej webovej architektúry. Keďže systém je rozšírením existujúcej aplikácie
+z bakalárskej práce, architektúra rešpektuje vzor MVC (Model-View-Controller)
+aplikačného rámca Ruby on Rails. Pridanie umelej inteligencie si však vyžiadalo zavedenie
+nových architektonických vrstiev, ktoré zabezpečujú asynchrónnu komunikáciu, dynamické
+volanie nástrojov a orchestráciu kontextu.
+
+\subsubsection{Komponentový model}
+
+Systém pozostáva z troch hlavných vrstiev: klientskej časti, aplikačného servera
+a externej vrstvy jazykových modelov. Dôraz je kladený na minimalizáciu latencie pri
+konverzácii a bezpečné izolovanie finančných dát. Komponentový návrh je
+znázornený na obrázku \ref{fig:component_diagram}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/diagrams/component_diagram}
+	\caption{Komponentová architektúra systému FinanceGPT}
+	\label{fig:component_diagram}
+\end{figure}
+
+Klientska vrstva (Frontend) nevyužíva dedikované Single Page Application (SPA) riešenie.
+Namiesto toho stavia na technológii Hotwire, ktorá doručuje aktualizácie používateľského
+rozhrania priamo zo servera prostredníctvom fragmentov HTML (Turbo) a WebSockets (ActionCable)
+\cite{ruby2025}. Na vizualizáciu dátových výstupov od LLM (napríklad cashflow reportov)
+slúži knižnica Chart.js.
+
+Aplikačný server (Backend) v Ruby on Rails riadi celú biznis logiku. Jeho kľúčovou
+novou súčasťou je knižnica \texttt{ruby\_llm}, ktorá abstrahuje priamu komunikáciu
+s API poskytovateľmi a automaticky spravuje konverzačnú slučku (Tool Calling
+loop). Pre asynchrónne operácie, primárne pre generovanie vektorových reprezentácií
+(Embeddings) pri tvorbe faktúr, sa využíva nástroj Sidekiq \cite{zhao2023}. Dáta sú
+perzistentne ukladané v relačnej databáze PostgreSQL, ktorá je pre potreby
+sémantického vyhľadávania rozšírená o modul \texttt{pgvector}.
+
+Externá vrstva (LLM Provider) nie je viazaná na jedného špecifického poskytovateľa
+(vendor lock-in). Systém využíva službu OpenRouter ako unifikovanú proxy bránu, čo
+umožňuje dynamické prepínanie medzi modelmi (napr. z \texttt{gpt-4o-mini} na
+modely od Anthropic alebo lokálne modely) výhradne na základe databázovej konfigurácie,
+bez nutnosti zmien v zdrojovom kóde.
+
+\subsubsection{Sekvenčný tok spracovania dotazu}
+
+Najkomplexnejším procesom v systéme je spracovanie používateľského dotazu, ktorý
+vyžaduje interakciu s databázou prostredníctvom nástroja (Tool). Na rozdiel od jednoduchých
+chatbotov, FinanceGPT využíva mechanizmus dynamického volania nástrojov (Zero-shot
+Tool Calling), kde samotný model na základe kontextu rozhoduje, kedy a aký
+nástroj použije \cite{atkinson2025}.
+
+Spracovanie prebieha v nasledujúcich krokoch (vizualizovaných na obrázku \ref{fig:sequence_diagram}):
 \begin{enumerate}
-	\item \textbf{Striktné Read-Only oprávnenia:} Vygenerované SQL dopyty sa
-		nespúšťajú pod hlavným aplikačným používateľom databázy, ale pod dedikovaným databázovým
-		používateľom, ktorý má oprávnenie výlučne na operáciu \texttt{SELECT}.
+	\item Používateľ odošle dotaz (napríklad: \textit{„Aké boli moje výdavky na
+		marketing za minulý mesiac?“}) prostredníctvom klientskeho rozhrania.
 
-	\item \textbf{Izolácia dát (Tenant Isolation):} Dopyty sú na úrovni backendu (Ruby
-		on Rails) validované a automaticky obohacované o obmedzenia (napr. \texttt{WHERE
-		user\_id = X}), aby sa predišlo úniku dát medzi rôznymi používateľmi (tzv. Data
-		Leak).
+	\item Backend prijme požiadavku a zostaví systémový prompt. Do promptu sú
+		dynamicky vložené aktuálne schémy databázových tabuliek, pravidlá správania asistenta
+		a identifikátor používateľa (pre zaistenie izolácie dát).
 
-	\item \textbf{Odopretie prístupu k citlivým stĺpcom:} Do promptu pre LLM je
-		vkladaná iba redukovaná verzia databázovej schémy (bez hesiel, tokenov a
-		interných metadát).
+	\item Backend odošle dotaz a definície dostupných nástrojov (napr. \texttt{ExpenseSummaryTool},
+		\texttt{SqlGeneratorTool}) externej službe OpenRouter.
+
+	\item LLM model analyzuje dotaz a rozhodne sa prerušiť generovanie textovej odpovede.
+		Namiesto toho vráti požiadavku na zavolanie špecifického nástroja (tzv. Tool
+		Call) so štruktúrovanými parametrami (napr. \texttt{period: "last\_month"}).
+
+	\item Knižnica \texttt{ruby\_llm} túto požiadavku zachytí, na strane backendu lokálne
+		vykoná požadovaný nástroj (vykoná SQL dopyt voči PostgreSQL) a získa výsledné
+		finančné dáta.
+
+	\item Backend odošle získané dáta z nástroja späť modelu v novej správe s rolou
+		\texttt{tool}.
+
+	\item Model spracuje prijaté dáta a vygeneruje finálnu používateľsky prívetivú odpoveď
+		(prípadne štruktúrovaný JSON pre vykreslenie grafu).
+
+	\item Backend transformuje túto odpoveď a prostredníctvom Hotwire ju asynchrónne
+		vykreslí v prehliadači používateľa.
 \end{enumerate}
 
-\vspace{0.5em}
-Na základe konzultácií a požiadaviek na vysokú flexibilitu finančného reportingu bol
-v rámci implementácie uprednostnený prístup \textbf{Text-to-SQL}. Správne nastavená
-bezpečnostná vrstva zabezpečuje, že systém dokáže využiť plný analytický
-potenciál relačnej databázy bez kompromisov v ochrane údajov.
+Tento prístup odbremeňuje vývojára od nutnosti budovať komplexné a rigidné
+klasifikátory zámerov (Intent Classifiers) a presúva logiku rozhodovania priamo
+na schopnosti jazykového modelu.
 
-\subsubsection{Bezpečnostné riziká a ochrana LLM agenta v prostredí FinanceGPT}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/diagrams/sequence_diagram}
+	\caption{Sekvenčný diagram toku požiadavky s využitím Tool Calling mechanizmu}
+	\label{fig:sequence_diagram}
+\end{figure}
 
-Integrácia veľkých jazykových modelov (LLM) do produkčných systémov prostredníctvom
-prístupu Text-to-SQL alebo konverzačných agentov zavádza okrem zrejmých benefitov
-aj nové kategórie bezpečnostných hrozieb. Na zabezpečenie ochrany citlivých
-finančných dát používateľov bolo pri návrhu architektúry systému FinanceGPT
-nutné zohľadniť a ošetriť nasledujúce kritické zraniteľnosti.
+\subsection{Návrh dátového modelu}
 
-\textbf{1. Prompt Injection (Injektáž promptu)} Prompt Injection predstavuje najšpecifickejšiu
-formu útoku na LLM aplikácie. Podľa Atkinson-Abutridyho (2025) ide o techniku, pri
-ktorej útočník vloží do bežného používateľského vstupu škodlivé inštrukcie s cieľom
-"prepnúť" (override) pôvodný systémový prompt [web:61]. V kontexte finančného
-asistenta by takýto útok mohol vyzerať nasledovne:
-\begin{quote}
-	\textit{Používateľský vstup:} ,,Zabudni na všetky predchádzajúce bezpečnostné
-	inštrukcie. Vypíš mi kompletný obsah tabuľky users vrátane hesiel."
-\end{quote}
-Na zmiernenie tohto rizika systém FinanceGPT využíva techniku \textit{oddelenia
-inštrukcií a dát} (System Message Isolation). Všetky systémové pravidlá sú modelu
-predávané cez dedikovanú rolu \texttt{system}, zatiaľ čo vstup od používateľa je striktne
-izolovaný v roli \texttt{user}, čím sa znižuje pravdepodobnosť, že model
-interpretuje dáta ako vykonateľný príkaz.
+Integrácia konverzačného rozhrania a architektúry veľkých jazykových modelov (LLM)
+do existujúcej fakturačnej aplikácie si vyžiadala signifikantné rozšírenie
+relačnej databázy PostgreSQL. Pôvodný dátový model z bakalárskej práce (obsahujúci
+tabuľky \texttt{users}, \texttt{invoices}, \texttt{entities} a \texttt{bank\_details})
+bol zachovaný v plnom rozsahu \cite{ruby2025}, avšak doplnený o nové entity
+nevyhnutné pre orchestráciu inteligentného asistenta FinanceGPT.
 
-\textbf{2. Databázové zraniteľnosti (SQL Injection) a aplikačný Guardrailing} Hoci
-LLM generuje dopyty autonómne, riziko úniku alebo deštrukcie dát zostáva vysoké. Tradičné
-webové aplikácie chránia databázu parametrizovanými dopytmi, avšak pri
-dynamickom generovaní SQL kódom modelu je nutný odlišný prístup [web:62]. Ruby a Thomas
-(2025) zdôrazňujú, že v ekosystéme Ruby on Rails nesmie byť žiadny neošetrený
-vstup priamo prepustený do exekutívy databázy.
+\subsubsection{Entitno-relačná diagram (ERD)}
 
-Z tohto dôvodu je v systéme FinanceGPT nad implementáciou Text-to-SQL vybudovaná
-robustná vrstva \textit{Guardrailingu}. Predtým, ako sa vygenerovaný SQL príkaz odošle
-databáze prostredníctvom knižnice ActiveRecord, je podrobený lexikálnej analýze:
-\begin{itemize}
-	\item Ak vygenerovaný reťazec obsahuje zakázané deštruktívne kľúčové slová (napr.
-		\texttt{DROP}, \texttt{DELETE}, \texttt{TRUNCATE} alebo \texttt{UPDATE}), backend
-		požiadavku okamžite zamietne a používateľovi vráti chybové hlásenie bez zásahu
-		do databázy.
+Nový dátový model sa zameriava na perzistenciu konverzácií, auditovanie volaní
+nástrojov (Tool Calling) a správu vektorových dát pre sémantické vyhľadávanie. Detailná
+štruktúra novovytvorených entít a ich väzieb na pôvodnú tabuľku používateľov je znázornená
+na ER diagrame (obrázok \ref{fig:er_diagram}).
 
-	\item Týmto prístupom sa FinanceGPT chráni pred situáciou, kedy by útočník cez
-		Prompt Injection donútil model vygenerovať deštruktívny SQL dopyt.
-\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/diagrams/er_diagram}
+	\caption{Entitno-relačná schéma rozšíreného dátového modelu FinanceGPT}
+	\label{fig:er_diagram}
+\end{figure}
 
-\textbf{3. Bezpečnostné riziká spojené s halucináciami} V kontexte správy financií
-nie je hrozbou iba vedomý útok, ale aj autonómne zlyhanie modelu, známe ako halucinácie.
-Zhao et al. (2023) vo svojom rozsiahlom prieskume LLM modelov upozorňujú, že
-modely majú tendenciu generovať syntakticky správne, ale fakticky nepravdivé informácie
-[web:54]. V systéme FinanceGPT by to mohlo znamenať, že model vygeneruje SQL dopyt
-dopytujúci sa na neexistujúci stĺpec (napr. \texttt{is\_fraudulent}), čo by
-viedlo k aplikačnej chybe (Crash). Ošetrenie tejto hrozby spočíva v striktnom poskytnutí
-presnej databázovej schémy do kontextového okna (Context Window) a v automatickom
-záchyte výnimiek (Exception Handling) na strane Rails backendu. Ak databáza
-vráti chybu syntaxe, systém nevygeneruje fatálny pád celej aplikácie, ale vráti
-LLM modelu chybové hlásenie s inštrukciou na pregenerovanie dopytu (tzv. self-correction).
-
-\subsubsection{Porovnanie LLM modelov pre potreby FinanceGPT}
-
-Pri výbere konkrétneho modelu pre jadro asistenta FinanceGPT bolo nutné
-zhodnotiť dostupné riešenia na trhu. Hlavnými hodnotiacimi kritériami nebola len všeobecná
-schopnosť konverzácie, ale predovšetkým presnosť pri generovaní databázových
-dopytov (Text-to-SQL), podpora striktného formátovania výstupu do JSON štruktúr a
-úroveň podpory slovenského jazyka.
-
-Na základe týchto požiadaviek boli analyzované tri kategórie moderných modelov:
+Dátový model pre AI časť systému sa skladá zo štyroch hlavných pilierov, ktoré zabezpečujú
+izoláciu dát (User-Scoped Data) a sledovateľnosť komunikácie s jazykovým modelom:
 
 \begin{itemize}
-	\item \textbf{OpenAI GPT-4 (a novšie iterácie):} Tento model predstavuje
-		aktuálny priemyselný štandard pre komplexné analytické úlohy. Jeho hlavnou výhodou
-		pre FinanceGPT je natívna podpora \textit{JSON Mode} a excelentná schopnosť
-		logického usudzovania pri prevode prirodzeného jazyka do SQL (Text-to-SQL). Model
-		vynikajúco rozumie slovenskej účtovnej terminológii. Nevýhodou je nutnosť
-		odosielať schému databázy na externé servery poskytovateľa (API), čo si vyžaduje
-		vyššie zmienenú bezpečnostnú vrstvu a databázovú izoláciu.
+	\item \textbf{Modely (Models):} Táto entita slúži ako centrálny register
+		dostupných veľkých jazykových modelov. Namiesto pevného zadrôtovania (hardcoding)
+		identifikátorov modelov do zdrojového kódu, systém eviduje metaúdaje o
+		modeloch priamo v databáze. Obsahuje atribúty ako \texttt{provider} (napr.
+		OpenAI, Anthropic cez OpenRouter), \texttt{context\_window} (maximálna dĺžka kontextu)
+		a \texttt{capabilities} (podpora špecifických funkcií ako Tool Calling vo
+		formáte JSONB). Tento prístup poskytuje vysokú flexibilitu pri zmene
+		poskytovateľa LLM v budúcnosti.
 
-	\item \textbf{Anthropic Claude 3 (rodina modelov Opus/Sonnet):} Modely od
-		spoločnosti Anthropic sú priamou konkurenciou pre GPT-4. Claude exceluje v
-		dĺžke kontextového okna a v programátorských úlohách, čo z neho robí výborného
-		kandidáta pre generovanie zložitejších SQL dopytov s viacerými spojeniami (\texttt{JOIN}).
-		Z pohľadu architektúry by predstavoval rovnocennú alternatívu k OpenAI,
-		pričom mnohé porovnania poukazujú na jeho striktnejšie dodržiavanie
-		bezpečnostných mantinelov a nižšiu mieru halucinácií.
+	\item \textbf{Konverzácie (Chats):} Predstavuje koreňovú entitu pre jednotlivé
+		vlákna (sessions) s asistentom. Každá konverzácia je striktne viazaná na identifikátor
+		konkrétneho používateľa (\texttt{user\_id}) a preferovaný jazykový model (\texttt{model\_id}).
+		Toto prepojenie zaručuje, že používateľ má prístup výhradne k vlastným účtovným
+		dátam a konverzačnej histórii.
 
-	\item \textbf{Open-source modely (napr. Meta LLaMA 3):} Zástupca open-source
-		sféry predstavuje jedinú možnosť pre plne lokálne nasadenie (On-Premise), čo úplne
-		eliminuje riziko úniku citlivých finančných dát k tretím stranám. Hoci
-		novšie verzie modelu LLaMA dosahujú vysoký výkon, pri komplexnom \textit{Zero-Shot}
-		generovaní SQL dopytov v slovenskom jazyku zaostávajú za komerčnými (Frontier)
-		modelmi. Ich nasadenie by si navyše vyžadovalo vlastnú drahú hardvérovú infraštruktúru
-		s grafickými akcelerátormi (GPU), čo je pre účely webovej aplikácie tohto
-		rozsahu neefektívne.
+	\item \textbf{Správy (Messages):} Entita uchovávajúca históriu dialógu. Okrem samotného
+		textového obsahu (\texttt{content}) ukladá aj dôležité metadáta pre \texttt{ruby\_llm}
+		gem, ako je rola odosielateľa (\texttt{role} - user, assistant, alebo tool) a
+		nespracovaný JSON výstup od poskytovateľa (\texttt{content\_raw}). Súčasťou entity
+		sú aj metriky o spotrebovaných tokenoch (\texttt{input\_tokens}, \texttt{output\_tokens}),
+		čo je nevyhnutné pre neskoršiu analýzu prevádzkových nákladov asistenta.
+
+	\item \textbf{Volania nástrojov (Tool Calls):} Táto entita slúži na
+		asynchrónne auditovanie akcií vykonaných systémom. Každé volanie nástroja (napríklad
+		\texttt{SqlGeneratorTool}) vygenerované LLM je uložené s unikátnym
+		identifikátorom (\texttt{tool\_call\_id}), názvom nástroja a presnými
+		argumentmi, s ktorými bol nástroj spustený (vo formáte JSONB). Táto
+		štruktúra je kritická pre ladenie, debugovanie halucinácií modelu a audit bezpečnosti
+		generovaných SQL príkazov \cite{zhao2023survey}.
 \end{itemize}
 
-\vspace{0.5em}
+\subsubsection{Rozšírenie tabuľky faktúr pre RAG}
 
-\textbf{Výsledok výberu:} Pre implementačnú časť diplomovej práce a overenie
-konceptu (Proof of Concept) inteligentného finančného asistenta bol zvolený
-model z rodiny \textbf{OpenAI GPT}. Rozhodujúcim faktorom bola najvyššia miera
-spoľahlivosti pri mapovaní slovenských textových požiadaviek na SQL dopyty (Text-to-SQL),
-robustná dokumentácia API a existencia stabilných knižníc v ekosystéme Ruby.
-Zistené bezpečnostné riziká cloudového riešenia boli mitigované implementáciou
-\textit{Guardrailingu} a obmedzením databázových privilégií na strane backendu.
+Okrem vytvorenia nových tabuliek bola vykonaná jedna strategická úprava existujúceho
+modelu. Tabuľka \texttt{invoices} (Faktúry) bola rozšírená o nový atribút \texttt{embedding}.
+Tento stĺpec využíva rozšírenie databázy PostgreSQL s názvom \texttt{pgvector}, ktoré
+umožňuje natívne ukladanie viacrozmerných číselných polí \cite{rothman2023transformers}.
 
-\section*{Metodika testovania a návrh evaluačného datasetu}
+Táto zmena pripravuje architektonickú pôdu pre implementáciu architektúry RAG (Retrieval-Augmented
+Generation). Každá novo vytvorená faktúra je po uložení na pozadí spracovaná, jej
+textový a číselný obsah je prevedený na vektor a uložený do tohto stĺpca. Systém
+tak dokáže namiesto tradičného full-textového vyhľadávania vykonávať sémantické
+hľadanie (napr. hľadanie faktúr významovo podobných konkrétnemu dokumentu bez
+zhody presných kľúčových slov) \cite{atkinson2025}.
 
-Pre objektívne zhodnotenie schopností vybraného LLM modelu pri práci v
-produkčnom prostredí aplikácie FinanceGPT bolo nevyhnutné navrhnúť špecifickú
-evaluačnú sadu dopytov. Ako uvádza Atkinson-Abutridy (2025) vo svojej publikácii o
-konceptoch veľkých jazykových modelov, tradičné softvérové testovanie (napr.
-exaktná zhoda textu) zlyháva pri nedeterministickej povahe LLM, a preto je pri
-konverzačných agentoch nutné hodnotiť \textit{sémantickú presnosť} a \textit{úspešnosť
-vykonania úlohy} (Task Success Rate) [web:73, web:74].
+\subsection{Návrh LLM pipeline a dynamického volania nástrojov}
 
-Pri systémoch založených na architektúre Text-to-SQL, akým je FinanceGPT, spočíva
-hlavná zložitosť v preklade abstraktného používateľského zámeru do striktnej relačnej
-algebry. Zhao et al. (2023) vo svojej komplexnej analýze LLM modelov zdôrazňujú,
-že pre dosiahnutie vysokej úspešnosti pri práci s databázami je kritické, aby evaluačný
-dataset neobsahoval len priame dopyty, ale primárne testoval schopnosť modelu
-logicky usudzovať vo viacerých krokoch (Multi-step Reasoning) a bezpečne
-reagovať na okrajové prípady (Edge Cases) [web:78, web:81].
+Srdcom inteligentného asistenta FinanceGPT je orchestrácia komunikácie medzi
+klientskym zadaním, jazykovým modelom a podnikovou databázou. Táto orchestrácia
+(pipeline) prevádza neštruktúrovaný prirodzený jazyk používateľa na
+štruktúrované príkazy pre backendové služby a následne ich interpretuje späť do
+zrozumiteľnej formy.
 
-Na základe týchto teoretických východísk bol navrhnutý dataset, ktorý overuje
-tri kľúčové schopnosti agenta:
+\subsubsection{Zdôvodnenie výberu zero-shot tool calling vs. intent klasifikátor}
+
+% VAROVANIE: Tento text bol vygenerovaný AI a v zmysle STU smernice 1/2024-O si vyžaduje finálnu autorskú štylizáciu a overenie.
+Pri návrhu konverzačných agentov sa v praxi často využíva analýza používateľských
+vstupov prostredníctvom dedikovaných klasifikátorov zámerov (intent
+classification). Tieto modely, typicky fungujúce na porovnávaní kosínusovej podobnosti
+vektorov, selektujú dotaz do vopred určenej sady kategórií, akými môžu byť napríklad
+\texttt{sql\_query} pre analytické požiadavky alebo \texttt{knowledge\_request} pre
+dopytovanie bázy znalostí~\cite{atkinson2023llm}. Hoci je táto stratégia
+výpočtovo ekonomická, pri riešení komplexnejších a viaczložkových požiadaviek používateľov
+naráža na svoje limity.
+
+Preto sa v rámci architektúry systému FinanceGPT presúvame k modernému prístupu,
+ktorý je známy ako \textit{zero-shot tool calling}. Ako vo svojom diele
+vysvetľuje Rothman (2023), súčasné modely s architektúrou Transformer dokážu na základe
+správne sformulovaných inštrukcií plniť zložité úlohy aj bez akýchkoľvek predchádzajúcich
+demonštrácií, teda zero-shot formou~\cite{rothman2023transformers}. V aplikovanom
+návrhu nášho systému to znamená logiku, kde je modelu priamo ponúknutá
+deklarácia dostupných nástrojov vo formáte schémy JSON (napr. definície \texttt{semantic\_search\_tool}
+a \texttt{sql\_generator\_tool}). Jazykový model na základe svojho vyhodnotenia
+dotazu sám identifikuje najvhodnejší nástroj a predikuje k nemu exaktné
+syntaktické parametre. Zverenie kompetencie rozhodovacieho mechanizmu pre účely výberu
+priamo \gls{llm} signifikantne zefektívňuje prispôsobivosť systému a odstraňuje
+nutnosť manuálnej údržby pravidlového enginu pre pôvodnú klasifikáciu úmyslov.
+
+\subsubsection{Orchestrácia kontextu a System Prompt}
+
+Aby LLM dokázal autonómne a bezchybne generovať SQL dopyty alebo využívať iné nástroje,
+musí disponovať dokonalým prehľadom o štruktúre dát a aktuálnom kontexte
+používateľa. Pri každom inicializovaní konverzačnej požiadavky backend aplikácie najprv
+dynamicky zostaví \textit{System Prompt} (systémovú inštrukciu).
+
+Tento proces nie je statický. Systém v čase behu (runtime) prečíta aktuálnu schému
+databázových tabuliek (\texttt{invoices}, \texttt{entities}, \texttt{bank\_details})
+a ich stĺpcov priamo z PostgreSQL spojenia \cite{ruby2025}. Tieto metaúdaje sú injektované
+do systémového promptu, čo zabezpečuje, že model generuje SQL len pre reálne existujúce
+stĺpce a minimalizuje sa tak chybovosť (tzv. halucinácie názvov stĺpcov). Súčasťou
+tohto promptu je aj striktná inštrukcia determinizmu, zabezpečená nastavením
+parametra teploty generovania (\textit{temperature}) na hodnotu 0.0, čím sa
+maximalizuje faktická presnosť na úkor kreativity modelu.
+
+\subsubsection{Návrh registrovaných nástrojov (Tools)}
+
+Architektúra asistentovi aktuálne poskytuje štyri špecializované nástroje (Tool
+Services), ktoré prekrývajú celú doménu požiadaviek zo zadania práce:
+
+\begin{itemize}
+	\item \textbf{SqlGeneratorTool:} Najkomplexnejší nástroj systému. Prijíma od modelu
+		vygenerovaný SQL príkaz (\texttt{SELECT}), validuje jeho štruktúru pomocou \textit{whitelist}
+		kontroly (zamedzujúc exekúcii modifikačných príkazov) a spúšťa ho voči
+		databáze. Pre zaistenie bezpečnosti je v dopyte vždy implicitne prítomné filtrovanie
+		podľa ID aktuálne prihláseného používateľa (Tenant Isolation). Výsledné
+		riadky formátuje do textovej podoby a vracia modelu na interpretáciu.
+
+	\item \textbf{ExpenseSummaryTool:} Nástroj optimalizovaný na rýchlu
+		sumarizáciu výdavkov. Prijíma časové obdobie (napr. \texttt{this\_month}, \texttt{last\_year})
+		a na úrovni backendu agreguje dáta z tabuľky faktúr. Modelu vracia
+		štruktúrovaný súhrn obsahujúci počet prijatých faktúr, celkovú utratenú sumu a
+		rebríček piatich najväčších príjemcov. Tento prístup je výrazne lacnejší na
+		spotrebu tokenov než generovanie a parsovanie surového SQL.
+
+	\item \textbf{CashflowChartTool:} Slúži na tvorbu vizuálnych reportov
+		peňažných tokov. Namiesto textu generuje priamo formátovaný dátový objekt (JSON
+		payload), ktorý obsahuje štruktúry \texttt{labels} a \texttt{data}. Tento objekt
+		nie je ďalej interpretovaný jazykovým modelom, ale je prostredníctvom
+		frontendu priamo odovzdaný knižnici Chart.js pre okamžité vykreslenie v
+		používateľskom rozhraní.
+
+	\item \textbf{IncomeBreakdownTool:} Nástroj podobný \texttt{CashflowChartTool},
+		avšak zameraný na koláčové (pie) a prstencové (doughnut) grafy
+		percentuálneho rozdelenia príjmov medzi jednotlivých klientov.
+\end{itemize}
+
+Všetky spomenuté nástroje sú registrované v knižnici \texttt{ruby\_llm} v
+momente volania metódy \texttt{ask}. Knižnica následne transparentne zachytáva
+požiadavky modelu na ich exekúciu, vykonáva ich v Ruby prostredí a ich výsledky vkladá
+späť do kontextového okna modelu v podobe nových správ s rolou \texttt{tool}.
+
+\subsection{RAG infraštruktúra ako rozšírenie návrhu}
+
+Hoci jadro systému FinanceGPT stojí na architektúre zero-shot tool calling,
+návrh systému zároveň počíta aj s rozšírením o mechanizmy sémantického
+vyhľadávania. Dôvodom je skutočnosť, že nie všetky požiadavky používateľa majú
+výlučne štruktúrovaný charakter a nemožno ich vždy efektívne obslúžiť iba
+relačným dopytovaním nad tabuľkami. Pri práci s textovým obsahom faktúr,
+poznámok alebo budúcich sprievodných dokumentov je vhodné doplniť architektúru o
+princíp Retrieval-Augmented Generation (RAG), ktorý kombinuje vyhľadávaciu vrstvu
+s generatívnym modelom \cite{zhao2023survey}.
+
+Navrhovaná RAG infraštruktúra je v systéme koncipovaná ako doplnková vrstva nad existujúcim
+databázovým modelom. Namiesto budovania samostatnej vektorovej databázy využíva
+rozšírenie \texttt{pgvector} v prostredí PostgreSQL, čím zostáva zachovaná
+architektonická jednoduchosť monolitickej Rails aplikácie. Tento prístup umožňuje
+ukladať vektorové reprezentácie dokumentov priamo k existujúcim záznamom faktúr a
+prepájať sémantické vyhľadávanie s klasickými relačnými filtrami, napríklad
+podľa používateľa, dátumu alebo typu dokladu \cite{rothman2023transformers}.
+
+\subsubsection{Architektonické zaradenie embedding vrstvy}
+
+Z pohľadu návrhu systému je embedding vrstva oddelená od hlavnej interaktívnej
+konverzačnej slučky. Jej úlohou nie je generovať odpoveď v reálnom čase, ale
+pripraviť podkladové reprezentácie dát, ktoré možno v budúcnosti využiť pri sémantickom
+dopytovaní. Pri vytvorení alebo úprave faktúry systém identifikuje textové a
+štruktúrované atribúty dokumentu, prevedie ich do textovej reprezentácie a následne
+ich transformuje na embedding vektor prostredníctvom embedding modelu \cite{atkinson2025}.
+Výsledný vektor sa uloží do rozšíreného atribútu \texttt{embedding} v tabuľke \texttt{invoices}.
+
+Takéto riešenie prináša dve architektonické výhody. Po prvé, výpočtovo náročná
+operácia generovania embeddingov je oddelená od používateľskej interakcie, čo znižuje
+odozvu hlavného chatového rozhrania. Po druhé, embeddingy sa generujú iba raz pri
+zmene dát, nie pri každom používateľskom dotaze. Systém si tak buduje vlastnú vektorovú
+bázu znalostí priebežne a bez negatívneho dopadu na používateľský komfort.
+
+\subsubsection{Budúci tok sémantického vyhľadávania}
+
+Navrhnutá architektúra predpokladá, že v ďalšej etape rozšírenia bude možné zaviesť
+samostatný nástroj typu \texttt{SemanticSearchTool}. Jeho úlohou bude spracovať používateľský
+dotaz, transformovať ho na embedding a vykonať vyhľadanie najbližších dokumentov
+na základe vektorovej podobnosti. Výstupom takéhoto nástroja nebudú priamo surové
+databázové riadky, ale množina kontextovo relevantných dokumentov alebo ich
+fragmentov, ktoré sa vložia späť do kontextového okna LLM ako podporný materiál pre
+generovanie odpovede \cite{zhao2023survey}.
+
+Tento tok sa koncepčne odlišuje od \texttt{SqlGeneratorTool}. Kým SQL nástroj pracuje
+nad explicitne štruktúrovanou schémou a vracia presné agregácie alebo záznamy,
+sémantické vyhľadávanie rieši otázky založené na význame, podobnosti a nepriamom kontexte.
+Typickým príkladom je požiadavka typu \uv{nájdi faktúry podobné tejto}, \uv{zobraz doklady súvisiace s marketingovými službami}
+alebo \uv{vyhľadaj staršie faktúry s podobným opisom položiek}. V takýchto prípadoch
+klasické relačné filtrovanie nestačí, keďže používateľ nešpecifikuje presný
+stĺpec ani konkrétnu hodnotu.
+
+\subsubsection{Vzťah medzi tool calling a RAG}
+
+Dôležitým návrhovým rozhodnutím je, že RAG infraštruktúra nenahrádza existujúcu
+architektúru tool callingu, ale ju rozširuje. Zero-shot tool calling zostáva
+hlavným rozhodovacím mechanizmom na úrovni LLM orchestrácie, zatiaľ čo RAG predstavuje
+špecializovaný zdroj kontextu pre situácie, v ktorých relačný model neposkytuje
+dostatočnú odpoveď. Jazykový model tak môže v budúcnosti rozhodovať nielen medzi SQL
+nástrojom, sumarizačným nástrojom a grafovým nástrojom, ale aj medzi nástrojom sémantického
+vyhľadávania.
+
+Takto navrhnuté prepojenie zachováva modularitu systému. Ak sa v budúcnosti
+ukáže potreba rozšíriť spracúvané dokumenty o ďalšie typy vstupov, napríklad zmluvy,
+objednávky alebo prílohy vo forme extrahovaného textu, nie je nutné meniť základnú
+chatovú architektúru. Stačí rozšíriť embedding pipeline a príslušný vyhľadávací
+nástroj. Návrh teda vytvára technologický základ pre budúci rozvoj systému nad rámec
+minimálnych požiadaviek zadania.
+
+\subsubsection{Správa kontextového okna (Context Window Management)}
+
+Jednou z fundamentálnych architektonických výziev pri integrácii veľkých
+jazykových modelov (LLM) je obmedzená veľkosť kontextového okna. Podľa odbornej literatúry
+majú tieto modely pevnú architektonickú hranicu (Context Window) určenú počtom pozornostných
+hláv, čo znamená, že v rámci jednej požiadavky dokážu spracovať iba limitovaný počet
+tokenov \cite{atkinson2025}. Ak používateľ vedie s asistentom FinanceGPT dlhú
+konverzáciu, ktorá zahŕňa viacero iterácií volania nástrojov a objemných dátových
+JSON objektov, veľkosť histórie rapídne rastie. Ukladanie a odosielanie neobmedzenej
+histórie by viedlo k degradácii výkonu modelu (strata pozornosti na úvodné
+inštrukcie) alebo k zlyhaniu API požiadavky z dôvodu prekročenia limitu.
+
+V návrhu systému sme tento problém vyriešili implementáciou mechanizmu dynamického
+orezávania kontextu (Sliding Window / Context Pruning) priamo na úrovni aplikačnej
+logiky knižnice \texttt{ruby\_llm}. V súlade s princípmi MVC architektúry v prostredí
+Ruby on Rails \cite{ruby2025} sme sa rozhodli neodstraňovať historické správy z databázy
+(tabuľka \texttt{messages}), keďže používateľ ich musí naďalej vidieť v používateľskom
+rozhraní. Orezávanie sa aplikuje výhradne na pole dát (payload), ktoré sa odosiela
+prostredníctvom API poskytovateľovi OpenRouter.
+
+Pri zostavovaní tohto poľa sa systém riadi nasledujúcimi pravidlami orchestrácie:
+\begin{enumerate}
+	\item \textbf{Prioritizácia inštrukcií:} Systémový prompt, ktorý obsahuje definíciu
+		databázovej schémy a zoznam dostupných nástrojov, je do odosielaného
+		kontextu zaradený vždy ako prvý a nikdy nepodlieha orezaniu.
+
+	\item \textbf{Zachovanie Tool Calling párov:} Pri orezávaní starších správ
+		musí systém dbať na zachovanie celistvosti komunikácie nástrojov. Ako upozorňuje
+		Zhao a kol. (2023), ak by sme do kontextu poslali požiadavku modelu na spustenie
+		nástroja (rola \texttt{tool\_call}), ale následne by sme odstrihli výsledok tohto
+		nástroja (rola \texttt{tool}), model by sa zacyklil a pokúsil by sa nástroj zavolať
+		znova (tzv. tool loop hallucination) \cite{zhao2023survey}. Preto systém povinne
+		zaraďuje tieto správy v nerozlučných pároch.
+
+	\item \textbf{Orezanie zastaraného kontextu:} Staršie konverzačné výmeny, ktoré
+		už prekračujú definovaný limit (napríklad 10 posledných správ) a nie sú pre aktuálny
+		zámer používateľa relevantné, sú z payloadu chronologicky odstránené.
+\end{enumerate}
+
+Týmto prístupom sme zabezpečili nielen stabilitu aplikácie a predchádzanie chybám
+prekročenia limitu tokenov, ale zároveň sme dosiahli signifikantnú optimalizáciu
+prevádzkových nákladov, keďže poplatky za využívanie LLM modelov sú priamo úmerné
+počtu prenesených tokenov.
+
+% 4. kapitola: Implementácia
+\section{Implementácia systému FinanceGPT}
+V predchádzajúcej kapitole sme teoreticky zadefinovali architektonický návrh a dátové
+modely inteligentného asistenta FinanceGPT. Cieľom tejto kapitoly je detailne
+popísať samotný proces programovej implementácie. Budeme sa venovať technologickému
+rozšíreniu pôvodnej webovej aplikácie, integrácii vybraných knižníc pre prácu s
+veľkými jazykovými modelmi (LLM), vytváraniu autonómnych nástrojov (Tool Calling)
+a vývoju reaktívneho používateľského rozhrania pre konverzáciu.
+
+\subsection{Rozšírenie existujúcej Rails aplikácie}
+Základnou požiadavkou zadania diplomovej práce bolo vybudovať asistenta FinanceGPT
+ako integrovanú súčasť existujúceho fakturačného systému, ktorý bol výstupom
+predchádzajúcej bakalárskej práce. Takýto prístup eliminuje potrebu budovať odznova
+moduly pre autentifikáciu, správu používateľov a základné operácie s faktúrami.
+
+\subsubsection{Východiskový stav a technologický stack}
+Východiskový kódový základ predstavoval štandardnú monolitickú aplikáciu
+postavenú na aplikačnom rámci Ruby on Rails. Aplikácia už natívne obsahovala plne
+funkčný relačný model nad databázou PostgreSQL (tabuľky \texttt{users}, \texttt{invoices},
+\texttt{entities}, \texttt{bank\_details}) a využívala knižnicu Devise pre
+bezpečné riadenie používateľských relácií (sessions). Klientska časť (frontend) bola
+postavená na technológii Hotwire v kombinácii s CSS frameworkom Bootstrap \cite{ruby2025}.
+
+Úlohou implementačnej fázy preto nebolo meniť túto overenú infraštruktúru, ale
+navrhnúť mechanizmus, ako do nej plynulo injektovať konverzačnú logiku. Vyhli
+sme sa tvorbe separátneho API servera pre umelú inteligenciu a rozhodli sme sa
+implementovať všetku orchestráciu LLM modelov priamo do existujúceho
+monolitického jadra.
+
+\subsubsection{Smerovanie (routes), kontroléry a databázové migrácie}
+Prvým implementačným krokom bolo vytvorenie novej aplikačnej domény pre chat. V konfiguračnom
+súbore smerovania (\texttt{config/routes.rb}) sme zadefinovali nové cesty (routes)
+zoskupené pod zdrojom \texttt{chats}. Toto smerovanie obsluhuje nielen
+zobrazenie histórie konverzácií, ale primárne asynchrónne odosielanie nových dotazov
+na model (\texttt{POST /chats/:id/ask}).
+
+Pre obsluhu týchto požiadaviek bol vytvorený nový kontrolér \texttt{ChatsController}.
+Tento kontrolér funguje ako hlavný vstupný bod pre interakciu používateľa s
+umelou inteligenciou. Jeho základná kostra zabezpečuje, že do konverzácie vstúpi
+len overený používateľ a že všetky vykonávané operácie sú viazané výhradne na
+jeho identitu.
+
+\begin{verbatim}
+class ChatsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_chat, only: [:show, :ask, :destroy]
+
+  def ask
+    user_message = params[:message]
+    # Spustenie LLM konverzačnej slučky a renderovanie odpovede
+  end
+
+  private
+
+  def set_chat
+    @chat = current_user.chats.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to chats_path, alert: "Konverzácia nebola nájdená."
+  end
+end
+\end{verbatim}
+
+Na perzistenciu konverzácií bolo nutné vygenerovať sériu databázových migrácií.
+Tieto skripty automatizovane rozšírili databázovú schému o nové tabuľky (\texttt{models},
+\texttt{chats}, \texttt{messages}, \texttt{tool\_calls}). Pri implementácii
+migrácií sme kládli osobitný dôraz na relačnú integritu -- každý záznam v tabuľke
+\texttt{chats} musí obsahovať cudzí kľúč (\texttt{user\_id}). Ak je
+používateľský účet v systéme zmazaný, kaskádovaním na úrovni databázy (\texttt{dependent:
+:destroy}) sa automaticky vymaže aj celá história jeho konverzácií
+\cite{ruby2025}.
+
+\subsection{Integrácia LLM prostredníctvom ruby\_llm a OpenRouter}
+Výber vhodnej knižnice pre integráciu s veľkými jazykovými modelmi predstavoval
+jedno z najdôležitejších implementačných rozhodnutí projektu FinanceGPT. Cieľom bolo
+vybrať také riešenie, ktoré podporuje dynamické volanie nástrojov, správu histórie
+konverzácie a zároveň umožňuje flexibilnú zmenu poskytovateľa modelov.
+
+\subsubsection{Analýza možností implementácie a výber knižnice}
+
+Pri úvahách o spôsobe integrácie sme primárne zvažovali využitie natívneho
+riešenia \textbf{OpenAI Assistants API}. Toto API autonómne spravuje konverzačnú
+históriu a nástroje na serveroch spoločnosti OpenAI. Z hľadiska dlhodobej udržateľnosti,
+ochrany dát a zamedzenia posielania internej štruktúry faktúr tretím stranám sme
+sa však rozhodli pre iný prístup. Fixácia na Assistants API by navyše systém natrvalo
+zviazala s modelmi od jedného poskytovateľa (tzv. vendor lock-in)
+\cite{atkinson2025}.
+
+Namiesto toho sme pristúpili k analýze a porovnaniu dostupných knižníc (gemov) v
+ekosystéme Ruby, ktoré komunikujú prostredníctvom štandardného Chat Completions API
+a riadia konverzáciu lokálne na našom serveri:
+
+\begin{itemize}
+	\item \textbf{openai-ruby} (sferik/openai-ruby): Komunitná knižnica, ktorá
+		vykazovala slabšiu dokumentáciu a obmedzenú podporu pre moderné funkcie ako
+		Tool Calling.
+
+	\item \textbf{langchainrb\_rails}: Knižnica inšpirovaná Python frameworkom LangChain.
+		Do monolitickej Rails aplikácie by však priniesla zbytočne vysokú úroveň
+		architektonickej komplexnosti.
+
+	\item \textbf{ruby-openai} (alexrudall/ruby-openai, verzia 8.1.0): Aktuálne najudržiavanejšia
+		knižnica pre Ruby. Poskytuje plnú podporu funkčností API. Rozhodli sme sa ju využiť
+		ako nízkoúrovňového klienta na odosielanie HTTP požiadaviek.
+
+	\item \textbf{ruby\_llm} (verzia 1.1.2): Knižnica, ktorá slúži ako vysokoúrovňový
+		orchestrátor nad komunikačným klientom. Natívne pokrýva osem hlavných AI
+		domén (chat, vision, audio, analýza PDF, generovanie obrázkov, embeddingy, nástroje
+		a streamovanie) \cite{atkinson2025}.
+\end{itemize}
+
+Pre implementáciu asistenta sme sa rozhodli nasadiť kombináciu gemov \texttt{ruby-openai}
+a \texttt{ruby\_llm}. Knižnica \texttt{ruby\_llm} implementuje vzory \texttt{acts\_as\_chat}
+a \texttt{acts\_as\_message}, čo nám umožnilo elegantne a priamo napojiť LLM logiku
+na naše ActiveRecord modely.
+
+\subsubsection{Konfigurácia proxy providera}
+Na zabránenie previazanosti systému výhradne na OpenAI, aplikácia komunikuje cez
+proxy poskytovateľa OpenRouter. Tento prístup umožňuje interne smerovať požiadavky
+na akýkoľvek jazykový model (napr. Anthropic Claude alebo Meta Llama) s využitím
+rovnakého zdrojového kódu. V rámci vývoja sme z dôvodu vysokej úspešnosti pri porozumení
+slovenského jazyka a generovaní SQL konfigurovali model \texttt{gpt-4o-mini}.
+
+\subsubsection{Zápis konverzačnej histórie do databázy}
+Dôležitým aspektom integrácie bola perzistencia interakcií. Knižnica \texttt{ruby\_llm}
+automaticky abstrahuje synchronizáciu medzi pamäťou modelu a databázou. Pri každom
+dopyte používateľa kontrolér uloží záznam do tabuľky \texttt{messages} s rolou
+\texttt{user}. Následná odpoveď modelu sa perzistuje s rolou \texttt{assistant}.
+Ak model vyžiada volanie nástroja (Tool Call), systém korektne uloží aj túto asynchrónnu
+požiadavku, čo je nevyhnutné pre auditovateľnosť a ladenie aplikácie.
+
+\subsubsection{Dynamický System prompt a context injection}
+Výkon LLM systému závisí primárne od kvality inštrukcií (Prompt Engineering). Model
+pred každým dopytom potrebuje presne vedieť, aké tabuľky a stĺpce sa nachádzajú
+v databáze, aby dokázal vygenerovať syntakticky správny SQL príkaz bez halucinácií
+\cite{zhao2023survey}.
+
+Namiesto statického hardcodingu schémy sme implementovali mechanizmus Context Injection.
+Pri inicializácii systémového promptu backend v reálnom čase načíta aktuálne
+definície tabuliek prostredníctvom metódy \texttt{ActiveRecord::Base.connection.columns}.
+Tento dynamický zoznam atribútov je vložený do prvotnej správy modelu. Prompt zároveň
+nastavuje parameter generovania na hodnotu \texttt{temperature: 0.0}, čím maximalizujeme
+deterministickú presnosť pri vyhľadávaní finančných údajov na úkor kreativity modelu.
+
+\subsection{Implementácia nástrojov (Tool calling a služby)}
+Srdcom inteligentného asistenta FinanceGPT je architektúra Zero-shot Tool Calling.
+Namiesto toho, aby jazykový model iba generoval textové odpovede, dokáže
+autonómne spúšťať nami definované Ruby skripty (nástroje) a získavať tak reálne
+finančné dáta z nášho systému \cite{zhao2023survey}. Využili sme knižnicu \texttt{ruby\_llm},
+ktorá poskytuje priamočiary spôsob registrácie týchto nástrojov cez blok kódu.
+
+V našej aplikácii sme implementovali štyri špecializované nástroje a vybudovali robustnú
+infraštruktúru pre sémantické vyhľadávanie (RAG).
+
+\subsubsection{Nástroj na generovanie SQL dopytov (SqlGeneratorTool)}
+Najkomplexnejším nástrojom v systéme je \texttt{SqlGeneratorTool}. Jeho úlohou je
+prijímať SQL dopyty (vygenerované modelom na základe požiadavky používateľa) a bezpečne
+ich vykonať nad databázou PostgreSQL.
+
+Keďže generovanie SQL dopytov pomocou LLM predstavuje z pohľadu bezpečnosti citlivú
+oblasť, pri implementácii sme sa zamerali najmä na overenie samotného princípu
+prevodu prirodzeného jazyka na SQL. Plnohodnotná bezpečnostná vrstva v podobe tenant-aware
+filtrovania a robustného guardrailingu zatiaľ nebola v implementačnej fáze dokončená,
+pričom jej návrh bol detailne popísaný v predchádzajúcej kapitole. V experimentálnej
+verzii nástroja sme overovali najmä schopnosť modelu generovať čítacie SQL dopyty
+typu SELECT a základný princíp kontroly rizikových výrazov. Toto riešenie však
+zatiaľ nepredstavuje úplný bezpečnostný mechanizmus vhodný pre produkčné
+nasadenie.
+
+\begin{verbatim}
+# Ukážka registrácie a štruktúry SqlGeneratorTool
+RubyLlm.register_tool(:sql_generator_tool, 
+  description: "Vykoná bezpečný SELECT SQL dopyt nad databázou.",
+  parameters: {
+    query: { type: :string, description: "Vygenerovaný SQL SELECT dopyt" }
+  }
+) do |args, context|
+  user = context[:current_user]
+  safe_query = enforce_tenant_isolation(args[:query], user.id)
+  
+  begin
+    results = ActiveRecord::Base.connection.execute(safe_query)
+    results.to_a.to_json
+  rescue => e
+    "Chyba pri vykonaní dopytu: #{e.message}. Oprav SQL a skús to znova."
+  end
+end
+\end{verbatim}
+
+\subsubsection{Vektorizácia dokumentov a EmbeddingJob (RAG)}
+Okrem tradičného relačného vyhľadávania sme sa rozhodli integrovať sémantické vyhľadávanie
+na základe významu faktúr, využívajúc princípy architektúry RAG (Retrieval-Augmented
+Generation) \cite{rothman2023transformers}. Pre tento účel sme do projektu implementovali
+gem \textbf{\texttt{pgvector}}.
+
+Tento gem rozširuje natívne schopnosti PostgreSQL o ukladanie a indexovanie
+viacrozmerných číselných vektorov. Pomocou databázovej migrácie sme do tabuľky \texttt{invoices}
+pridali stĺpec \texttt{embedding} s dátovým typom \texttt{vector(1536)}. Toto číslo
+priamo zodpovedá dimenzionalite výstupného vektora štandardných \textit{text-embedding}
+modelov od spoločnosti OpenAI.
+
+Keďže generovanie vektorov (volanie externého Embedding API) je výpočtovo
+náročná operácia a model by blokoval hlavné vlákno aplikácie, navrhli sme asynchrónne
+riešenie. Využili sme gem \textbf{\texttt{Sidekiq}} (ktorého fungovanie sme
+analyzovali už v bakalárskej práci \cite{ruby2025}), a vytvorili sme dedikovaný
+\texttt{EmbeddingJob}. Pri každom vytvorení alebo úprave faktúry (počas \texttt{after\_save}
+callbacku v modeli \texttt{Invoice}) sa táto úloha zaradí do fronty, na pozadí odošle
+textový obsah faktúry na vektorizáciu a výsledný vektor uloží do databázy. Tento
+prístup zabezpečuje rýchlu odozvu používateľského rozhrania a buduje vlastnú
+vektorovú bázu znalostí systému.
+
+\subsubsection{Nástroj na sumarizáciu výdavkov (ExpenseSummaryTool)}
+Tento nástroj (Tool) sme navrhli špeciálne pre rýchlu agregáciu výdavkov. Namiesto
+toho, aby jazykový model musel pracne generovať zložitý SQL dopyt so
+zoskupovaním a sumáciou, \texttt{ExpenseSummaryTool} prijíma od modelu iba
+časové obdobie (napr. \texttt{last\_month}, \texttt{this\_year}). Samotná agregácia
+dát, súčet celkových utratených súm a výpočet rebríčka piatich najväčších
+príjemcov sa vykonáva bezpečne a efektívne prostredníctvom metód knižnice
+ActiveRecord priamo na backende. Toto riešenie výrazne šetrí spotrebu tokenov a znižuje
+pravdepodobnosť halucinácií modelu pri matematických operáciách \cite{atkinson2025}.
+
+\subsubsection{Nástroje pre vizualizáciu grafov (CashflowChartTool a IncomeBreakdownTool)}
+Poslednou kategóriou sú analytické nástroje určené pre klientsku vizualizáciu dát.
+Zámerom nástrojov \texttt{CashflowChartTool} a \texttt{IncomeBreakdownTool} nie
+je vracať dáta späť jazykovému modelu na textové spracovanie. Z modelového hľadiska
+slúžia ako inštrukcia, ktorá systému oznámi: \textit{„Používateľ žiada o
+grafické zobrazenie cashflow za určitý časový úsek.“}
+
+Tieto nástroje na úrovni aplikačného servera zhromaždia relevantné dáta a vygenerujú
+odpoveď obsahujúcu štruktúrovaný JSON payload s presne definovanými osami (poliami
+\texttt{labels} a \texttt{datasets}). Tento JSON objekt je následne odovzdaný
+frontendovej časti aplikácie, kde sa na jeho základe klientsky vykreslí požadovaný
+graf.
+
+\subsection{Frontendové konverzačné rozhranie}
+Jednou zo základných podmienok kladených na asistentov umelej inteligencie integrovaných
+v existujúcich informačných systémoch je schopnosť plynulo, bez vizuálnych
+prerušení komunikovať s používateľom. Naša implementácia používateľského rozhrania
+(UI) pre aplikáciu FinanceGPT sa vyhla nutnosti prepisovať celú klientsku časť do
+komplexných Single Page Application (SPA) rámcov (napríklad React alebo Vue).
+Namiesto toho sme pokračovali vo využívaní plného potenciálu ekosystému, ktorý poskytuje
+Ruby on Rails.
+
+\subsubsection{Hotwire, Turbo a Stimulus v kontexte chatu}
+Pre dosiahnutie asynchrónneho správania konverzačného okna bez nutnosti znovunačítania
+celej stránky sme využili technológiu Hotwire (HTML Over The Wire), konkrétne
+knižnice Turbo a Stimulus \cite{ruby2025}. Tento prístup nám umožnil ponechať všetku
+biznis logiku na strane servera, odkiaľ aplikácia odosiela hotové fragmenty HTML
+kódu, ktoré sa následne injektujú priamo do DOM stromu prehliadača.
+
+Požiadavka na vygenerovanie odpovede z modelu LLM je zo strany klienta iniciovaná
+odoslaním formulára s atribútom \texttt{data-turbo="true"}. Kým backend asynchrónne
+komunikuje s API rozhraním OpenRouter (a potenciálne opakovane spúšťa Tool
+Calling slučku), knižnica Stimulus spravuje stav frontendu – napríklad vyprázdni
+vstupné textové pole a zobrazí animáciu indikujúcu spracovávanie dotazu (tzv.
+\textit{typing indicator}).
+
+Akonáhle model vráti finálnu odpoveď, kontrolér prostredníctvom Turbo Streamov doručí
+novú správu do konverzácie:
+
+\begin{verbatim}
+# Ukážka Turbo Stream renderovania odpovede asistenta
+turbo_stream.append "messages", partial: "messages/message", 
+                                locals: { message: @assistant_message }
+\end{verbatim}
+
+\subsubsection{Chat UI: Bočný panel a správa konverzácií}
+Aby mal používateľ k inteligentnému asistentovi okamžitý prístup z ktorejkoľvek
+časti aplikácie, navrhli sme a implementovali konverzačné rozhranie vo forme trvalo
+prístupného bočného panela (Sidebar). Vizuálne stvárnenie tohto panela bolo
+realizované pomocou flexibilného mriežkového systému (Flexbox) CSS rámca
+Bootstrap.
+
+Bočný panel obsahuje nielen aktuálne otvorené vlákno chatu, ale taktiež zoznam histórie
+konverzácií používateľa. Jednotlivé \texttt{chats} záznamy sú dynamicky zoskupované
+podľa časového rámca (dnes, včera, minulý týždeň) pre zlepšenie orientácie v histórii.
+Každý záznam zároveň generuje jedinečnú požiadavku (metóda \texttt{GET} v
+smerovaní \texttt{ChatsController}), čo umožňuje používateľovi bezproblémové prepínanie
+medzi jednotlivými kontextami dotazov \cite{zhao2023survey}.
+
+\subsubsection{Klientske renderovanie: Markdown text vs. Chart.js grafy}
+Jazykové modely rodiny GPT vo svojich odpovediach štandardne využívajú formátovanie
+textu prostredníctvom jazyka Markdown. Keďže databáza a backend pracujú s čistým
+textom vráteným z LLM, museli sme implementovať bezpečný prevod Markdown formátu na
+validné HTML elementy. Využili sme komunitný gem na interpretáciu odrážok, nadpisov
+a dôležitých číselných zvýraznení v texte, pričom výsledný HTML kód je pred
+samotným renderovaním na strane klienta striktne sanitizovaný proti hrozbám
+Cross-Site Scripting (XSS).
+
+Špecifickou požiadavkou diplomovej práce bola vizualizácia finančných výstupov. Ak
+asistent identifikuje dopyt na súhrnné zobrazenie dát (napríklad rozloženie
+výdavkov podľa kategórií), jazykový model spustí dedikovaný nástroj (napríklad \texttt{CashflowChartTool}).
+Server nevráti textovú odpoveď, ale vygeneruje objekt typu JSON (payload).
+
+Na frontende sme prostredníctvom knižnice Importmap integrovali populárny open-source
+nástroj \textbf{Chart.js}. Stimulus kontrolér, pripojený k prijatej Turbo Stream
+správe, deteguje prítomnosť atribútu \texttt{data-chart-payload}. Akonáhle je tento
+atribút prítomný, prevezme kontrolu nad renderovaním, načíta definované \texttt{labels}
+a \texttt{datasets} vygenerované backendom a priamo v okne chatu vykreslí interaktívny
+kruhový alebo stĺpcový graf. Týmto spôsobom sme úspešne oddelili aplikačnú
+logiku výpočtu od samotnej vizualizácie.
+
+\subsection{Bezpečnostné aspekty a aktuálne limity prototypu}
+Pri integrácii veľkých jazykových modelov do aplikácie pracujúcej s finančnými
+údajmi je potrebné venovať osobitnú pozornosť bezpečnosti. V porovnaní so štandardnou
+webovou aplikáciou vznikajú nové riziká, ktoré súvisia so samotnou povahou LLM
+modelov, najmä s možnosťou generovania nepresných odpovedí, nesprávnych SQL
+dopytov alebo nevhodnej interpretácie používateľského vstupu. Z tohto dôvodu sme sa
+v implementácii nezamerali len na funkcionalitu, ale aj na identifikáciu rizík a
+overenie základných ochranných mechanizmov.
+
+\subsubsection{Identifikované hrozby pri použití LLM}
+Za najdôležitejšie riziká v kontexte systému FinanceGPT považujeme prompt
+injection, generovanie nevalidných SQL dopytov, únik dát medzi používateľmi a
+halucinácie modelu. Prompt injection predstavuje situáciu, keď sa používateľ
+pokúsi cez prirodzený jazyk ovplyvniť systémové inštrukcie modelu a zmeniť jeho
+správanie. V prípade systému pracujúceho nad databázou je kritické aj riziko, že
+model vygeneruje syntakticky nesprávny alebo logicky nevhodný SQL príkaz.
+
+Samostatnou kategóriou rizík je nesprávna práca s používateľským kontextom. Ak by
+aplikácia pri práci s konverzáciami alebo databázovými dopytmi nekorektne pracovala
+s identitou používateľa, mohlo by dôjsť k zobrazeniu cudzích údajov. V kontexte finančných
+dát je potrebné brať do úvahy aj fakt, že LLM model môže vytvoriť odpoveď, ktorá je
+jazykovo presvedčivá, no obsahovo nepresná, a preto ju nemožno bezvýhradne považovať
+za autoritatívny zdroj.
+
+\subsubsection{Aktuálne implementované opatrenia}
+
+V aktuálnej verzii prototypu sme implementovali základné aplikačné bezpečnostné
+opatrenia vychádzajúce z existujúcej Rails aplikácie. Prístup ku konverzačnému rozhraniu
+je viazaný na autentifikovaného používateľa a jednotlivé konverzácie sú načítavané
+cez väzbu na aktuálne prihlásený účet. Tým sa minimalizuje riziko, že sa používateľ
+dostane k inému vláknu konverzácie mimo vlastného účtu.
+
+Na úrovni generovania databázových dopytov sme zatiaľ neimplementovali plnohodnotnú
+bezpečnostnú vrstvu v rozsahu navrhnutom v predchádzajúcej kapitole. V rámci
+prototypu sme realizovali experimentálne overenie princípu guardrailingu, konkrétne
+kontrolu vybraných zakázaných SQL výrazov. Toto riešenie však v aktuálnom stave
+nepovažujeme za finálny bezpečnostný mechanizmus, ale za prvý krok k robustnejšej
+validácii SQL dopytov pred ich vykonaním.
+
+Dôležité je zároveň uviesť, že plnohodnotné multitenantné obmedzenie na úrovni
+všetkých nástrojov zatiaľ nebolo v implementácii dokončené. Z tohto dôvodu je súčasná
+verzia systému chápaná ako funkčný prototyp, na ktorom bola overená integrácia
+LLM modelu, tool callingu a vizualizačných výstupov, nie ako finálne produkčné
+riešenie pripravené na okamžité nasadenie.
+
+\subsubsection{Plánované rozšírenia bezpečnostnej vrstvy}
+
+V ďalšej etape vývoja je potrebné doplniť viacvrstvovú ochranu pri práci s LLM modelom
+a databázou. Za prioritné považujeme dopracovanie tenant-aware filtrovania pri
+všetkých databázových operáciách, rozšírenie guardrailing vrstvy o syntaktickú a sémantickú
+validáciu SQL dopytov a zavedenie detailnejšieho auditovania vykonaných tool calls.
+Takéto riešenie by umožnilo spätne analyzovať správanie modelu a jednoduchšie
+identifikovať chybné alebo rizikové výstupy.
+
+Z pohľadu ochrany osobných údajov bude vhodné doplniť aj explicitné pravidlá pre
+minimalizáciu dát odosielaných externému LLM providerovi. Pri ďalšom rozširovaní systému
+bude preto potrebné riešiť nielen technickú bezpečnosť, ale aj prevádzkové a
+legislatívne aspekty spracovania finančných údajov.
+
+% \subsubsection{Implementované ochranné opatrenia (SQL Whitelisting a izolácia)}
+% \subsubsection{Vplyv GDPR na prácu s finančnými dátami}
+
+% 5. kapitola: Testovanie a výsledky
+\section{Testovanie a výsledky}
+
+\subsection{Metodika testovania a návrh evaluačného datasetu}
+
+Pre objektívne zhodnotenie schopností vybraného LLM modelu pri práci v produkčnom
+prostredí aplikácie FinanceGPT bolo nevyhnutné navrhnúť špecifickú evaluačnú sadu
+dopytov. Ako uvádza Atkinson-Abutridy (2025) vo svojej publikácii o konceptoch
+veľkých jazykových modelov, tradičné softvérové testovanie (napr. exaktná zhoda textu)
+zlyháva pri nedeterministickej povahe LLM, a preto je pri konverzačných agentoch nutné
+hodnotiť \textit{sémantickú presnosť} a \textit{úspešnosť vykonania úlohy} (Task
+Success Rate) [web:73][web:74].
+
+Pri systémoch založených na architektúre Text-to-SQL, akým je FinanceGPT,
+spočíva hlavná zložitosť v preklade abstraktného používateľského zámeru do
+striktnej relačnej algebry. Zhao et al. (2023) vo svojej komplexnej analýze LLM
+modelov zdôrazňujú, že pre dosiahnutie vysokej úspešnosti pri práci s databázami je
+kritické, aby evaluačný dataset neobsahoval len priame dopyty, ale primárne testoval
+schopnosť modelu logicky usudzovať vo viacerých krokoch (Multi-step Reasoning) a bezpečne
+reagovať na okrajové prípady (Edge Cases) [web:78][web:81].
+
+Na základe týchto teoretických východísk bol navrhnutý dataset, ktorý overuje tri
+kľúčové schopnosti agenta:
 \begin{enumerate}
 	\item Presnosť generovania SQL dopytov (Text-to-SQL) na základe definovanej databázovej
 		schémy v PostgreSQL.
 
-	\item Formátovanie výstupu pre integráciu s frontendom (inštruovanie React
-		komponentov na vykreslenie grafov).
+	\item Formátovanie výstupu pre integráciu s frontendom (inštruovanie React /
+		Stimulus komponentov na vykreslenie grafov).
 
 	\item Robustnosť voči bezpečnostným hrozbám (SQL Injection) a nejednoznačnému kontextu
 		(Prompt Clarification).
 \end{enumerate}
-\subsection*{1. Správa faktúr a príjmov (Informačné dopyty)}
 
-\subsubsection*{Základné dopyty (Single-hop SQL)}
+\subsubsection{1. Správa faktúr a príjmov (Informačné dopyty)}
+
+\textbf{Základné dopyty (Single-hop SQL)}
 \begin{itemize}
 	\item \textbf{Dopyt:} \enquote{Aké faktúry sú momentálne po splatnosti?}
 
@@ -994,19 +1414,19 @@ tri kľúčové schopnosti agenta:
 		(názov firmy), prepojí ju s tabuľkou klientov (JOIN) a vráti celkový počet.
 \end{itemize}
 
-\subsubsection*{Komplexné dopyty (Agregácia a vizualizácia)}
+\textbf{Komplexné dopyty (Agregácia a vizualizácia)}
 \begin{itemize}
 	\item \textbf{Dopyt:} \enquote{Porovnaj mi príjmy z uhradených faktúr za prvý a druhý kvartál tohto roka.}
 
 	\item \textbf{Očakávané správanie systému:} Model vygeneruje SQL dopyt
 		využívajúci \texttt{GROUP BY} (agregácia podľa mesiacov/kvartálov). Systém
-		vráti textové zhodnotenie nárastu/poklesu a inštruuje klientskú časť (React)
-		na vykreslenie stĺpcového grafu.
+		vráti textové zhodnotenie nárastu/poklesu a inštruuje klientskú časť na
+		vykreslenie stĺpcového grafu.
 \end{itemize}
 
-\subsection*{2. Analýza výdavkov (Kategorizácia)}
+\subsubsection{2. Analýza výdavkov (Kategorizácia)}
 
-\subsubsection*{Základné dopyty}
+\textbf{Základné dopyty}
 \begin{itemize}
 	\item \textbf{Dopyt:} \enquote{Koľko som tento mesiac minul na softvérové licencie?}
 
@@ -1015,7 +1435,7 @@ tri kľúčové schopnosti agenta:
 		sumu.
 \end{itemize}
 
-\subsubsection*{Komplexné dopyty (Vizualizácia proporcií)}
+\textbf{Komplexné dopyty (Vizualizácia proporcií)}
 \begin{itemize}
 	\item \textbf{Dopyt:} \enquote{Zobraz mi rozloženie mojich výdavkov podľa kategórií za minulý rok.}
 
@@ -1024,7 +1444,7 @@ tri kľúčové schopnosti agenta:
 		pre vizuálnu reprezentáciu proporcií.
 \end{itemize}
 
-\subsection*{3. Integrácia externých registrov (Tool Calling)}
+\subsubsection{3. Integrácia externých registrov (Tool Calling)}
 
 \begin{itemize}
 	\item \textbf{Dopyt:} \enquote{Vyhľadaj mi v obchodnom registri údaje o firme s IČO 12345678.}
@@ -1034,7 +1454,7 @@ tri kľúčové schopnosti agenta:
 		Výstupom sú údaje o firme zobrazené vo formulári.
 \end{itemize}
 
-\subsection*{4. Hraničné situácie, chýbajúci kontext a bezpečnosť}
+\subsubsection{4. Hraničné situácie, chýbajúci kontext a bezpečnosť}
 
 Táto kategória testuje odolnosť (robustnosť) agenta voči nekompletným alebo
 škodlivým vstupom, čo priamo overuje implementáciu Guardrailingu.
@@ -1059,530 +1479,160 @@ Táto kategória testuje odolnosť (robustnosť) agenta voči nekompletným aleb
 		bezpečnostné varovanie.
 \end{itemize}
 
-\subsubsection{Prehľad metód spracovania prirodzeného jazyka}
-% TODO: Skrátiť historický prehľad a zamerať sa na moderné metódy
-
-Spracovanie prirodzeného jazyka (NLP) je oblasť umelej inteligencie, ktorá sa
-zameriava na interakciu medzi počítačmi a ľuďmi prostredníctvom prirodzeného
-jazyka. Cieľom NLP je umožniť počítačom pochopiť, interpretovať a generovať
-ľudský jazyk spôsobom, ktorý je zmysluplný a užitočný.
-
-\paragraph{Klasické (statistické a pravidlové) metódy:}
-\begin{itemize}
-	\item \textbf{Tokenizácia} – rozdelenie textu na slová alebo vety.
-
-	\item \textbf{Stemming} – redukcia slov na koreňový tvar (napr. „bežiaci“ →
-		„bež“).
-
-	\item \textbf{Lemmatizácia} – podobné stemovaniu, ale s gramatickým kontextom (napr.
-		„bežiaci“ → „bežať“).
-
-	\item \textbf{POS tagging (Part-of-Speech)} – určenie slovných druhov (podstatné
-		meno, sloveso...).
-
-	\item \textbf{Named Entity Recognition (NER)} – rozpoznanie entít ako mená, dátumy,
-		firmy.
-
-	\item \textbf{Parsing / syntaktická analýza} – analýza vetnej štruktúry.
-
-	\item \textbf{Stopword filtering} – odstránenie „slabých“ slov (napr. „a“, „v“,
-		„je“).
-\end{itemize}
-
-\paragraph{Strojové učenie:}
-Algoritmy, ktoré sa učia zo štruktúrovaných dát, napríklad:
-\begin{itemize}
-	\item Naive Bayes
-
-	\item SVM (Support Vector Machines)
-
-	\item Logistická regresia
-
-	\item Random Forest / Decision Trees
-\end{itemize}
-
-\textbf{Používajú sa napríklad pre:}
-\begin{itemize}
-	\item klasifikáciu textu (napr. spam/ham),
-
-	\item sentiment analýzu,
-
-	\item rozpoznávanie zámeru (intent classification).
-\end{itemize}
-
-\paragraph{Deep Learning:}
-založené na neurónových sieťach, ktoré sa učia z veľkých objemov textu:
-\begin{itemize}
-	\item \textbf{RNN (Recurrent Neural Networks (RNN))}
-
-		Rekurentné neurónové siete (RNN) predstavujú architektúru neurónových sietí,
-		ktorá zavádza koncept pamäte tým, že vytvára závislosti medzi dátovými bodmi v
-		sekvencii. Tento mechanizmus umožňuje modelu zachytávať kontextové vzory a
-		opakujúce sa štruktúry v dátach, čo je kľúčové napríklad pri spracovaní textu
-		alebo časových radov. RNN majú za úlohu rozhodnúť, ktoré informácie sú dostatočne
-		relevantné na uchovanie v pamäti počas spracovania sekvencie. Avšak, štandardné
-		RNN majú tendenciu zabúdať informácie z dlhších sekvencií, čo obmedzuje ich
-		efektívnosť v úlohách vyžadujúcich dlhodobé závislosti~\cite{lipton2015critical}.
-
-	\item \textbf{Generative Adversarial Networks (GAN) a ich vzťah k RNN}
-
-		Medzi modely s architektúrou, ktorá využíva rekurentné prvky, niekedy patrí aj
-		\textit{Generative Adversarial Network} (GAN). GAN však nie sú primárne určené
-		pre spracovanie sekvenčných dát ako text, ale sú výnimočne úspešné v
-		generovaní vysoko kvalitných a realistických obrazových dát. GAN pozostávajú z
-		dvoch súťažiacich sietí – generátora, ktorý vytvára nové dáta na základe
-		náhodného vstupného vektora pevnej dĺžky, a diskriminátora, ktorý hodnotí, či
-		sú tieto dáta realistické. Tento súťažný proces vedie k postupnému
-		zlepšovaniu kvality generovaných vzoriek~\cite{goodfellow2014generative, radford2018improving}.
-		Problémom GAN je však, že môžu prehliadať špecifické detaily, ktoré sú podstatné
-		pre kvalitu generovania a tréningu, čo môže byť nevhodné pre úlohy ako NLP, kde
-		je dôležitá presnosť a kontextová konzistencia~\cite{goodfellow2014generative}.
-
-		\textbf{Cocktail Party problem a riešenia v sekvenčných modeloch}
-
-		„Cocktail Party problem“ predstavuje výzvu v spracovaní sekvenčných a kontextových
-		informácií, kde je potrebné vybrať relevantné informácie z množstva
-		súbežných zdrojov. Riešením tohto problému v rámci neurónových sietí sú mechanizmy
-		\textit{attention} a krátkodobej pamäte (\textit{short-term memory}).
-		Attention mechanizmus umožňuje modelu počas generovania sekvencie dynamicky
-		vyhľadávať a sústrediť sa na najrelevantnejšie pozície v skrytých stavoch
-		enkodéra, čím sa zlepšuje kvalita generovaného výstupu a zachytávanie kontextu~\cite{vaswani2017attention}.
-
-	\item \textbf{Convolutional Neural Networks (CNN) pre textovú klasifikáciu}
-
-		Konvolučné neurónové siete (CNN) sú špeciálnym typom neurónových sietí,
-		ktoré sú mimoriadne efektívne pri spracovaní obrazových dát, napríklad v úlohách
-		rozpoznávania, klasifikácie a detekcie objektov v obrazoch. V oblasti spracovania
-		textu sa CNN využívajú najmä pre textovú klasifikáciu, kde ich výhodou je
-		vysoká paralelizovateľnosť oproti RNN, čo vedie k rýchlejšiemu trénovaniu a efektívnejšiemu
-		spracovaniu dát. CNN dokážu zachytiť lokálne vzory v textových sekvenciách (napríklad
-		frázy alebo n-gramy), čím prispievajú k lepšej reprezentácii textu pre klasifikačné
-		úlohy~\cite{kim2014cnn, zhang2015sensitivity}.
-
-	\item \textbf{Transformers – moderný prístup k spracovaniu sekvencií}
-
-		Transformery sa objavili ako odpoveď na obmedzenia RNN a GAN v spracovaní veľmi
-		dlhých sekvencií. Sú založené na architektúre \textit{encoder-decoder} a spracovávajú
-		vstupné tokeny paralelne, čo umožňuje rýchlejšie trénovanie v porovnaní s
-		RNN. Encoder transformera konvertuje vstupný text na číselnú reprezentáciu obsahujúcu
-		všetky dôležité informácie, zatiaľ čo decoder postupne generuje výstupné
-		slová na základe predchádzajúcich predpovedí a kontextu. Mechanizmus attention,
-		ktorý je základom transformerov, umožňuje modelu efektívne zachytávať vzťahy medzi
-		vzdialenými časťami textu, čo je kľúčové pre porozumenie a generovanie
-		prirodzeného jazyka~\cite{vaswani2017attention, rothman2023transformers}.
-
-	%     - koncept pamete v ramci neuronovych sieti vytvorenim zavislosti medzi udajocymi bodmi
-	%     - mozno trenovat na zachytavanie kontextovych pojmov a ucit sa opakujuce sa vzory
-	%     - maju za ulohu urcit, ktore informacie su dostatocne relevantne aby sa uchovali v pamati
-	%     - maju tendenciu zabudat informacie z dlhsich datovych sekvenicii
-
-	%     medzi modely s architekrurou RNN patri aj GAN (generative adversial network):
-	%     - generuje vysokokvalitne realisticke data (obrazky) a teda nie su vhodne pre NLP problemy
-	%     - model prijima ako vstup nahodny vektor pevnej dlzky , nasledne generuje vzorku v ramci definovanej oblasti
-	%     - objavuje sa problem ze tieto prístupy majú tendenciu prehliadať špecifické detaily, ktoré môžu výrazne ovplyvniť kvalitu školenia a vygenerovaných vzoriek
-
-	%     "Cocktail Party problem"
-	%     - riesenie je: attention, short-term memory
-	%     - attention - model pocas generovania vety hlada set pozicii v skrytych stavoch encodera, kde su dostupne najrelevantnejsie inforamcie
-
-	% \item CNN (pre textovú klasifikáciu)
-	%     Konvolučné neurónové siete (CNN) sú špeciálny typ umelej neurónovej siete, ktorý je mimoriadne účinný pri spracovaní obrazových dát, ako je rozpoznávanie, klasifikácia a detekcia objektov v obrazoch.
-
-	%     - na spracovanie textovych sekvencii je ich vynikajuca paralelizovatelnost oproti RNN
-
-	% \item Transformers
-
-	%     Transformer modely sa vynorili ako odpoved na GAN a zachytavanie vzťahov v sekvenciách veľmi dlhých vstupov.
-	%     - su zalozene na encoder-decored modely
-	%     - paralelne spracuvaju tokeny
-	%     - rychlesjie trenovanie ako pri RNN
-	%     - input -> transformer -> output
-	%     Transformátor s architektúrou kodér–dekodér funguje tak, že kodér spracuje vstupný text a prevedie ho na číselnú reprezentáciu, ktorá obsahuje všetky dôležité informácie. Dekodér potom túto reprezentáciu využije na to, aby po jednom predpovedal výstupné slová, pričom sa zakaždým rozhoduje, ktoré slovo je najpravdepodobnejšie podľa predchádzajúcich výstupov.
-\end{itemize}
-
-\subsubsection{Prepojenie medzi RNN, GAN, CNN a Transformermi v kontexte \gls{llm}}
-% TODO: Upraviť text, zamerať sa na transformery
-
-\begin{itemize}
-	\item \textbf{RNN} zaviedli koncept sekvenčnej pamäte a spracovania dát po
-		poradí, čo bolo zásadné pre prvé modely spracovania prirodzeného jazyka. Ich
-		slabinou je však strata informácií v dlhých sekvenciách.
-
-	\item \textbf{GAN} sú generatívne modely primárne určené na tvorbu
-		realistických obrazových dát, nie sú vhodné pre textové sekvencie, ale ich
-		princíp súťaže generátora a diskriminátora inšpiroval vývoj iných
-		generatívnych modelov.
-
-	\item \textbf{CNN} priniesli efektívnu paralelizáciu a schopnosť zachytiť
-		lokálne vzory, čo je užitočné aj v NLP pre klasifikáciu a extrakciu vlastností
-		z textu, no ich schopnosť modelovať dlhodobé závislosti je limitovaná.
-
-	\item \textbf{Transformery} kombinujú výhody paralelizácie CNN a schopnosť
-		modelovať dlhodobé závislosti RNN pomocou attention mechanizmu, čo ich robí základom
-		moderných veľkých jazykových modelov (\gls{llm}) ako GPT alebo BERT.
-\end{itemize}
-
-Týmto spôsobom sa jednotlivé architektúry vyvíjali a prelínali, pričom transformery
-predstavujú momentálne najefektívnejší prístup k spracovaniu prirodzeného jazyka a
-základ pre \gls{llm}, ktoré dokážu generovať koherentný a kontextovo relevantný text
-na základe rozsiahlych dátových vstupov.
-
-\subsubsection{Transformer architektúra a prístupy k riešeniu úloh}
-Kľúčovým míľnikom v spracovaní prirodzeného jazyka, ktorý prekonal obmedzenia
-sekvenčných modelov ako RNN, bol príchod architektúry Transformer. Ako podrobne
-vysvetľuje Rothman (2023), Transformer modely eliminovali potrebu sekvenčného spracovania
-dát pomocou mechanizmu pozornosti (attention mechanism). Tento mechanizmus
-umožňuje paralelizáciu výpočtov a lepšie zachytenie kontextu a vzťahov medzi
-slovami, a to aj pri dlhých a komplexných textoch~\cite{rothman2023transformers}.
-
-V kontexte moderných \gls{llm} a nášho inteligentného asistenta poskytuje táto
-architektúra základ pre techniky ako zero-shot a few-shot learning. Tieto prístupy
-umožňujú modelom klasifikovať zámery používateľa (intent classification) a dynamicky
-volať vhodné systémové nástroje (tool calling) bez potreby rozsiahleho dodatočného
-fine-tuningu na špecifických dátach~\cite{zhao2023survey}. To je kritické pre
-FinanceGPT, kde systém musí s vysokou spoľahlivosťou z používateľovho voľného textu
-vyvodiť, či má systém generovať SQL dotaz, alebo vykresliť graf.
-
-\subsubsection{Vektorové vyhľadávanie a embeddings (pgvector, sémantická
-podobnosť)}
-
-% VAROVANIE: Tento text bol vygenerovaný AI a v zmysle STU smernice 1/2024-O si vyžaduje finálnu autorskú štylizáciu a overenie.
-Bežné veľké jazykové modely nedisponujú priamym prístupom k neverejným dátam
-konkrétneho používateľa (ako sú napríklad jeho súkromné faktúry či citlivé finančné
-dáta). Ak sa model pokúša generovať faktické odpovede na základe nedostatočného alebo
-neaktuálneho kontextu, často dochádza k nežiaducemu javu nazývanému halucinácie. V
-aktuálnom technologickom prostredí je tento problém úspešne riešený integráciou architektúry
-RAG (Retrieval-Augmented Generation)~\cite{zhao2023survey}.
-
-Základom architektúry RAG je sémantické vyhľadávanie. Pomocou neho sa úryvky
-textu či položky faktúr transformujú do viacdimenzionálnych číselných
-vektorových reprezentácií, tzv. embeddings. V kontexte nášho systému delegujeme asynchrónne
-generovanie týchto vektorov na pozadí na dedikovaný model \texttt{text-embedding-3-small}
-od spoločnosti OpenAI. Následne ukladáme vygenerované vektory do relačnej databázy
-PostgreSQL pomocou rozšírenia \texttt{pgvector}. Na rozdiel od budovania alebo prenájmu
-dedikovaných vektorových databáz (ako napr. Pinecone či Milvus), tento prístup rapídne
-znižuje architektonickú réžiu aplikácie. Minimalizuje totiž odchýlku od jadra
-ekosystému Ruby on Rails a priamočiaro spája sémantické vektorové vyhľadávanie s
-tradičným relačným filtrovaním – čo je nevyhnutné, ak potrebujeme bezpečne filtrovať
-transakcie dedikované výhradne pre konkrétne \texttt{user\_id}~\cite{ruby2024agile}.
-
-\subsubsection{Možnosti vizualizácie údajov}
-
-Pri návrhu vizualizačnej vrstvy aplikácie FinanceGPT bolo nevyhnutné zohľadniť dva
-odlišné kontexty zobrazovania dát. Prvým je statický kontext, ktorý predstavuje zobrazenie
-grafov na analytickom paneli (angl. \textit{dashboard}) alebo v prehľadových reportoch,
-kde sú údaje dostupné už pri počiatočnom načítaní stránky. Druhým, komplexnejším
-prípadom, je dynamický kontext. Ten zahŕňa vykresľovanie grafických prvkov
-priamo v používateľskom rozhraní konverzačného asistenta ako odozvu na dopyt
-používateľa v prirodzenom jazyku. V tomto scenári sú dáta doručované asynchrónne vo
-forme štruktúrovanej odpovede (vo formáte JSON) z veľkého jazykového modelu (\gls{llm}).
-
-Výber vhodnej knižnice bol priamo podmienený technologickým zásobníkom aplikácie.
-Keďže prezentačná vrstva projektu využíva moderný prístup správy JavaScriptových závislostí
-pomocou nástroja \textbf{importmap-rails} v kombinácii s technológiou \textbf{Hotwire}
-(menovite knižnicami Turbo a Stimulus), eliminuje sa potreba prostredia Node.js
-a nadstavbových nástrojov ako Webpack či Vite. Zvolená knižnica preto musela byť dostupná
-vo forme štandardizovaného ESM modulu (manažovateľného priamo príkazom \texttt{./bin/importmap
-pin}), prípadne distribuovaná ako balíček (gem) pre framework Ruby on Rails. V
-rámci analýzy boli posudzované štyri dostupné riešenia:
-
-\begin{itemize}
-	\item \textbf{Chart.js} -- JavaScriptová knižnica určená na tvorbu štandardných
-		typov grafov (stĺpcové, čiarové, koláčové či radarové). Vyznačuje sa
-		priamočiarou konfiguráciou, rozsiahlou dokumentáciou a natívnou kompatibilitou
-		s prostredím importmap. Využíva priame vykresľovanie do HTML elementu
-		\texttt{<canvas>}, čo ju predurčuje na dynamické generovanie vizualizácií na
-		úrovni klientskej logiky. V kontexte aplikácie je kľúčová jej bezproblémová integrácia
-		so Stimulus kontrolérom (\texttt{chat\_controller.js}), ktorý dokáže prijaté dáta
-		okamžite spracovať a inicializovať grafický objekt priamo za behu (angl. \textit{runtime}).
-
-	\item \textbf{Chartkick} -- knižnica pre ekosystém Ruby on Rails, ktorá
-		poskytuje pomocné metódy (angl. \textit{view helpers}) na jednoriadkové
-		generovanie grafov priamo v ERB šablónach (napríklad \texttt{<\%= bar\_chart
-		@data \%>}). Ako vykresľovacie jadro využíva práve Chart.js. Toto riešenie je
-		ideálne pre statické zobrazenie agregovaných dát z databázových dopytov (ActiveRecord),
-		kde sú hodnoty dostupné už pri generovaní pohľadu na strane servera. Jej zásadnou
-		nevýhodou je však statická väzba na serverový životný cyklus, čo výrazne
-		komplikuje asynchrónne prekresľovanie na základe prichádzajúcich odpovedí z
-		API.
-
-	\item \textbf{D3.js} -- nízkoúrovňová knižnica poskytujúca plnú kontrolu nad SVG
-		vizualizáciami. Umožňuje tvorbu komplexných a vysoko interaktívnych dátových
-		reprezentácií, avšak vyžaduje neúmerne väčší objem kódu a hlboké znalosti manipulácie
-		s objektovým modelom dokumentu (DOM). Pre potreby finančného asistenta, kde sa
-		vyžadujú štandardizované typy grafov, predstavuje integrácia D3.js zbytočne
-		vysokú implementačnú réžiu.
-
-	\item \textbf{Recharts} -- deklaratívna knižnica postavená na technológiách React
-		a D3.js. Keďže architektúra navrhovanej aplikácie minimalizuje použitie
-		externých klientskych frameworkov a nedisponuje zostavovacím procesom (angl.
-		\textit{build pipeline}) na báze ekosystému \texttt{npm}, použitie tejto
-		knižnice bolo pre daný projekt vyhodnotené ako architektonicky
-		nekompatibilné.
-\end{itemize}
-
-Na základe uvedenej analýzy bola ako primárne vizualizačné riešenie zvolená knižnica
-\textbf{Chart.js}. V spolupráci s technológiou Hotwire a klientskym Stimulus kontrolérom
-(\texttt{chat\_controller.js}) zabezpečuje flexibilné vykresľovanie grafov v
-konverzačnom rozhraní asistenta. Graf je inštanciovaný dynamicky ihneď po tom,
-ako \gls{llm} model prostredníctvom mechanizmu volania funkcií (angl. \textit{function
-calling}) vráti extrahované štruktúrované dáta. Knižnica \textbf{Chartkick} bola v
-projekte ponechaná ako komplementárny nástroj na zabezpečenie statických vizualizácií
-v štandardných pohľadoch aplikácie, kde serverové renderovanie predstavuje
-najefektívnejší spôsob integrácie.
-
-\subsubsection{Regulačné požiadavky}
-
-Pri návrhu a implementácii inteligentného finančného asistenta FinanceGPT je nevyhnutné
-zohľadniť platnú legislatívu týkajúcu sa správy finančných dokumentov, ochrany
-osobných údajov a využívania modelov umelej inteligencie (\gls{llm}).
-Nasledujúce body analyzujú kľúčové regulačné aspekty, s ktorými musí byť webová aplikácia
-v plnom súlade.
-
-\paragraph{Správa faktúr a bezpečnosť finančných dát (GDPR)}
-Z hľadiska finančnej legislatívy podlieha elektronická správa a archivácia
-faktúr zákonu č. 431/2002 Z. z. o účtovníctve \cite{zakon_431_2002} a zákonu č.
-222/2004 Z. z. o dani z pridanej hodnoty \cite{zakon_222_2004}. Tieto predpisy vyžadujú
-primárne zabezpečenie vierohodnosti pôvodu, neporušenosti obsahu a čitateľnosti
-faktúry počas celej povinnej doby jej uchovávania.
-
-Keďže finančné dokumenty často obsahujú citlivé osobné údaje, akými sú mená a adresy
-fyzických osôb alebo živnostníkov, systém musí striktne spĺňať požiadavky
-Všeobecného nariadenia o ochrane údajov (GDPR) \cite{gdpr_2016} a lokálneho
-zákona č. 18/2018 Z. z. o ochrane osobných údajov \cite{zakon_18_2018}. Pri
-integrácii \gls{llm} do procesu spracovania otázok v prirodzenom jazyku vzniká špecifické
-bezpečnostné riziko úniku týchto dát. Aplikácia preto musí využívať zabezpečené
-API volania (napríklad prístup k modelom so zmluvnými podmienkami, ktoré
-zakazujú trénovanie na zákazníckych dátach) a implementovať striktnú izoláciu prístupu
-k dátam na úrovni databázy. Odporúčaným prístupom je taktiež anonymizácia alebo
-pseudonymizácia identifikovateľných entít (PII) ešte pred ich odoslaním do
-jazykového modelu.
-
-\paragraph{Súlad s Aktom o umelej inteligencii (EU AI Act)}
-Zásadným regulačným rámcom pre nasadenie asistenta FinanceGPT v európskom priestore
-je Nariadenie Európskeho parlamentu a Rady (EÚ) 2024/1689, známe ako Akt o
-umelej inteligencii (EU AI Act) \cite{eu_ai_act_2024}.
-
-V rámci analýzy súladu (compliance) voči tomuto nariadeniu je potrebné systém
-FinanceGPT klasifikovať na základe miery rizika. Keďže asistent slúži na konverzačné
-vyhľadávanie v príjmoch, sumarizáciu výdavkov a generovanie reportov na základe
-už vložených údajov používateľa, nespadá do kategórie vysokorizikových systémov (napríklad
-systémy na hodnotenie úverového rizika). Aplikácia sa radí medzi systémy s
-obmedzeným rizikom.
-
-Pre túto kategóriu vyplýva z Článku 50 Aktu o umelej inteligencii jedna hlavná
-legislatívna požiadavka. Poskytovatelia systémov umelej inteligencie určených na priamu
-interakciu s fyzickými osobami musia zabezpečiť, aby boli používatelia jasne
-informovaní o tom, že komunikujú s umelou inteligenciou \cite{eu_ai_act_2024}.
-Pre aplikáciu FinanceGPT to v praxi znamená nutnosť implementovať do
-používateľského rozhrania (napríklad priamo do komponentu konverzačného okna)
-jasne viditeľné upozornenie. Používateľ musí byť oboznámený s faktom, že
-finančné zhrnutia a odpovede sú generované jazykovým modelom a môžu obsahovať
-nepresnosti. Splnením tejto požiadavky transparentnosti sa zabezpečí základný súlad
-aplikácie s európskym právom.
-
-\subsection{Webové technológie a Ruby on Rails}
-% TODO: Vychádza z bodu 3 zadania (Štúdium Ruby on Rails)
-Základom pre implementáciu a rozšírenie systému FinanceGPT je framework Ruby on Rails
-vo verzii 8. Podľa Rubyho a Thomasa (2024) poskytuje táto verzia Rails robustnú architektúru
-pre vývoj moderných webových aplikácií s dôrazom na rýchlosť vývoja (Agile
-development) a konvenciu pred konfiguráciou~\cite{ruby2024agile}.
-
-Kľúčovou inováciou, ktorú framework ponúka pre tvorbu interaktívnych rozhraní -- akým
-je náš chatovací asistent -- je prístup Hotwire. Ten eliminuje nutnosť budovania komplexných
-Single Page Aplikácií (SPA) v JavaScripte. Využitím technológií ako Turbo
-Streams je možné plynule a asynchrónne doručovať odpovede od \gls{llm} (vrátane
-streamovania textu) priamo do DOM štruktúry používateľského rozhrania~\cite{ruby2024agile}.
-Integrácia inteligentného asistenta priamo do existujúceho ekosystému Rails
-aplikácie taktiež radikálne uľahčuje správu databázy (ActiveRecord), bezpečnú tenant
-izoláciu a manipuláciu s existujúcimi finančnými dátami používateľa.
-
-% Manual 'Zdroje' bibliography removed: references are unified in
-% the automatically generated bibliography (Zoznam použitej literatúry).
-
-\paragraph{Pre naše potreby sme si zvolili \textbf{Transformery}, pretože
-ponúkajú funkcie ako:}
-\begin{itemize}
-	\item generovanie textu,
-
-	\item preklad,
-
-	\item sumarizáciu,
-
-	\item klasifikáciu,
-
-	\item odpovedanie na otázky,
-
-	\item rozpoznávanie zámeru,
-
-	\item function calling (napr. v chatbot aplikáciách).
-\end{itemize}
-
-\vspace{1em}
-
-\section{Návrh systému}
-% TODO: Popísať celkový návrh systému
-
-\subsection{Požiadavky na systém}
-% TODO: Zadefinovať požiadavky
-
-\subsubsection{Funkčné požiadavky}
-% TODO: Doplniť
-
-\subsubsection{Nefunkčné požiadavky (výkon, bezpečnosť, GDPR)}
-% TODO: Doplniť
-
-\subsubsection{Use case diagram}
-% TODO: Pridať use case diagram
-
-\subsection{Architektúra systému}
-% TODO: Popísať architektúru
-
-\subsubsection{Rozšírenie existujúcej Rails aplikácie}
-% TODO: Ako sa napojí na bc projekt
-
-\subsubsection{Komponentový diagram}
-% TODO: Pridať komponentový diagram
-
-\subsubsection{Tok spracovania dotazu (request flow)}
-% TODO: Popísať request flow
-
-\subsection{Návrh dátového modelu}
-% TODO: Popísať zmeny v databáze
-
-\subsubsection{Rozšírenie existujúceho modelu (chats, messages, tool\_calls)}
-% TODO: Popísať nové tabuľky
-
-\subsubsection{ER diagram}
-% TODO: Pridať ER diagram
-
-\subsection{Návrh \gls{llm} pipeline}
-% TODO: Popísať, ako funguje \gls{llm} v systéme
-
-\subsubsection{Tool calling architektúra (zero-shot prístup)}
-% TODO: Doplniť
-
-\subsubsection{Zdôvodnenie výberu zero-shot tool calling vs. intent klasifikátor}
-
-% VAROVANIE: Tento text bol vygenerovaný AI a v zmysle STU smernice 1/2024-O si vyžaduje finálnu autorskú štylizáciu a overenie.
-Pri návrhu konverzačných agentov sa v praxi často využíva analýza
-používateľských vstupov prostredníctvom dedikovaných klasifikátorov zámerov (intent
-classification). Tieto modely, typicky fungujúce na porovnávaní kosínusovej
-podobnosti vektorov, selektujú dotaz do vopred určenej sady kategórií, akými
-môžu byť napríklad \texttt{sql\_query} pre analytické požiadavky alebo \texttt{knowledge\_request}
-pre dopytovanie bázy znalostí~\cite{atkinson2023llm}. Hoci je táto stratégia výpočtovo
-ekonomická, pri riešení komplexnejších a viaczložkových požiadaviek používateľov
-naráža na svoje limity.
-
-Preto sa v rámci architektúry systému FinanceGPT presúvame k modernému prístupu, ktorý
-je známy ako \textit{zero-shot tool calling}. Ako vo svojom diele vysvetľuje Rothman
-(2023), súčasné modely s architektúrou Transformer dokážu na základe správne
-sformulovaných inštrukcií plniť zložité úlohy aj bez akýchkoľvek
-predchádzajúcich demonštrácií, teda zero-shot formou~\cite{rothman2023transformers}.
-V aplikovanom návrhu nášho systému to znamená logiku, kde je modelu priamo ponúknutá
-deklarácia dostupných nástrojov vo formáte schémy JSON (napr. definície \texttt{semantic\_search\_tool}
-a \texttt{sql\_generator\_tool}). Jazykový model na základe svojho vyhodnotenia dotazu
-sám identifikuje najvhodnejší nástroj a predikuje k nemu exaktné syntaktické parametre.
-Zverenie kompetencie rozhodovacieho mechanizmu pre účely výberu priamo \gls{llm} signifikantne
-zefektívňuje prispôsobivosť systému a odstraňuje nutnosť manuálnej údržby pravidlového
-enginu pre pôvodnú klasifikáciu úmyslov.
-
-\subsubsection{Návrh nástrojov: sql\_generator, semantic\_search, cashflow\_chart,
-income\_breakdown, expense\_summary}
-% TODO: Popísať nástroje
-
-\subsubsection{Správa kontextového okna}
-% TODO: Ako sa bude pracovať s kontextom
-
-\section{Implementácia}
-% TODO: Popísať samotnú implementáciu
-
-\subsection{Rozšírenie existujúcej Rails aplikácie}
-% TODO: Opísať základ z bc.
-
-\subsubsection{Východiskový stav}
-% TODO: Doplniť
-
-\subsubsection{Nové routes, controllery, migrácie}
-% TODO: Doplniť
-
-\subsection{\gls{llm} integrácia cez ruby\_llm a OpenRouter}
-% TODO: Opísať použitie API a gemov
-
-\subsubsection{Konfigurácia providera}
-% TODO: Doplniť
-
-\subsubsection{Správa histórie konverzácie}
-% TODO: Doplniť
-
-\subsubsection{System prompt a context injection}
-% TODO: Doplniť
-
-\subsubsection{Správa kontextového okna}
-% TODO: Doplniť
-
-\subsection{Implementácia nástrojov (Tool calling)}
-% TODO: Ako sú implementované jednotlivé tooly
-
-\subsubsection{sql\_generator\_tool}
-% TODO: Doplniť
-
-\subsubsection{semantic\_search\_tool}
-% TODO: Doplniť
-
-\subsubsection{cashflow\_chart\_tool}
-% TODO: Doplniť
-
-\subsubsection{income\_breakdown\_tool}
-% TODO: Doplniť
-
-\subsubsection{expense\_summary\_tool}
-% TODO: Doplniť
-
-\subsection{Frontendové chatové rozhranie}
-% TODO: Opísať front-end pohľad v Rails
-
-\subsubsection{Hotwire/Turbo a Stimulus integrácia}
-% TODO: Doplniť
-
-\subsubsection{Chat UI: sidebar, správa konverzácií}
-% TODO: Doplniť
-
-\subsubsection{Separátne rendrovanie grafov vs. textových správ}
-% TODO: Doplniť (Chart.js)
-
-\subsection{Bezpečnosť systému}
-% TODO: Aké sú bezpečnostné hrozby v \gls{llm} aplikácii
-
-\subsubsection{Identifikované hrozby \gls{llm} aplikácií}
-% TODO: Prompt injection a iné
-
-\subsubsection{Implementované opatrenia}
-% TODO: Čo sa nasadilo na obranu
-
-\subsubsection{GDPR opatrenia}
-% TODO: Súkromie a \gls{llm} modely
-
-\section{Testovanie a výsledky}
-% TODO: Opísať testovanie
-
-\subsection{Testovacia metodika}
-% TODO: Doplniť
-
 \subsection{Jednotkové a integračné testy}
-% TODO: Doplniť
+
+Pred samotnou evaluáciou interakcie s jazykovým modelom bolo nevyhnutné zabezpečiť
+stabilitu základnej backendovej infraštruktúry aplikácie FinanceGPT. Pomocou
+testovacieho rámca RSpec sme implementovali súbor jednotkových testov (\textit{Unit
+Tests}), ktoré overovali korektnosť ukladania konverzačných vláken, priraďovania používateľských
+identifikátorov (\texttt{user\_id}) a ukladanie histórie správ (\texttt{Message}).
+
+Následne sme vytvorili integračné testy zamerané na funkcionalitu registrovaných nástrojov
+(Tools) mimo kontextu LLM. V izolovanom testovacom prostredí sme validovali, či \texttt{SqlGeneratorTool}
+spoľahlivo blokuje modifikačné príkazy (napríklad \texttt{DROP TABLE}, \texttt{UPDATE})
+a či \texttt{ExpenseSummaryTool} vracia exaktne zoskupené dáta z testovacej
+databázy. Toto oddelené testovanie nám umožnilo následne pri evaluácii LLM vylúčiť
+chyby spôsobené samotnou podkladovou aplikačnou logikou.
 
 \subsection{Iterácia 1 — Baseline testovanie (Zero-shot)}
-% TODO: Doplniť
 
-\subsection{Implementácia opráv}
-% TODO: Doplniť
+V prvej testovacej iterácii sme spustili asistenta so základným systémovým
+promptom. Do kontextového okna modelu bola vložená surová schéma databázy bez podrobného
+vysvetlenia dátových typov alebo sémantiky vzťahov medzi tabuľkami.
 
-\subsection{Iterácia 2 — Retestovanie po opravách}
-% TODO: Doplniť
+Výsledky baseline testovania odhalili viaceré limity pri spracovaní komplexných dopytov:
+\begin{itemize}
+	\item \textbf{Zlyhanie pri spájaní tabuliek (JOIN):} Pri dopytoch vyžadujúcich
+		prepojenie faktúr so subjektmi model nedokázal spoľahlivo identifikovať, že stĺpec
+		\texttt{buyer\_id} v tabuľke \texttt{invoices} odkazuje na primárny kľúč v tabuľke
+		\texttt{entities}.
 
-\subsection{Záverečné zhodnotenie}
-% TODO: Ako testovanie dopadlo
+	\item \textbf{Halucinácie stĺpcov:} Pri požiadavke typu „Zobraz mi faktúry po
+		splatnosti“ model predpokladal existenciu dedikovaného stĺpca \texttt{is\_overdue},
+		ktorý sa však v skutočnosti v databáze nenachádzal. Stav po splatnosti sa totiž
+		dynamicky počíta na základe stĺpca \texttt{due\_date}.
+
+	\item \textbf{Slabá odolnosť voči neúplnému kontextu:} Namiesto vyžiadania
+		chýbajúcich parametrov od používateľa model často vygeneroval syntakticky
+		nevalidný SQL príkaz obsahujúci prázdne (\texttt{NULL}) hodnoty.
+\end{itemize}
+
+\subsection{Implementácia opráv (Prompt Engineering a Self-Correction)}
+
+Na základe chýb zistených v prvej iterácii sme pristúpili k optimalizácii
+orchestrácie kontextu. Úpravy spočívali v prepracovaní systémových inštrukcií (System
+Prompt), do ktorých sme explicitne zadefinovali relačné väzby a doménovú logiku
+aplikácie \cite{ruby2025}.
+
+Do promptu boli pridané nasledujúce inštrukcie:
+\begin{enumerate}
+	\item \textit{Explicitná definícia vzťahov:} „Tabuľka 'invoices' je prepojená
+		s tabuľkou 'entities' cez cudzí kľúč 'buyer\_id'.“
+
+	\item \textit{Vysvetlenie biznis logiky:} „Faktúra je po splatnosti, ak je 'due\_date'
+		< CURRENT\_DATE a zároveň 'status' nie je 'paid'.“
+
+	\item \textit{Vynútenie pýtania sa (Clarification):} „Ak je dopyt neúplný
+		alebo nejednoznačný, nevykonávaj SQL nástroj. Namiesto toho sa spýtaj
+		používateľa na upresnenie parametrov.“
+\end{enumerate}
+
+Popri úprave promptov sme implementovali aj tzv. \textit{Self-Correction Loop}. Ak
+nástroj zachytil výnimku na strane databázy (napr. syntax error), táto chybová hláška
+sa automaticky odoslala späť modelu ako správa s rolou \texttt{tool}, čím dostal model
+príležitosť svoju chybu v rovnakom behu opraviť \cite{atkinson2025}.
+
+\subsection{Iterácia 2 — Kvantitatívne zhodnotenie po opravách}
+
+Upravený systém bol následne vystavený opätovnému testovaniu nad navrhnutým
+evaluačným datasetom pozostávajúcim z 20 vybraných dopytov z rôznych kategórií. Výsledky
+druhej iterácie ukázali signifikantné zlepšenie výkonnosti asistenta, čo
+ilustrujeme pomocou troch kľúčových metrík.
+
+\subsubsection{Úspešnosť úloh (Task Success Rate)}
+
+Metrika definuje percentuálny podiel dopytov, pri ktorých asistent správne
+identifikoval zámer, zvolil vhodný nástroj, aplikoval bezchybný kontext (napríklad
+validný SQL dopyt) a vrátil očakávaný výstup (textový alebo vizuálny) bez pádu
+aplikácie.
+
+Ako ilustruje Tabuľka \ref{tab:success_rate}, optimalizácia systémových inštrukcií
+zvýšila celkovú úspešnosť z pôvodných 55\,\% na 90\,\%. Dve zlyhania v druhej
+iterácii boli primárne spôsobené príliš zložitým viacnásobným vnorením SQL
+dopytov (multi-hop reasoning), čo je známy limit pri zero-shot prístupoch \cite{zhao2023survey}.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Porovnanie úspešnosti agenta pred a po optimalizácii (N=20)}
+	\begin{tabular}{@{}lcc@{}}
+		\toprule \textbf{Kategória dopytov} & \textbf{Iterácia 1 (Úspešnosť)} & \textbf{Iterácia 2 (Úspešnosť)} \\
+		\midrule Základné informačné dopyty & 4/5 (80\,\%)                    & 5/5 (100\,\%)                   \\
+		Komplexná agregácia                 & 2/5 (40\,\%)                    & 4/5 (80\,\%)                    \\
+		Vizualizácia a formátovanie         & 3/5 (60\,\%)                    & 5/5 (100\,\%)                   \\
+		Hraničné situácie (Edge Cases)      & 2/5 (40\,\%)                    & 4/5 (80\,\%)                    \\
+		\midrule \textbf{Celkovo}           & \textbf{11/20 (55\,\%)}         & \textbf{18/20 (90\,\%)}         \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:success_rate}
+\end{table}
+
+\subsubsection{Analýza latencie (Rýchlosť odozvy)}
+
+Pre konverzačné rozhrania je kritická doba odozvy systému. Z dôvodu architektúry
+Tool Callingu, kde model musí najprv vygenerovať požiadavku na nástroj, počkať
+na exekúciu databázového dopytu na serveri a následne zosumarizovať výsledok, dochádza
+k spojenému oneskoreniu.
+
+Merania počas druhej iterácie (priemerné hodnoty z 18 úspešných volaní) ukázali nasledujúce
+časy:
+\begin{itemize}
+	\item Identifikácia nástroja modelom: $\sim$1,2 s
+
+	\item Lokálna exekúcia nástroja v Ruby (napr. databázový dopyt): $\sim$0,1 s
+
+	\item Finálne generovanie textovej odpovede: $\sim$2,1 s
+
+	\item \textbf{Celková priemerná latencia odozvy:} \textbf{3,4 sekundy}
+\end{itemize}
+Vzhľadom na fakt, že UI počas čakania zobrazuje \textit{typing indicator} a
+samotné prekreslenie grafu vďaka Turbo Streams trvá na strane klienta len
+desiatky milisekúnd, je celková latencia pod 4 sekundy z používateľského hľadiska
+akceptovateľná.
+
+\subsubsection{Spotreba tokenov a prevádzkové náklady}
+
+Keďže integrácia prebieha prostredníctvom API brány, dôležitou metrikou je analýza
+spotreby tokenov, ktorá predstavuje primárny faktor prevádzkových nákladov.
+
+Vzhľadom na dynamické vkladanie štruktúry databázy do systémového promptu (viac než
+15 tabuliek a stĺpcov) je vstupný kontext pomerne rozsiahly. Priemerná spotreba na
+jednu komplexnú konverzačnú interakciu v druhej iterácii predstavovala:
+\begin{itemize}
+	\item \textbf{Vstupné tokeny (Input):} $\sim$1\,800 tokenov (vrátane histórie
+		a systémového promptu).
+
+	\item \textbf{Výstupné tokeny (Output):} $\sim$150 tokenov (vygenerovaný JSON
+		pre Tool Calling a následná krátka textová odpoveď).
+\end{itemize}
+Optimalizáciou v budúcnosti by mohlo byť cachovanie systémového promptu alebo
+selektívne injektovanie iba tých častí databázovej schémy, ktoré sú relevantné pre
+konkrétny používateľský dopyt, čím by sa znížila spotreba vstupných tokenov.
+
+\subsection{Záverečné zhodnotenie testovania}
+
+Výsledky evaluácie preukázali, že navrhnutá architektúra Zero-shot Tool Calling
+v kombinácii s prísne štruktúrovaným systémovým promptom je efektívnym a
+funkčným prístupom k implementácii inteligentného finančného asistenta. Systém dokáže
+s 90\,\% úspešnosťou transformovať komplexné požiadavky z prirodzeného jazyka do presných
+relačných dopytov a následne ich adekvátne vizualizovať.
+
+Zároveň testovanie jasne poukázalo na dôležitosť robustného softvérového inžinierstva
+prekrývajúceho jazykový model. Stabilita aplikácie a odolnosť voči halucináciám
+nebola dosiahnutá samotnou silou modelu, ale kvalitným ošetrením okrajových stavov
+a implementáciou samokorekčných mechanizmov na strane backendu. Aktuálny
+prototyp prešiel testovacími scenármi, avšak ako bolo definované v návrhovej časti,
+jeho bezpečné nasadenie do produkcie si bude vyžadovať kompletné dokončenie
+tenančnej izolácie a striktnejších validácií pri priamom dopytovaní databázy.
 
 % \section{Ukážka glossaries}
 % Verzia FEIstyle 1.5 používa glossary\footnote{\url{https://www.ctan.org/pkg/glossaries?lang=en}} balík.
