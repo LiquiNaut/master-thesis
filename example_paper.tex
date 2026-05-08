@@ -8,12 +8,13 @@
 \usepackage{multicol}
 \usepackage{enumitem}
 \usepackage{comment}
+\usepackage{pgfplots}
 
 \FEIauthor{Bc. Boris Gašparovič}
 \FEItitle{Návrh a implementácia inteligentného finančného asistenta FinanceGPT s využitím LLM pre spracovanie dotazov v prirodzenom jazyku}
 \FEItitleEn{Design and implementation of intelligent financial assistant FinanceGPT using LLM for natural language query processing}
-\FEIkeywords{inteligentný finančný asistent, fakturácia, spracovanie prirodzeného jazyka, LLM, GPT, faktúry, vizualizácia dát, integrácia API, Ruby on Rails, umelá inteligencia, NLP}
-\FEIkeywordsEn{intelligent financial assistant, invoicing, natural language processing, LLM, GPT, invoices, data visualization, API integration, Ruby on Rails, artificial intelligence, NLP}
+\FEIkeywords{inteligentný finančný asistent, spracovanie prirodzeného jazyka, LLM, faktúry, vizualizácia dát, Ruby on Rails}
+\FEIkeywordsEn{intelligent financial assistant, natural language processing, LLM, invoices, data visualization, Ruby on Rails}
 \FEIregNr{FEI-16607-97779}
 \FEIsupervisor{Ing. Erich Stark, PhD.}
 \FEIschool{Slovenská technická univerzita v Bratislave}
@@ -38,10 +39,9 @@
 \begin{document}
 	\frontmatter
 
-	\FEIpdfInfo \FEIcover \FEItitlePage
-	% \FEIassignment{img/zadanie prace.pdf}      OBRAZOK zaxdania doplnit neskor!
-	\FEIabstract{includes/abstract} \FEIabstractEn{includes/abstractEN}
-	\FEIvyhlasenie{includes/vyhlasenie} \FEIthanks{includes/thanks}
+	\FEIpdfInfo \FEIcover \FEItitlePage \FEIassignment{img/zadanie_diplomovej_prace.pdf}
+	\FEIabstract{includes/abstract} \FEIabstractEn{includes/abstractEN} \FEIvyhlasenie{includes/vyhlasenie}
+	\FEIthanks{includes/thanks}
 
 	\FEIcontent \FEIlistOfFiguresAndTables \glsaddall \FEIlistOfGlossaries
 	% \FEIlistOfAlgorithms
@@ -62,17 +62,6 @@
 
 	% Dokumentacia, obrazky
 	\FEIlistOfAppendix \FEIappendix{Štruktúra elektronického nosiča\label{att:A}}{includes/attachmentA}
-	\FEIappendix{Používateľská príručka\label{att:B}}{includes/attachmentB} \FEIappendix{Výpis sublime\label{att:C}}{includes/attachmentC}
-
-	\section*{Deklarácia o použití umelej inteligencie}
-	\addcontentsline{toc}{section}{Deklarácia o použití umelej inteligencie}
-
-	V súlade s Opatrením rektora STU č. 1/2024-O o používaní umelej inteligencie
-	deklarujem nasledujúce použitie UI nástrojov pri vypracovaní tejto záverečnej
-	práce:
-
-	\begin{itemize}
-		\item Perplexity AI 2026, úpravy a reformulácie textu v kapitole o
-			možnostiach vizualizácie údajov.
-	\end{itemize}
+	\FEIappendix{Používateľská príručka systému FinanceGPT\label{att:B}}{includes/attachmentB}
+	\FEIappendix{Výpis sublime\label{att:C}}{includes/attachmentC}
 \end{document}

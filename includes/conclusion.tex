@@ -1,37 +1,44 @@
-\section*{Záver}
-\addcontentsline{toc}{section}{Záver}
+Cieľom tejto diplomovej práce bolo navrhnúť a implementovať inteligentného
+finančného asistenta, FinanceGPT, priamo integrovaného do existujúcej webovej
+aplikácie slúžiacej na správu faktúr. Asistent mal umožniť používateľom komunikovať
+s ich vlastnými finančnými dátami prostredníctvom prirodzeného jazyka, pričom
+výstupom nemal byť iba text, ale aj komplexné numerické agregácie a vizuálne reprezentácie
+dát.
 
-Cieľom tejto diplomovej práce bolo navrhnúť a implementovať inteligentného finančného
-asistenta, FinanceGPT, priamo integrovaného do existujúcej webovej aplikácie slúžiacej
-na správu faktúr. Asistent mal umožniť používateľom komunikovať s ich vlastnými
-finančnými dátami prostredníctvom prirodzeného jazyka, pričom výstupom nemal byť iba
-text, ale aj komplexné numerické agregácie a vizuálne reprezentácie dát.
+Z pohľadu teoretického a analytického sme sa zamerali na štúdium súčasných možností
+spracovania prirodzeného jazyka (NLP) s využitím veľkých jazykových modelov (LLM).
+Ako kľúčový mechanizmus integrácie umelej inteligencie do tradičných
+informačných systémov bola identifikovaná architektúra Tool Calling. Tento prístup,
+na rozdiel od klasických klasifikátorov zámerov (Intent Classifiers), odbremeňuje
+systém od nutnosti exaktne definovať všetky používateľské cesty a prenecháva rozhodovacie
+kompetencie priamo jazykovému modelu.
 
-Z pohľadu teoretického a analytického sme sa zamerali na štúdium súčasných
-možností spracovania prirodzeného jazyka (NLP) s využitím veľkých jazykových
-modelov (LLM). Ako kľúčový mechanizmus integrácie umelej inteligencie do tradičných
-informačných systémov bola identifikovaná architektúra Tool Calling. Tento
-prístup, na rozdiel od klasických klasifikátorov zámerov (Intent Classifiers),
-odbremeňuje systém od nutnosti exaktne definovať všetky používateľské cesty a
-prenecháva rozhodovacie kompetencie priamo jazykovému modelu.
-
-V rámci architektonického návrhu bol zvolený prístup, ktorý plne rešpektuje konvencie
-monolitického rámca Ruby on Rails. Komunikácia s modelom bola implementovaná
+V rámci architektonického návrhu bol zvolený prístup, ktorý plne rešpektuje
+konvencie monolitického rámca Ruby on Rails. Komunikácia s modelom bola implementovaná
 formou asynchrónneho konverzačného rozhrania, využívajúc technológiu Hotwire (Turbo
-a Stimulus), vďaka čomu sa podarilo vyhnúť nutnosti budovať komplexnú
-architektúru Single Page Application (SPA). Generovanie SQL dopytov a výpočet agregácií
-zostali bezpečne izolované na strane backendu, pričom asistent slúži len ako
-inteligentný prekladač úmyslu do relačnej algebry.
+a Stimulus), vďaka čomu sa podarilo vyhnúť nutnosti budovať komplexnú architektúru
+Single Page Application (SPA). Generovanie SQL dopytov a výpočet agregácií
+zostali bezpečne izolované na strane backendu, pričom asistent slúži len ako inteligentný
+prekladač úmyslu do relačnej algebry.
 
-V implementačnej fáze sa podarilo úspešne vyvinúť funkčný prototyp systému. Asistent
-dokáže prijímať voľný textový vstup, dynamicky extrahovať kontext z databázovej
-schémy, a v prípade zložitejších vizuálnych požiadaviek vygenerovať štruktúrovaný
-formát (JSON) určený na klientske vykreslenie interaktívnych grafov prostredníctvom
-knižnice Chart.js.
+V implementačnej fáze sa podarilo úspešne vyvinúť funkčný prototyp systému.
+Asistent dokáže prijímať voľný textový vstup, dynamicky extrahovať kontext z databázovej
+schémy, a v prípade zložitejších vizuálnych požiadaviek vygenerovať
+štruktúrovaný formát (JSON) určený na klientske vykreslenie interaktívnych
+grafov prostredníctvom knižnice Chart.js.
 
-Samotné testovanie a evaluácia systému poukázali na silné a slabé stránky zvoleného
-prístupu. [DOPLNIŤ PO TESTOVANÍ: Stručné zhrnutie, napr. "Ukázalo sa, že model
-dosahuje X% úspešnosť pri základných informačných dopytoch, avšak pri viacúrovňovom vnorení (multi-hop reasoning) naráža na svoje limity..."] [DOPLNIŤ PO TESTOVANÍ: Krátka veta o priemernej latencii a spotrebe tokenov.] Stabilita a bezpečnosť systému tak nestoja len na samotnej sile LLM, ale primárne na dodatočnom inžinierstve — kvalitnom prompt engineeringu, samokorekčných slučkách (Self-Correction) a validácii generovaných dopytov.
+Samotné testovanie a evaluácia systému poukázali na silné a slabé stránky
+zvoleného prístupu. Samotné testovanie a evaluácia systému poukázali na silné aj slabé
+stránky zvoleného prístupu. Model GPT-4o-mini dosiahol celkovú úspešnosť 93,3~\%
+(28/30) a model Claude 3.5 Haiku 90,0~\% (27/30) na evaluačnej množine 30
+dopytov. Najvýraznejšie limity sa neprejavili v syntaktickom generovaní SQL dopytov,
+ale predovšetkým v sémantickom mapovaní doménových pojmov na databázovú schému a
+v kolíziách medzi nástrojmi pri nejednoznačne formulovaných dopytoch. Výsledky zároveň
+ukázali, že pre praktické nasadenie je potrebné zohľadniť nielen úspešnosť
+modelu, ale aj priemernú latenciu, spotrebu tokenov a odhadovaný náklad na
+spracovanie dopytu. Zároveň sa potvrdilo, že explicitné guardraily a kvalitný
+prompt engineering ovplyvňujú úspešnosť systému porovnateľne významne ako
+samotná voľba jazykového modelu.
 
 Z pohľadu limitov prototypu a možností ďalšieho vývoja sa ako najkritickejšia
 ukazuje otázka bezpečnosti. Aktuálna verzia síce obsahuje základné ošetrenie proti

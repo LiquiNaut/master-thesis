@@ -1,10 +1,83 @@
-\file{/CHANGELOG.md}{file describing changes made to FEIstyle}
-\file{/example.tex}{main example $.tex$ file for diploma thesis}
-\file{/example\_paper.tex}{example $.tex$ file for seminar paper}
-\file{/Makefile}{simply Makefile -- build system}
-\file{/fei.sublime-project}{is project file with build in Build System for Sublime Text 3}
-\dir{/img}{folder with images}{}
-\dir{/includes}{files with content}{
-	\file{/bibliography.bib}{bibliography file}
-	\file{/attachmentA.tex}{this very file}
-}
+Táto príloha uvádza prehľad štruktúry elektronického nosiča odovzdávaného
+riešenia. Zdrojové kódy systému FinanceGPT sú organizované ako projekt webovej aplikácie
+postavenej na frameworku Ruby on Rails a rozšírenej o komponenty pre spracovanie dotazov
+v prirodzenom jazyku, chatové rozhranie a analytické nástroje nad finančnými
+dátami. [file:1]
+
+\subsection*{A.1 Hlavná štruktúra projektu}
+
+\begin{verbatim}
+/app
+  /controllers      - kontroléry aplikácie, spracovanie HTTP požiadaviek
+  /models           - dátové modely aplikácie
+  /services         - servisné triedy pre AI a analytické nástroje
+  /views            - šablóny používateľského rozhrania
+
+/app/views/chat
+  index.html.erb    - hlavné konverzačné rozhranie systému FinanceGPT
+
+/javascript
+  /controllers      - Stimulus kontroléry pre frontendové správanie
+
+/config
+  routes.rb         - definícia aplikačných trás
+  initializers/     - inicializačné súbory konfigurácie
+
+/db
+  /migrate          - databázové migrácie
+  seeds.rb          - inicializačné testovacie alebo ukážkové dáta
+
+/lib
+  /tasks            - pomocné Rake úlohy
+
+/test
+  - jednotkové a integračné testy
+
+README.md           - základný popis projektu a pokyny na spustenie
+Gemfile             - definícia Ruby závislostí projektu
+\end{verbatim}
+
+\subsection*{A.2 Hlavné aplikačné komponenty}
+
+V adresári \texttt{app/controllers} sa nachádzajú kontroléry zabezpečujúce tok
+požiadaviek medzi používateľským rozhraním, aplikačnou logikou a databázovou vrstvou.
+Ide najmä o kontroléry pre domovskú stránku, používateľov, faktúry a chatové
+rozhranie. [file:1][file:3]
+
+Adresár \texttt{app/models} obsahuje modely reprezentujúce základné doménové
+objekty systému. Patria sem modely používateľa, faktúry, bankových údajov, správ
+v konverzácii, samostatných chatov a záznamov o volaniach nástrojov. [file:1]
+
+Adresár \texttt{app/services} obsahuje servisné triedy implementujúce logiku
+spracovania používateľských dotazov. Nachádzajú sa tu nástroje zamerané na generovanie
+SQL dopytov, sémantické vyhľadávanie, rozklad príjmov a generovanie grafických výstupov
+cashflow. [file:1]
+
+V adresári \texttt{app/views} sa nachádzajú šablóny používateľského rozhrania. Osobitne
+dôležitou časťou je priečinok \texttt{app/views/chat}, ktorý obsahuje šablónu hlavného
+chatového rozhrania inteligentného asistenta. [file:1]
+
+Frontendová interaktivita je sústredená v adresári \texttt{javascript/controllers},
+kde sa nachádzajú Stimulus kontroléry. Táto vrstva zabezpečuje dynamické
+správanie chatového rozhrania a nadväzuje na architektúru Hotwire/Turbo použitú
+v aplikácii. [file:1]
+
+Databázová vrstva je reprezentovaná adresárom \texttt{db/migrate}, ktorý
+obsahuje migračné súbory definujúce vývoj databázovej schémy. Súbor \texttt{seeds.rb}
+slúži na inicializáciu vybraných dát potrebných na testovanie alebo demonštráciu
+systému. [file:3]
+
+Adresár \texttt{lib/tasks} obsahuje pomocné úlohy spúšťané prostredníctvom nástroja
+Rake. V rámci projektu sem patria aj úlohy súvisiace so spracovaním embeddingov
+a prípravou dát pre sémantické vyhľadávanie. [file:1]
+
+Adresár \texttt{test} obsahuje testovacie scenáre pre vybrané časti aplikácie.
+Testovanie zahŕňa jednotkové aj integračné testy zamerané na korektnosť
+spracovania dát a funkčnosť jednotlivých komponentov systému. [file:1]
+
+\subsection*{A.3 Obsah odovzdávaného riešenia}
+
+Elektronický nosič obsahuje úplné zdrojové kódy aplikácie, konfiguračné súbory, databázové
+migrácie, pomocné skripty a testy. Súčasťou odovzdaného riešenia je aj súbor \texttt{README.md},
+ktorý slúži ako stručný technický sprievodca pre lokálne spustenie projektu a orientáciu
+v jeho štruktúre. [file:1]

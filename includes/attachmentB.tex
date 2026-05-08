@@ -1,25 +1,139 @@
-\begin{algorithm}
-\caption{Vypočítaj $y = x^n$}  
-\label{alg:calculation-1}                         
-\begin{algorithmic}                    
-    \REQUIRE $n \geq 0 \vee x \neq 0$
-    \ENSURE $y = x^n$
-    \STATE $y \Leftarrow 1$
-    \IF{$n < 0$}
-        \STATE $X \Leftarrow 1 / x$
-        \STATE $N \Leftarrow -n$
-    \ELSE
-        \STATE $X \Leftarrow x$
-        \STATE $N \Leftarrow n$
-    \ENDIF
-    \WHILE{$N \neq 0$}
-        \IF{$N$ is even}
-            \STATE $X \Leftarrow X \times X$
-            \STATE $N \Leftarrow N / 2$
-        \ELSE[$N$ is odd]
-            \STATE $y \Leftarrow y \times X$
-            \STATE $N \Leftarrow N - 1$
-        \ENDIF
-    \ENDWHILE
-\end{algorithmic}
-\end{algorithm}
+Táto príloha obsahuje stručný návod na inštaláciu, spustenie a používanie systému
+FinanceGPT. Systém predstavuje rozšírenie existujúcej webovej aplikácie na
+správu faktúr o inteligentné konverzačné rozhranie, ktoré umožňuje používateľovi pracovať
+s finančnými údajmi prostredníctvom prirodzeného jazyka.
+
+\subsection*{B.1 Účel systému}
+
+FinanceGPT je navrhnutý ako inteligentný finančný asistent integrovaný do
+webovej aplikácie vytvorenej v prostredí Ruby on Rails. Cieľom systému je umožniť
+používateľovi vyhľadávať informácie o príjmoch, výdavkoch a faktúrach, generovať sumarizácie
+a v prípade potreby vytvárať aj vizuálne výstupy vo forme grafov.
+
+Používateľ komunikuje so systémom prostredníctvom chatového rozhrania. Na
+základe zadaného dotazu systém zvolí vhodný spôsob spracovania požiadavky a
+vráti výsledok vo forme textovej odpovede, tabuľkového súhrnu alebo vizualizácie.
+
+\subsection*{B.2 Technické požiadavky}
+
+Pre korektné spustenie systému je potrebné mať pripravené vývojové prostredie
+pre Ruby on Rails aplikáciu a databázový server PostgreSQL. Keďže ide o rozšírenie
+existujúcej aplikácie, systém nadväzuje na jej pôvodný databázový model, autentifikáciu
+a používateľské rozhranie.
+
+Na spracovanie dotazov je zároveň potrebné nakonfigurovať prístup k zvolenému poskytovateľovi
+veľkého jazykového modelu. Konkrétna konfigurácia závisí od spôsobu integrácie
+použitého v implementácii systému.
+
+\subsection*{B.3 Inštalácia a spustenie aplikácie}
+
+Po získaní zdrojového kódu projektu je najskôr potrebné nainštalovať všetky závislosti
+aplikácie. Následne sa vytvorí databáza, aplikujú sa migrácie a podľa potreby sa načítajú
+inicializačné dáta.
+
+Na lokálne spustenie aplikácie je možné použiť nasledujúci postup:
+
+\begin{verbatim}
+bundle install
+rails db:create db:migrate
+rails db:seed
+rails server
+\end{verbatim}
+
+Po úspešnom spustení servera je aplikácia dostupná prostredníctvom webového
+prehliadača, spravidla na lokálnej adrese:
+
+\begin{verbatim}
+http://localhost:3000
+\end{verbatim}
+
+V prípade, že implementácia využíva aj dodatočné služby na spracovanie úloh na pozadí,
+je potrebné spustiť aj príslušné podporné procesy podľa konfigurácie projektu. V bakalárskej
+verzii systému boli na tento účel využívané aj samostatne spúšťané služby,
+napríklad aplikačný server a procesy pre úlohy na pozadí.
+
+\subsection*{B.4 Prihlásenie do systému}
+
+Po otvorení aplikácie sa používateľ prihlási pomocou existujúceho účtu alebo si vytvorí
+nový účet registračným formulárom. Tento spôsob práce nadväzuje na pôvodnú
+webovú aplikáciu, v ktorej boli používateľské účty a autentifikácia riešené ako štandardná
+súčasť systému.
+
+Po úspešnom prihlásení sa používateľovi sprístupní hlavné rozhranie aplikácie.
+Jeho súčasťou je aj konverzačný modul FinanceGPT, prostredníctvom ktorého je možné
+zadávať analytické dopyty nad vlastnými finančnými dátami.
+
+\subsection*{B.5 Prehľad používateľského rozhrania}
+
+Hlavné rozhranie systému pozostáva zo štandardných častí fakturačnej aplikácie a
+z chatového rozhrania inteligentného asistenta. Používateľ má naďalej k dispozícii
+bežné funkcionality pôvodnej aplikácie, ako je evidencia faktúr, správa údajov a prehľad
+záznamov, pričom novou vrstvou je konverzačné spracovanie dopytov.
+
+Chatové rozhranie slúži na zadávanie otázok v prirodzenom jazyku. Odpoveď systému
+môže mať podobu textového vysvetlenia, numerickej agregácie alebo grafickej
+vizualizácie v závislosti od typu požiadavky.
+
+\subsection*{B.6 Zadávanie dotazov}
+
+Používateľ zadáva otázku do vstupného poľa chatového rozhrania. Dotaz môže byť
+formulovaný prirodzeným jazykom bez potreby znalosti SQL alebo databázovej
+schémy.
+
+Medzi typické príklady otázok patria:
+\begin{itemize}
+	\item Koľko nezaplatených faktúr evidujem?
+
+	\item Aké sú celkové príjmy za aktuálny mesiac?
+
+	\item Zobraz rozdelenie príjmov podľa klientov za rok 2024.
+
+	\item Ukáž graf cashflow za posledných šesť mesiacov.
+
+	\item Nájdi doklady súvisiace s konkrétnym projektom alebo typom služby.
+\end{itemize}
+
+Po odoslaní dotazu systém vykoná jeho spracovanie a vráti výsledok používateľovi.
+V závislosti od charakteru otázky môže ísť o jednoduchú textovú odpoveď,
+tabuľkový súhrn alebo grafické zobrazenie dát.
+
+\subsection*{B.7 Typy výsledkov}
+
+Systém môže vrátiť viacero typov výstupu podľa charakteru používateľskej požiadavky.
+Prvým typom je textová odpoveď, ktorá stručne vysvetľuje výsledok dopytu alebo interpretuje
+zistené údaje.
+
+Druhým typom je numerický alebo tabuľkový výstup, ktorý slúži najmä pri
+sumarizácii príjmov, výdavkov a faktúr. Tretím typom je vizuálny výstup vo forme
+grafu, ktorý sa používa najmä pri zobrazovaní trendov, časových radov alebo
+porovnania kategórií.
+
+\subsection*{B.8 Odporúčania pri používaní}
+
+Pri formulovaní otázok je vhodné používať čo najpresnejšie výrazy, najmä ak sa
+dotaz týka konkrétneho časového obdobia, klienta alebo typu dokladu. Presnejšie
+sformulovaný dotaz zvyčajne vedie k presnejšiemu a jednoznačnejšiemu výsledku.
+
+V prípade nejednoznačných alebo príliš všeobecných otázok môže systém vrátiť
+menej presnú odpoveď alebo zvoliť menej vhodný spôsob spracovania. Táto vlastnosť
+súvisí s tým, že systém mapuje prirodzený jazyk používateľa na interné dátové
+štruktúry a nástroje spracovania.
+
+\subsection*{B.9 Obmedzenia systému}
+
+Systém je navrhnutý pre analytickú prácu nad finančnými údajmi používateľa v rámci
+existujúcej fakturačnej aplikácie. Výsledok odpovede preto závisí od kvality
+dostupných dát, od jednoznačnosti používateľského dotazu a od správneho mapovania
+doménových pojmov na databázovú schému.
+
+Pri používaní systému je zároveň potrebné rešpektovať bezpečnostné obmedzenia implementované
+na úrovni backendu. V produkčnom prostredí je osobitne dôležité zabezpečiť
+správnu autorizáciu prístupu k dátam, izoláciu používateľských záznamov a validáciu
+vykonávaných databázových operácií.
+
+\subsection*{B.10 Zhrnutie používania}
+
+FinanceGPT rozširuje pôvodnú fakturačnú aplikáciu o nový spôsob interakcie s
+dátami. Používateľ tak môže namiesto manuálneho filtrovania a vyhľadávania pracovať
+so systémom prostredníctvom prirodzeného jazyka, čo zjednodušuje prístup k
+finančným prehľadom a podporuje rýchlejšiu orientáciu v uložených údajoch.
