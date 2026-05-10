@@ -2,7 +2,7 @@ Táto príloha uvádza prehľad štruktúry elektronického nosiča odovzdávan�
 riešenia. Zdrojové kódy systému FinanceGPT sú organizované ako projekt webovej aplikácie
 postavenej na frameworku Ruby on Rails a rozšírenej o komponenty pre spracovanie dotazov
 v prirodzenom jazyku, chatové rozhranie a analytické nástroje nad finančnými
-dátami. [file:1]
+dátami.
 
 \subsection*{A.1 Hlavná štruktúra projektu}
 
@@ -42,42 +42,42 @@ Gemfile             - definícia Ruby závislostí projektu
 V adresári \texttt{app/controllers} sa nachádzajú kontroléry zabezpečujúce tok
 požiadaviek medzi používateľským rozhraním, aplikačnou logikou a databázovou vrstvou.
 Ide najmä o kontroléry pre domovskú stránku, používateľov, faktúry a chatové
-rozhranie. [file:1][file:3]
+rozhranie.
 
 Adresár \texttt{app/models} obsahuje modely reprezentujúce základné doménové
 objekty systému. Patria sem modely používateľa, faktúry, bankových údajov, správ
-v konverzácii, samostatných chatov a záznamov o volaniach nástrojov. [file:1]
+v konverzácii, samostatných chatov a záznamov o volaniach nástrojov.
 
 Adresár \texttt{app/services} obsahuje servisné triedy implementujúce logiku
 spracovania používateľských dotazov. Nachádzajú sa tu nástroje zamerané na generovanie
 SQL dopytov, sémantické vyhľadávanie, rozklad príjmov a generovanie grafických výstupov
-cashflow. [file:1]
+cashflow.
 
 V adresári \texttt{app/views} sa nachádzajú šablóny používateľského rozhrania. Osobitne
 dôležitou časťou je priečinok \texttt{app/views/chat}, ktorý obsahuje šablónu hlavného
-chatového rozhrania inteligentného asistenta. [file:1]
+chatového rozhrania inteligentného asistenta.
 
 Frontendová interaktivita je sústredená v adresári \texttt{javascript/controllers},
 kde sa nachádzajú Stimulus kontroléry. Táto vrstva zabezpečuje dynamické
 správanie chatového rozhrania a nadväzuje na architektúru Hotwire/Turbo použitú
-v aplikácii. [file:1]
+v aplikácii.
 
 Databázová vrstva je reprezentovaná adresárom \texttt{db/migrate}, ktorý
 obsahuje migračné súbory definujúce vývoj databázovej schémy. Súbor \texttt{seeds.rb}
 slúži na inicializáciu vybraných dát potrebných na testovanie alebo demonštráciu
-systému. [file:3]
+systému.
 
 Adresár \texttt{lib/tasks} obsahuje pomocné úlohy spúšťané prostredníctvom nástroja
 Rake. V rámci projektu sem patria aj úlohy súvisiace so spracovaním embeddingov
-a prípravou dát pre sémantické vyhľadávanie. [file:1]
+a prípravou dát pre sémantické vyhľadávanie.
 
 Adresár \texttt{test} obsahuje testovacie scenáre pre vybrané časti aplikácie.
 Testovanie zahŕňa jednotkové aj integračné testy zamerané na korektnosť
-spracovania dát a funkčnosť jednotlivých komponentov systému. [file:1]
+spracovania dát a funkčnosť jednotlivých komponentov systému.
 
 \subsection*{A.3 Obsah odovzdávaného riešenia}
 
 Elektronický nosič obsahuje úplné zdrojové kódy aplikácie, konfiguračné súbory, databázové
 migrácie, pomocné skripty a testy. Súčasťou odovzdaného riešenia je aj súbor \texttt{README.md},
 ktorý slúži ako stručný technický sprievodca pre lokálne spustenie projektu a orientáciu
-v jeho štruktúre. [file:1]
+v jeho štruktúre.
