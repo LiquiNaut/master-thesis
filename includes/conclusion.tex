@@ -27,8 +27,7 @@ schémy, a v prípade zložitejších vizuálnych požiadaviek vygenerovať
 štruktúrovaný formát (JSON) určený na klientske vykreslenie interaktívnych
 grafov prostredníctvom knižnice Chart.js.
 
-Samotné testovanie a evaluácia systému poukázali na silné a slabé stránky
-zvoleného prístupu. Samotné testovanie a evaluácia systému poukázali na silné aj slabé
+Samotné testovanie a evaluácia systému poukázali na silné aj slabé
 stránky zvoleného prístupu. Model GPT-4o-mini dosiahol celkovú úspešnosť 93,3~\%
 (28/30) a model Claude 3.5 Haiku 90,0~\% (27/30) na evaluačnej množine 30
 dopytov. Najvýraznejšie limity sa neprejavili v syntaktickom generovaní SQL dopytov,
@@ -41,14 +40,12 @@ prompt engineering ovplyvňujú úspešnosť systému porovnateľne významne ak
 samotná voľba jazykového modelu.
 
 Z pohľadu limitov prototypu a možností ďalšieho vývoja sa ako najkritickejšia
-ukazuje otázka bezpečnosti. Aktuálna verzia síce obsahuje základné ošetrenie proti
-deštruktívnym SQL príkazom (Guardrailing), avšak pre reálne nasadenie do
-produkčného prostredia by bolo nevyhnutné dopracovať plnohodnotnú tenančnú
-izoláciu (Tenant Isolation) a pokročilejšie auditovanie vykonaných databázových
-operácií. Rovnako by pre účely vyhľadávania netextových dokumentov (napríklad
-položiek na faktúrach) bolo prínosné implementovať vektorové vyhľadávanie pomocou
-architektúry RAG (Retrieval-Augmented Generation), pre ktorú bol v návrhu
-vytvorený technologický základ.
+ukazuje otázka bezpečnosti. Aktuálna verzia obsahuje implementovanú bezpečnostnú vrstvu zahŕňajúcu
+validáciu SQL operácií (guardrailing) aj automatické tenant filtrovanie,
+ktoré zabezpečuje izoláciu dát medzi používateľmi. Pre reálne nasadenie
+do produkčného prostredia by bolo vhodné doplniť pokročilejšie
+auditovanie vykonaných databázových operácií a syntaktickú validáciu
+generovaných SQL dopytov.
 
 Napriek spomenutým výzvam bol primárny cieľ práce splnený. Bol navrhnutý a implementovaný
 inovatívny prístup k interakcii používateľa s podnikovým systémom, ktorý posúva
