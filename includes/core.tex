@@ -1336,7 +1336,8 @@ Akonáhle model vráti finálnu odpoveď, kontrolér odošle JSON odpoveď a fro
 ju dynamicky vloží do konverzácie:
 
 \begin{verbatim}
-render json: { response: assistant_response.content, chart_data: chart_data }, status: :ok
+render json: { response: assistant_response.content, 
+chart_data: chart_data }, status: :ok
 \end{verbatim}
 
 \subsubsection{Chat UI: Bočný panel a správa konverzácií}
@@ -1351,6 +1352,26 @@ zoskupované podľa časového rámca (dnes, včera, minulý týždeň) pre zlep
 orientácie v histórii. Každý záznam zároveň generuje jedinečnú požiadavku (metóda
 \texttt{GET} v smerovaní \texttt{ChatsController}), čo umožňuje používateľovi
 bezproblémové prepínanie medzi jednotlivými kontextami dotazov \cite{zhao2023}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/celkova-suma-po-splatnosti.png}
+	\caption{Ukážka textového dopytu nad evidovanými faktúrami}
+	\label{fig:celkova-suma-po-splatnosti}
+\end{figure}
+
+Ukážka textového dopytu spracovaného prostredníctvom nástroja SqlGeneratorTool. Systém
+na základe prirodzeného jazyka identifikoval potrebu relačného dopytovania a vrátil
+používateľovi štruktúrovaný textový výsledok.
+
+Obrázok \ref{fig:celkova-suma-po-splatnosti} ilustruje základný režim interakcie používateľa
+so systémom FinanceGPT pri textovom dopyte nad relačnými dátami. Používateľ
+formuluje požiadavku v prirodzenom jazyku bez potreby znalosti štruktúry
+databázy, pričom jazykový model vyhodnotí zámer dopytu a iniciuje volanie nástroja
+SqlGeneratorTool. Výsledkom je odpoveď prezentovaná v konverzačnom okne v
+textovej forme, ktorá zachováva používateľský komfort typický pre chatové rozhrania,
+no zároveň je založená na exaktných databázových údajoch. Tento typ interakcie je
+vhodný najmä pre otázky smerujúce na počty záznamov, zoznamy faktúr alebo
+jednoduché agregácie.
 
 \subsubsection{Klientske renderovanie: Markdown text vs. Chart.js grafy}
 Jazykové modely rodiny GPT vo svojich odpovediach štandardne využívajú
@@ -1374,95 +1395,201 @@ prítomný, prevezme kontrolu nad renderovaním, načíta definované \texttt{la
 interaktívny kruhový alebo stĺpcový graf. Týmto spôsobom sme úspešne oddelili aplikačnú
 logiku výpočtu od samotnej vizualizácie.
 
+\begin{figure}[htbp]
+	\centering
+
+	\begin{subfigure}
+		[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/rozdelenie-prijmov-a.png}
+		\caption{Grafické zobrazenie rozdelenia príjmov podľa klientov}
+		\label{fig:prijmy_graf}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}
+		[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/rozdelenie-prijmov-b.png}
+		\caption{Textová interpretácia rozdelenia príjmov podľa klientov}
+		\label{fig:prijmy_text}
+	\end{subfigure}
+
+	\caption{Ukážka odpovede systému FinanceGPT na dotaz týkajúci sa rozdelenia
+	príjmov podľa klientov}
+	\label{fig:rozdelenie_prijmov}
+\end{figure}
+
+Obrázok \ref{fig:rozdelenie_prijmov} prezentuje odpoveď systému FinanceGPT na
+používateľský dopyt zameraný na rozdelenie príjmov podľa klientov. Výstup je používateľovi
+sprístupnený v dvoch vzájomne sa dopĺňajúcich formách, konkrétne ako grafická
+vizualizácia a ako textová interpretácia identifikovaných hodnôt. Takýto spôsob prezentácie
+výsledkov podporuje rýchlu orientáciu v údajoch a zároveň poskytuje presnejšie slovné
+vysvetlenie získaných informácií.
+
+Z implementačného hľadiska ide o ukážku funkcionality, pri ktorej systém
+spracuje prirodzený jazykový dopyt, vyhodnotí jeho analytický charakter a následne
+zvolí vhodnú formu odpovede. V súlade s navrhovanou architektúrou aplikácie tak
+dochádza ku kombinácii konverzačného rozhrania s vizualizačnou vrstvou, čo patrí medzi
+kľúčové vlastnosti systému FinanceGPT. Takýto prístup je vhodný najmä pri
+dopytoch orientovaných na agregované finančné údaje, kde samotný textový výstup nemusí
+byť pre používateľa dostatočne prehľadný.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.92\textwidth]{img/cashflow-graf-za-6-mesiacov.png}
+	\caption{Ukážka grafického výstupu cashflow}
+	\label{fig:cashflow_graf_6_mesiacov}
+\end{figure}
+
+Obrázok \ref{fig:cashflow_graf_6_mesiacov} zachytáva prípad, v ktorom systém vracia
+výsledok vo forme vizualizácie časového radu. Takýto typ odozvy je vhodný najmä
+pri dopytoch, pri ktorých je pre používateľa dôležitejšie sledovanie trendu než zobrazenie
+jednotlivých surových záznamov. Výstup preto kombinuje grafickú reprezentáciu
+údajov s krátkou textovou interpretáciou, čím sa zvyšuje jeho zrozumiteľnosť a praktická
+využiteľnosť.
+
+Z implementačného hľadiska ide o ukážku funkcionality, v ktorej backend pripraví
+štruktúrovaný dátový objekt obsahujúci agregované hodnoty a popisy osí, zatiaľ čo
+samotné vykreslenie grafu prebieha na klientskej strane. Takýto prístup
+korešponduje s navrhovanou architektúrou systému, ktorá ráta so samostatnými nástrojmi
+pre analytické dotazy a so separátnym renderovaním grafických a textových odpovedí
+v chatovom rozhraní. Z architektonického pohľadu tak ide o praktický príklad
+oddelenia interpretácie používateľského dopytu od prezentačnej vrstvy
+používateľského rozhrania.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.92\textwidth]{img/semantaic-search.png}
+	\caption{Ukážka semantického vyhľadávania súvisiacich faktúr}
+	\label{fig:semantic_search}
+\end{figure}
+
+Obrázok \ref{fig:semantic_search} prezentuje situáciu, v ktorej používateľ
+formuluje dopyt v prirodzenom jazyku bez potreby zadania presných
+identifikátorov, čísel faktúr alebo explicitných databázových filtrov. Systém na
+základe významovej podobnosti vyhľadá relevantné záznamy a vráti zoznam faktúr, ktoré
+tematicky súvisia so zadanou požiadavkou. Takýto spôsob interakcie je vhodný
+najmä pri menej štruktúrovaných otázkach, pri ktorých používateľ pozná hľadaný kontext,
+no nepozná presnú formu uložených dát.
+
+Z pohľadu architektúry ide o ukážku funkcionality založenej na semantickom
+vyhľadávaní, ktoré je v návrhu systému zastúpené samostatným nástrojom \texttt{SemanticSearchTool}.
+Tento prístup korešponduje s časťou práce zameranou na vektorové vyhľadávanie,
+embeddings a spracovanie významovej podobnosti v rámci finančných dokumentov.
+Výsledok zároveň ukazuje, že systém FinanceGPT nie je obmedzený iba na striktne
+relačné dopyty, ale dokáže sprístupniť aj obsahovo príbuzné údaje v konverzačnej forme.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.92\textwidth]{img/guardrail.png}
+	\caption{Ukážka odmietnutia nebezpečného vstupu}
+	\label{fig:odmietnutie_nebezpecneho_vstupu}
+\end{figure}
+
+Obrázok \ref{fig:odmietnutie_nebezpecneho_vstupu} dokumentuje správanie systému
+pri vstupe, ktorý nie je kompatibilný s bezpečnostnými pravidlami aplikácie. V
+takýchto prípadoch nie je cieľom uspokojiť používateľský zámer za každú cenu, ale
+zachovať integritu dát, rešpektovať systémové obmedzenia a zabrániť vykonaniu
+rizikovej operácie. Systém preto nevyhodnotí požiadavku ako legitímny používateľský
+dopyt a vráti bezpečné odmietnutie bez vykonania škodlivej akcie.
+
+Z architektonického hľadiska ide o dôležitý prvok riešenia, keďže návrh systému
+nepokrýva iba úspešné scenáre, ale aj správanie pri neštandardných alebo škodlivých
+vstupoch. Takýto prístup korešponduje s plánovanou časťou práce zameranou na
+bezpečnosť systému, identifikované hrozby LLM aplikácií a implementované ochranné
+opatrenia. Zaradenie tejto ukážky do práce je zároveň významné aj z obhajobného
+hľadiska, pretože demonštruje, že ochrana dát a backendových pravidiel má
+prioritu pred samotnou funkcionalitou systému.
+
 \subsection{Nasadenie a inicializácia systému}
 
-Aby bola zaistená plná funkcionalita sémantického vyhľadávania a správna
-integrácia knižníc v produkčnom aj vývojovom prostredí (najmä po resete databázy),
-je nevyhnutné dodržať striktný postup inicializácie. Okrem štandardnej migrácie
-databázy (\texttt{rails db:migrate}) proces zahŕňa dva špecifické kroky súvisiace
-s AI integráciou.
+Aby bola zaistená plná funkcionalita sémantického vyhľadávania a správna integrácia
+knižníc v produkčnom aj vývojovom prostredí (najmä po resete databázy), je
+nevyhnutné dodržať striktný postup inicializácie. Okrem štandardnej migrácie databázy
+(\texttt{rails db:migrate}) proces zahŕňa dva špecifické kroky súvisiace s AI
+integráciou.
 
-Prvým krokom je registrácia dostupných LLM do databázy pomocou príkazu:
-\begin{lstlisting}[language=bash]
+Prvým krokom je registrácia dostupných LLM do databázy pomocou príkazu: \begin{lstlisting}[language=bash]
 $ bundle exec rails ruby_llm:load_models
 \end{lstlisting}
-Tento krok naplní tabuľku \texttt{llm\_models} definíciami, z ktorých môže
-aplikačný kód neskôr čerpať pri voľbe modelov (napr. identifikátor modelu v
-prostredí OpenRouter alebo lokálneho Ollama servera).
+Tento krok naplní tabuľku \texttt{llm\_models} definíciami, z ktorých môže aplikačný
+kód neskôr čerpať pri voľbe modelov (napr. identifikátor modelu v prostredí OpenRouter
+alebo lokálneho Ollama servera).
 
-Druhým, kritickým krokom pre architektúru RAG, je spätné vygenerovanie vektorových
-reprezentácií (embeddings) pre finančné záznamy, ktoré boli v systéme vytvorené
-ešte pred nasadením AI funkcionality. Na tento účel bola implementovaná Rake úloha:
-\begin{lstlisting}[language=bash]
+Druhým, kritickým krokom pre architektúru RAG, je spätné vygenerovanie
+vektorových reprezentácií (embeddings) pre finančné záznamy, ktoré boli v systéme
+vytvorené ešte pred nasadením AI funkcionality. Na tento účel bola
+implementovaná Rake úloha: \begin{lstlisting}[language=bash]
 $ bundle exec rake embeddings:backfill
 \end{lstlisting}
 Bez spustenia tejto dávkovej úlohy by model sémantického vyhľadávania \texttt{SemanticSearchTool}
-zlyhával pri hľadaní historických dát. Z hľadiska bezpečnosti dát a ochrany
-súkromia je podstatné uviesť, že systém prostredníctvom brány OpenRouter komunikuje
-s využitím parametra \textbf{Zero Data Retention (ZDR)}. Tento parameter garantuje,
-že poskytovatelia LLM neukladajú odoslané účtovné dáta používateľov a nepoužijú
-ich na ďalšie trénovanie \cite{eu2016gdpr}.
+zlyhával pri hľadaní historických dát. Z hľadiska bezpečnosti dát a ochrany súkromia
+je podstatné uviesť, že systém prostredníctvom brány OpenRouter komunikuje s
+využitím parametra \textbf{Zero Data Retention (ZDR)}. Tento parameter garantuje,
+že poskytovatelia LLM neukladajú odoslané účtovné dáta používateľov a nepoužijú ich
+na ďalšie trénovanie \cite{eu2016gdpr}.
 
 \subsection{Bezpečnostné aspekty a aktuálne limity prototypu}
-Pri integrácii veľkých jazykových modelov do aplikácie pracujúcej s finančnými
-údajmi je potrebné venovať osobitnú pozornosť bezpečnosti. V porovnaní so štandardnou
-webovou aplikáciou vznikajú nové riziká, ktoré súvisia so samotnou povahou LLM
-modelov, najmä s možnosťou generovania nepresných odpovedí, nesprávnych SQL
-dopytov alebo nevhodnej interpretácie používateľského vstupu. Z tohto dôvodu sme sa
-v implementácii nezamerali len na funkcionalitu, ale aj na identifikáciu rizík a
-overenie základných ochranných mechanizmov.
+Pri integrácii veľkých jazykových modelov do aplikácie pracujúcej s finančnými údajmi
+je potrebné venovať osobitnú pozornosť bezpečnosti. V porovnaní so štandardnou
+webovou aplikáciou vznikajú nové riziká, ktoré súvisia so samotnou povahou LLM modelov,
+najmä s možnosťou generovania nepresných odpovedí, nesprávnych SQL dopytov alebo nevhodnej
+interpretácie používateľského vstupu. Z tohto dôvodu sme sa v implementácii
+nezamerali len na funkcionalitu, ale aj na identifikáciu rizík a overenie základných
+ochranných mechanizmov.
 
 \subsubsection{Identifikované hrozby pri použití LLM}
-Za najdôležitejšie riziká v kontexte systému FinanceGPT považujeme prompt
-injection, generovanie nevalidných SQL dopytov, únik dát medzi používateľmi a
-halucinácie modelu. Prompt injection predstavuje situáciu, keď sa používateľ
-pokúsi cez prirodzený jazyk ovplyvniť systémové inštrukcie modelu a zmeniť jeho
-správanie. V prípade systému pracujúceho nad databázou je kritické aj riziko, že
-model vygeneruje syntakticky nesprávny alebo logicky nevhodný SQL príkaz.
+Za najdôležitejšie riziká v kontexte systému FinanceGPT považujeme prompt injection,
+generovanie nevalidných SQL dopytov, únik dát medzi používateľmi a halucinácie modelu.
+Prompt injection predstavuje situáciu, keď sa používateľ pokúsi cez prirodzený jazyk
+ovplyvniť systémové inštrukcie modelu a zmeniť jeho správanie. V prípade systému
+pracujúceho nad databázou je kritické aj riziko, že model vygeneruje syntakticky nesprávny
+alebo logicky nevhodný SQL príkaz.
 
-Samostatnou kategóriou rizík je nesprávna práca s používateľským kontextom. Ak by
-aplikácia pri práci s konverzáciami alebo databázovými dopytmi nekorektne pracovala
-s identitou používateľa, mohlo by dôjsť k zobrazeniu cudzích údajov. V kontexte finančných
-dát je potrebné brať do úvahy aj fakt, že LLM model môže vytvoriť odpoveď, ktorá je
-jazykovo presvedčivá, no obsahovo nepresná, a preto ju nemožno bezvýhradne považovať
-za autoritatívny zdroj.
+Samostatnou kategóriou rizík je nesprávna práca s používateľským kontextom. Ak
+by aplikácia pri práci s konverzáciami alebo databázovými dopytmi nekorektne
+pracovala s identitou používateľa, mohlo by dôjsť k zobrazeniu cudzích údajov. V
+kontexte finančných dát je potrebné brať do úvahy aj fakt, že LLM model môže vytvoriť
+odpoveď, ktorá je jazykovo presvedčivá, no obsahovo nepresná, a preto ju nemožno
+bezvýhradne považovať za autoritatívny zdroj.
 
 \subsubsection{Aktuálne implementované opatrenia}
 
-V aktuálnej verzii prototypu sme implementovali základné aplikačné bezpečnostné
-opatrenia vychádzajúce z existujúcej Rails aplikácie. Prístup ku konverzačnému rozhraniu
-je viazaný na autentifikovaného používateľa a jednotlivé konverzácie sú načítavané
-cez väzbu na aktuálne prihlásený účet. Tým sa minimalizuje riziko, že sa používateľ
-dostane k inému vláknu konverzácie mimo vlastného účtu.
+V aktuálnej verzii prototypu sme implementovali základné aplikačné bezpečnostné opatrenia
+vychádzajúce z existujúcej Rails aplikácie. Prístup ku konverzačnému rozhraniu
+je viazaný na autentifikovaného používateľa a jednotlivé konverzácie sú
+načítavané cez väzbu na aktuálne prihlásený účet. Tým sa minimalizuje riziko, že
+sa používateľ dostane k inému vláknu konverzácie mimo vlastného účtu.
 
-Na úrovni generovania databázových dopytov bola implementovaná bezpečnostná vrstva
-pozostávajúca z~validácie typu SQL operácie (whitelist iba pre \texttt{SELECT})
-a z~automatického tenant filtrovania, ktoré ku každému dopytovanému zdroju pridáva
-podmienku obmedzenú na záznamy aktuálneho používateľa. Táto vrstva predstavuje
-základný, ale funkčný mechanizmus izolácie dát. Pre plnohodnotné produkčné
-nasadenie by bolo vhodné doplniť pokročilejšiu syntaktickú validáciu SQL a audit
-log vykonaných dopytov.
+Na úrovni generovania databázových dopytov bola implementovaná bezpečnostná
+vrstva pozostávajúca z~validácie typu SQL operácie (whitelist iba pre \texttt{SELECT})
+a z~automatického tenant filtrovania, ktoré ku každému dopytovanému zdroju
+pridáva podmienku obmedzenú na záznamy aktuálneho používateľa. Táto vrstva predstavuje
+základný, ale funkčný mechanizmus izolácie dát. Pre plnohodnotné produkčné nasadenie
+by bolo vhodné doplniť pokročilejšiu syntaktickú validáciu SQL a audit log vykonaných
+dopytov.
 
-Multitenantné obmedzenie bolo implementované na úrovni všetkých štyroch
-nástrojov systému. Nástroje \texttt{CashflowChartTool} a \texttt{IncomeBreakdownTool}
-pracujú výhradne so záznamami aktuálneho používateľa prostredníctvom ActiveRecord
-scope. Nástroj \texttt{SemanticSearchTool} filtruje výsledky vektorového vyhľadávania
-podmienkou \texttt{where(user\_id: @user\_id)}. Súčasná verzia systému je funkčný
-prototyp s~implementovanou základnou bezpečnostnou vrstvou.
+Multitenantné obmedzenie bolo implementované na úrovni všetkých štyroch nástrojov
+systému. Nástroje \texttt{CashflowChartTool} a \texttt{IncomeBreakdownTool}
+pracujú výhradne so záznamami aktuálneho používateľa prostredníctvom
+ActiveRecord scope. Nástroj \texttt{SemanticSearchTool} filtruje výsledky
+vektorového vyhľadávania podmienkou \texttt{where(user\_id: @user\_id)}. Súčasná
+verzia systému je funkčný prototyp s~implementovanou základnou bezpečnostnou
+vrstvou.
 
 \subsubsection{Plánované rozšírenia bezpečnostnej vrstvy}
 
-V ďalšej etape vývoja je potrebné doplniť viacvrstvovú ochranu pri práci s LLM
-modelom a databázou. Za prioritné považujeme dopracovanie tenant-aware filtrovania
-pri všetkých databázových operáciách, rozšírenie guardrailing vrstvy o
-syntaktickú a sémantickú validáciu SQL dopytov a zavedenie detailnejšieho
-auditovania vykonaných tool calls. Takéto riešenie by umožnilo spätne analyzovať správanie
-modelu a jednoduchšie identifikovať chybné alebo rizikové výstupy.
+V ďalšej etape vývoja je potrebné doplniť viacvrstvovú ochranu pri práci s LLM modelom
+a databázou. Za prioritné považujeme dopracovanie tenant-aware filtrovania pri
+všetkých databázových operáciách, rozšírenie guardrailing vrstvy o syntaktickú a sémantickú
+validáciu SQL dopytov a zavedenie detailnejšieho auditovania vykonaných tool calls.
+Takéto riešenie by umožnilo spätne analyzovať správanie modelu a jednoduchšie
+identifikovať chybné alebo rizikové výstupy.
 
-Z pohľadu ochrany osobných údajov bude vhodné doplniť aj explicitné pravidlá pre minimalizáciu
-dát odosielaných externému LLM providerovi. Pri ďalšom rozširovaní systému bude
-preto potrebné riešiť nielen technickú bezpečnosť, ale aj prevádzkové a legislatívne
-aspekty spracovania finančných údajov.
+Z pohľadu ochrany osobných údajov bude vhodné doplniť aj explicitné pravidlá pre
+minimalizáciu dát odosielaných externému LLM providerovi. Pri ďalšom rozširovaní systému
+bude preto potrebné riešiť nielen technickú bezpečnosť, ale aj prevádzkové a
+legislatívne aspekty spracovania finančných údajov.
 
 % \subsubsection{Implementované ochranné opatrenia (SQL Whitelisting a izolácia)}
 % \subsubsection{Vplyv GDPR na prácu s finančnými dátami}
@@ -1476,17 +1603,17 @@ aspekty spracovania finančných údajov.
 \subsection{Metodika testovania a návrh evaluačného datasetu}
 % -------------------------------------------------------------
 
-Pre objektívne zhodnotenie schopností systému FinanceGPT pri práci v produkčnom
-prostredí bolo nevyhnutné navrhnúť špecifickú evaluačnú sadu dopytov. Ako uvádza Atkinson-Abutridy,
-pri hodnotení veľkých jazykových modelov nie je postačujúce sledovať iba exaktnú
-zhodu textu, ale je potrebné posudzovať najmä \textit{sémantickú presnosť} a
-\textit{úspešnosť vykonania úlohy} (\textit{Task Success Rate})~\cite{atkinson2025}.
-V prípade systému typu Text-to-SQL navyše vstupuje do hodnotenia aj správnosť voľby
-nástroja, schopnosť modelu pracovať s relačnými väzbami databázy a robustnosť
-voči neúplným alebo škodlivým vstupom~\cite{zhao2023}.
+Pre objektívne zhodnotenie schopností systému FinanceGPT pri práci v produkčnom prostredí
+bolo nevyhnutné navrhnúť špecifickú evaluačnú sadu dopytov. Ako uvádza Atkinson-Abutridy,
+pri hodnotení veľkých jazykových modelov nie je postačujúce sledovať iba exaktnú zhodu
+textu, ale je potrebné posudzovať najmä \textit{sémantickú presnosť} a \textit{úspešnosť
+vykonania úlohy} (\textit{Task Success Rate})~\cite{atkinson2025}. V prípade
+systému typu Text-to-SQL navyše vstupuje do hodnotenia aj správnosť voľby
+nástroja, schopnosť modelu pracovať s relačnými väzbami databázy a robustnosť voči
+neúplným alebo škodlivým vstupom~\cite{zhao2023}.
 
-Na základe týchto teoretických východísk bol navrhnutý evaluačný dataset
-pozostávajúci z 30 dopytov rozdelených do piatich kategórií:
+Na základe týchto teoretických východísk bol navrhnutý evaluačný dataset pozostávajúci
+z 30 dopytov rozdelených do piatich kategórií:
 \begin{enumerate}
 	\item \textbf{A -- SQL dotazy}: otázky na počty, agregácie, filtrovanie a prácu
 		s relačnými väzbami.
@@ -1504,22 +1631,22 @@ pozostávajúci z 30 dopytov rozdelených do piatich kategórií:
 		dopyty a nejednoznačné scenáre.
 \end{enumerate}
 
-Každý testovací scenár bol vyhodnocovaný podľa viacerých metrík: očakávaný nástroj,
-skutočne zvolený nástroj, správnosť voľby nástroja, validita vygenerovaného SQL, latencia
-odpovede, počet vstupných a výstupných tokenov a celková úspešnosť scenára. Za \textit{úspešný}
-bol považovaný taký scenár, v ktorom systém správne interpretoval používateľský zámer
-a vrátil bezpečný a funkčný výsledok. Pri bezpečnostných scenároch kategórie~E
-bol za úspech považovaný aj prípad, keď systém vedome odmietol vykonať škodlivú operáciu,
-pretože z bezpečnostného hľadiska bolo správnym správaním zámer používateľa
-nesplniť.
+Každý testovací scenár bol vyhodnocovaný podľa viacerých metrík: očakávaný
+nástroj, skutočne zvolený nástroj, správnosť voľby nástroja, validita vygenerovaného
+SQL, latencia odpovede, počet vstupných a výstupných tokenov a celková úspešnosť scenára.
+Za \textit{úspešný} bol považovaný taký scenár, v ktorom systém správne
+interpretoval používateľský zámer a vrátil bezpečný a funkčný výsledok. Pri bezpečnostných
+scenároch kategórie~E bol za úspech považovaný aj prípad, keď systém vedome
+odmietol vykonať škodlivú operáciu, pretože z bezpečnostného hľadiska bolo správnym
+správaním zámer používateľa nesplniť.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Správa faktúr a príjmov}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Kategórie~A a~B pokrývali dopyty, ktoré sú pre aplikačnú doménu systému
-FinanceGPT kľúčové. Ich cieľom bolo overiť schopnosť modelu prekladať prirodzený jazyk
-do SQL, pracovať s agregáciami a správne prepájať tabuľky faktúr a klientov.
+Kategórie~A a~B pokrývali dopyty, ktoré sú pre aplikačnú doménu systému FinanceGPT
+kľúčové. Ich cieľom bolo overiť schopnosť modelu prekladať prirodzený jazyk do
+SQL, pracovať s agregáciami a správne prepájať tabuľky faktúr a klientov.
 
 \begin{itemize}
 	\item \textbf{Príklad základného SQL dopytu:} \enquote{Koľko faktúr mám celkovo?}
@@ -1529,18 +1656,18 @@ do SQL, pracovať s agregáciami a správne prepájať tabuľky faktúr a klient
 	\item \textbf{Príklad analytického dopytu:} \enquote{Ukáž mi rozdelenie príjmov podľa klientov.}
 \end{itemize}
 
-Pri týchto scenároch sa sledovalo nielen to, či model vygeneroval syntakticky
-správny SQL dopyt, ale aj to, či zvolil vhodný nástroj a či výsledok zodpovedal
-očakávanému významu otázky.
+Pri týchto scenároch sa sledovalo nielen to, či model vygeneroval syntakticky správny
+SQL dopyt, ale aj to, či zvolil vhodný nástroj a či výsledok zodpovedal očakávanému
+významu otázky.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Vizualizačné dopyty}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Kategória~C sa zameriavala na schopnosť modelu rozpoznať požiadavky, pri ktorých
-je vhodnejšie vrátiť vizualizáciu než čisto textovú odpoveď. V systéme FinanceGPT
-sa tieto dopyty mapujú najmä na nástroj \texttt{cashflow\_chart}, ktorý vracia štruktúrované
-dáta pre frontend a krátke textové zhrnutie.
+Kategória~C sa zameriavala na schopnosť modelu rozpoznať požiadavky, pri ktorých je
+vhodnejšie vrátiť vizualizáciu než čisto textovú odpoveď. V systéme FinanceGPT
+sa tieto dopyty mapujú najmä na nástroj \texttt{cashflow\_chart}, ktorý vracia
+štruktúrované dáta pre frontend a krátke textové zhrnutie.
 
 \begin{itemize}
 	\item \textbf{Príklad dopytu:} \enquote{Ukáž mi cashflow za posledný rok.}
@@ -1550,16 +1677,16 @@ dáta pre frontend a krátke textové zhrnutie.
 	\item \textbf{Príklad dopytu:} \enquote{Aký bol môj najlepší mesiac z hľadiska príjmov?}
 \end{itemize}
 
-Hodnotila sa správnosť výberu nástroja, korektné odovzdanie parametrov a stručnosť
-výslednej textovej odpovede po vykreslení grafu.
+Hodnotila sa správnosť výberu nástroja, korektné odovzdanie parametrov a
+stručnosť výslednej textovej odpovede po vykreslení grafu.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Sémantické vyhľadávanie}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Kategória~D bola zameraná na otázky, pri ktorých používateľ nehľadá presnú hodnotu,
-ale faktúry alebo projekty súvisiace s určitou témou, technológiou alebo oblasťou.
-V takýchto prípadoch systém využíva nástroj \texttt{semantic\_search}.
+Kategória~D bola zameraná na otázky, pri ktorých používateľ nehľadá presnú
+hodnotu, ale faktúry alebo projekty súvisiace s určitou témou, technológiou
+alebo oblasťou. V takýchto prípadoch systém využíva nástroj \texttt{semantic\_search}.
 
 \begin{itemize}
 	\item \textbf{Príklad dopytu:} \enquote{Nájdi faktúry súvisiace s webovými projektmi.}
@@ -1569,18 +1696,18 @@ V takýchto prípadoch systém využíva nástroj \texttt{semantic\_search}.
 	\item \textbf{Príklad dopytu:} \enquote{Aké faktúry súvisia s marketingom?}
 \end{itemize}
 
-Tieto scenáre overovali, či model dokáže rozlíšiť medzi exaktným databázovým dopytom
-a vyhľadávaním podľa významu textu, čo je pre praktické nasadenie konverzačného
+Tieto scenáre overovali, či model dokáže rozlíšiť medzi exaktným databázovým
+dopytom a vyhľadávaním podľa významu textu, čo je pre praktické nasadenie konverzačného
 finančného asistenta zásadné.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Bezpečnostné a hraničné scenáre}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Kategória~E testovala robustnosť systému voči deštruktívnym SQL príkazom,
-neúplným vstupom a otázkam bez dostatočného kontextu. Práve tieto scenáre sú dôležité
-z pohľadu praktického nasadenia, pretože odhaľujú, či systém vie bezpečne odmietnuť
-škodlivý dopyt alebo si vyžiadať chýbajúce parametre.
+Kategória~E testovala robustnosť systému voči deštruktívnym SQL príkazom, neúplným
+vstupom a otázkam bez dostatočného kontextu. Práve tieto scenáre sú dôležité z
+pohľadu praktického nasadenia, pretože odhaľujú, či systém vie bezpečne
+odmietnuť škodlivý dopyt alebo si vyžiadať chýbajúce parametre.
 
 \begin{itemize}
 	\item \textbf{Príklad škodlivého vstupu:} \enquote{DROP TABLE invoices}
@@ -1590,23 +1717,23 @@ z pohľadu praktického nasadenia, pretože odhaľujú, či systém vie bezpečn
 	\item \textbf{Príklad neúplného dopytu:} \enquote{Aký je môj cashflow?}
 \end{itemize}
 
-V tejto kategórii nebolo cieľom \enquote{vyhovieť} používateľovi za každú cenu,
-ale zachovať konzistentné a bezpečné správanie systému.
+V tejto kategórii nebolo cieľom \enquote{vyhovieť} používateľovi za každú cenu, ale
+zachovať konzistentné a bezpečné správanie systému.
 
 % -------------------------------------------------------------
 \subsection{Jednotkové a integračné testy}
 % -------------------------------------------------------------
 
-Pred benchmarkovým vyhodnotením správania jazykových modelov bolo potrebné overiť,
-či kľúčové časti backendovej infraštruktúry fungujú korektne aj mimo samotného
-LLM. V prostredí Ruby on Rails boli preto pripravené vybrané jednotkové a integračné
-testy zamerané najmä na ochranné mechanizmy nástroja \texttt{SqlGeneratorTool} a
-na stabilitu základného toku správ v konverzačnom rozhraní.
+Pred benchmarkovým vyhodnotením správania jazykových modelov bolo potrebné
+overiť, či kľúčové časti backendovej infraštruktúry fungujú korektne aj mimo samotného
+LLM. V prostredí Ruby on Rails boli preto pripravené vybrané jednotkové a
+integračné testy zamerané najmä na ochranné mechanizmy nástroja \texttt{SqlGeneratorTool}
+a na stabilitu základného toku správ v konverzačnom rozhraní.
 
-Pred spustením hlavného benchmarku bola overená bezpečnostná vrstva nástroja
-\texttt{SqlGeneratorTool} pomocou sady jednotkových testov. Tieto testy
-verifikovali, že nástroj správne blokuje všetky operácie okrem \texttt{SELECT} a
-že tenant izolácia automaticky filtruje záznamy podľa prihláseného používateľa.
+Pred spustením hlavného benchmarku bola overená bezpečnostná vrstva nástroja \texttt{SqlGeneratorTool}
+pomocou sady jednotkových testov. Tieto testy verifikovali, že nástroj správne
+blokuje všetky operácie okrem \texttt{SELECT} a že tenant izolácia automaticky filtruje
+záznamy podľa prihláseného používateľa.
 
 Nasledujúca ukážka ilustruje jednotkové testy ochranných mechanizmov:
 
@@ -1645,86 +1772,86 @@ class SqlGeneratorToolTest < ActiveSupport::TestCase
 end
 \end{lstlisting}
 
-Výsledok spustenia testov potvrdil korektnosť implementácie: 5 testov, 10 assertions,
-0 failures, 0 errors.
+Výsledok spustenia testov potvrdil korektnosť implementácie: 5 testov, 10
+assertions, 0 failures, 0 errors.
 
 % -------------------------------------------------------------
 \subsection{Iterácia 1 --- Baseline testovanie}
 % -------------------------------------------------------------
 
-V prvej iterácii bol asistent spustený so základným systémovým promptom a s
-obmedzeným doménovým kontextom. Do vstupu modelu bola vložená databázová schéma,
-no bez podrobného vysvetlenia významu stĺpcov, synonymických väzieb a biznis logiky
-aplikácie. Takéto nastavenie reprezentovalo východiskový stav pred následnou
-optimalizáciou.
+V prvej iterácii bol asistent spustený so základným systémovým promptom a s obmedzeným
+doménovým kontextom. Do vstupu modelu bola vložená databázová schéma, no bez podrobného
+vysvetlenia významu stĺpcov, synonymických väzieb a biznis logiky aplikácie. Takéto
+nastavenie reprezentovalo východiskový stav pred následnou optimalizáciou.
 
-Baseline testovanie ukázalo viacero typických problémov. Model pri zložitejších dopytoch
-nespoľahlivo pracoval s relačnými väzbami medzi tabuľkami, v niektorých
-prípadoch si domýšľal neexistujúce databázové atribúty a pri neúplných otázkach
-mal tendenciu generovať SQL dopyty aj vtedy, keď bolo vhodnejšie vyžiadať si spresnenie
-od používateľa. Tieto zistenia zodpovedajú limitom zero-shot prístupu, ktoré popisuje
-aj odborná literatúra~\cite{zhao2023,atkinson2025}.
+Baseline testovanie ukázalo viacero typických problémov. Model pri zložitejších
+dopytoch nespoľahlivo pracoval s relačnými väzbami medzi tabuľkami, v niektorých prípadoch
+si domýšľal neexistujúce databázové atribúty a pri neúplných otázkach mal tendenciu
+generovať SQL dopyty aj vtedy, keď bolo vhodnejšie vyžiadať si spresnenie od
+používateľa. Tieto zistenia zodpovedajú limitom zero-shot prístupu, ktoré
+popisuje aj odborná literatúra~\cite{zhao2023,atkinson2025}.
 
 % -------------------------------------------------------------
 \subsection{Implementácia opráv po baseline testovaní}
 % -------------------------------------------------------------
 
-Na základe zistených nedostatkov bola upravená promptová aj backendová vrstva
-systému. Do systémového promptu boli explicitne doplnené pravidlá o vzťahoch medzi
-tabuľkami, o mapovaní doménových pojmov na databázové identifikátory a o tom, kedy
-má model použiť konkrétny nástroj. Tieto zmeny mali obmedziť halucinovanie
-stĺpcov, nesprávne voľby nástrojov a chyby pri spájaní tabuliek.
+Na základe zistených nedostatkov bola upravená promptová aj backendová vrstva systému.
+Do systémového promptu boli explicitne doplnené pravidlá o vzťahoch medzi
+tabuľkami, o mapovaní doménových pojmov na databázové identifikátory a o tom,
+kedy má model použiť konkrétny nástroj. Tieto zmeny mali obmedziť halucinovanie stĺpcov,
+nesprávne voľby nástrojov a chyby pri spájaní tabuliek.
 
-Súčasne boli rozšírené guardraily na úrovni backendu. Okrem blokovania
-deštruktívnych SQL príkazov sa riešili aj neobmedzené výpisy dát, ktoré viedli k veľkým
-latenciám a nadmernej spotrebe tokenov. Praktickým cieľom týchto úprav bolo
-dosiahnuť nielen vyššiu úspešnosť odpovedí, ale aj prevádzkovo stabilnejšie správanie
+Súčasne boli rozšírené guardraily na úrovni backendu. Okrem blokovania deštruktívnych
+SQL príkazov sa riešili aj neobmedzené výpisy dát, ktoré viedli k veľkým
+latenciám a nadmernej spotrebe tokenov. Praktickým cieľom týchto úprav bolo dosiahnuť
+nielen vyššiu úspešnosť odpovedí, ale aj prevádzkovo stabilnejšie správanie
 systému v prostredí reálnej webovej aplikácie~\cite{ruby2025}.
 
 % -------------------------------------------------------------
 \subsection{Iterácia 2 --- Kvantitatívne zhodnotenie po opravách}
 % -------------------------------------------------------------
 
-Po zapracovaní úprav bol systém opätovne testovaný na menšej evaluačnej množine, ktorej
-cieľom bolo overiť, či zmeny promptu a guardrailov priniesli reálne zlepšenie. Výsledky
-potvrdili, že explicitnejšie definovanie vzťahov medzi tabuľkami, doplnenie rozhodovacích
-pravidiel pre nástroje a obmedzenie nebezpečných SQL operácií viedli k citeľne vyššej
-stabilite správania systému.
+Po zapracovaní úprav bol systém opätovne testovaný na menšej evaluačnej množine,
+ktorej cieľom bolo overiť, či zmeny promptu a guardrailov priniesli reálne zlepšenie.
+Výsledky potvrdili, že explicitnejšie definovanie vzťahov medzi tabuľkami,
+doplnenie rozhodovacích pravidiel pre nástroje a obmedzenie nebezpečných SQL
+operácií viedli k citeľne vyššej stabilite správania systému.
 
-Druhá iterácia zároveň ukázala, že samotná úspešnosť modelu ešte neznamená úplnú
-produkčnú pripravenosť. Aj po optimalizácii sa objavovali prípady, v ktorých bol
-výsledok síce funkčný, ale systém použil suboptimálny nástroj alebo vytvoril príliš
-rozsiahlu odpoveď. Tieto zistenia viedli k rozhodnutiu pripraviť finálnu
-porovnávaciu štúdiu viacerých modelov nad rozšíreným 30-otázkovým datasetom.
+Druhá iterácia zároveň ukázala, že samotná úspešnosť modelu ešte neznamená úplnú produkčnú
+pripravenosť. Aj po optimalizácii sa objavovali prípady, v ktorých bol výsledok síce
+funkčný, ale systém použil suboptimálny nástroj alebo vytvoril príliš rozsiahlu
+odpoveď. Tieto zistenia viedli k rozhodnutiu pripraviť finálnu porovnávaciu štúdiu
+viacerých modelov nad rozšíreným 30-otázkovým datasetom.
 
 % -------------------------------------------------------------
 \subsection{Iterácia 3 --- Porovnávacia štúdia modelov}
 % -------------------------------------------------------------
 
-Po stabilizácii backendovej infraštruktúry a úprave systémových inštrukcií bol realizovaný
-benchmark pozostávajúci z 30 dopytov rozdelených do piatich kategórií. Cieľom
-tejto iterácie bolo porovnať vhodnosť rôznych jazykových modelov pre nasadenie v
-systéme FinanceGPT. Do finálneho porovnania boli zaradené modely GPT-4o-mini a Claude
-3.5 Haiku, ktoré počas testovania spoľahlivo podporovali tool calling a dokázali
-konzistentne pracovať s navrhnutou architektúrou aplikácie.
+Po stabilizácii backendovej infraštruktúry a úprave systémových inštrukcií bol
+realizovaný benchmark pozostávajúci z 30 dopytov rozdelených do piatich
+kategórií. Cieľom tejto iterácie bolo porovnať vhodnosť rôznych jazykových modelov
+pre nasadenie v systéme FinanceGPT. Do finálneho porovnania boli zaradené modely
+GPT-4o-mini a Claude 3.5 Haiku, ktoré počas testovania spoľahlivo podporovali tool
+calling a dokázali konzistentne pracovať s navrhnutou architektúrou aplikácie.
 
-Model GPT-4o-mini reprezentoval referenčný komerčný model s dôrazom na nákladovú
-efektivitu a širokú podporu nástrojového orchestrátora. Model Claude 3.5 Haiku predstavoval
-konkurenčné riešenie zamerané na nízku latenciu a dobré dodržiavanie formátovacích
-inštrukcií. Lokálny model Llama 3.1 8B bol testovaný iba orientačne; v experimentoch
-sa ukázalo, že pri tool callingu nedodržiaval požadovanú štruktúru argumentov a
-zlyhával už na úrovni kontraktu medzi modelom a backendovým nástrojom, preto nebol
-zahrnutý do finálnej porovnávacej tabuľky.
+Model GPT-4o-mini reprezentoval referenčný komerčný model s dôrazom na nákladovú efektivitu
+a širokú podporu nástrojového orchestrátora. Model Claude 3.5 Haiku predstavoval
+konkurenčné riešenie zamerané na nízku latenciu a dobré dodržiavanie
+formátovacích inštrukcií. Lokálny model Llama 3.1 8B bol testovaný iba orientačne;
+v experimentoch sa ukázalo, že pri tool callingu nedodržiaval požadovanú štruktúru
+argumentov a zlyhával už na úrovni kontraktu medzi modelom a backendovým nástrojom,
+preto nebol zahrnutý do finálnej porovnávacej tabuľky.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Kvantitatívne zhodnotenie úspešnosti}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Tabuľka~\ref{tab:model_comparison} sumarizuje výsledky benchmarku. Po zjednotení metodiky
-hodnotenia bezpečnostných scenárov dosiahol model GPT-4o-mini celkovú úspešnosť 28/30,
-teda 93{,}3\,\%, zatiaľ čo Claude 3.5 Haiku dosiahol 27/30, teda 90{,}0\,\%. Pri kategórii~E
-bolo za úspech považované aj bezpečné odmietnutie škodlivej operácie, pretože v
-takomto prípade systém naplnil požiadavku bezpečnosti, nie používateľov škodlivý zámer.
+Tabuľka~\ref{tab:model_comparison} sumarizuje výsledky benchmarku. Po zjednotení
+metodiky hodnotenia bezpečnostných scenárov dosiahol model GPT-4o-mini celkovú
+úspešnosť 28/30, teda 93{,}3\,\%, zatiaľ čo Claude 3.5 Haiku dosiahol 27/30, teda
+90{,}0\,\%. Pri kategórii~E bolo za úspech považované aj bezpečné odmietnutie
+škodlivej operácie, pretože v takomto prípade systém naplnil požiadavku bezpečnosti,
+nie používateľov škodlivý zámer.
 
 \begin{table}[H]
 	\centering
@@ -1742,35 +1869,35 @@ takomto prípade systém naplnil požiadavku bezpečnosti, nie používateľov �
 	\end{tabular}
 \end{table}
 
-Z pohľadu jednotlivých kategórií bol GPT-4o-mini najsilnejší v príjmových
-analýzach, cashflow vizualizáciách, sémantickom vyhľadávaní a bezpečnostných
-scenároch. Zlyhania sa vyskytli iba pri dvoch SQL dopytoch kategórie~A, ktoré
-vyžadovali presnejšie mapovanie relačných väzieb a doménových výrazov na schému
-databázy. Claude 3.5 Haiku naopak dosiahol bezchybné výsledky v kategóriách~A, C
-a~E, no slabšie sa správal pri analytických dopytoch na príjmy a v jednom scenári
-sémantického vyhľadávania.
+Z pohľadu jednotlivých kategórií bol GPT-4o-mini najsilnejší v príjmových analýzach,
+cashflow vizualizáciách, sémantickom vyhľadávaní a bezpečnostných scenároch.
+Zlyhania sa vyskytli iba pri dvoch SQL dopytoch kategórie~A, ktoré vyžadovali presnejšie
+mapovanie relačných väzieb a doménových výrazov na schému databázy. Claude 3.5
+Haiku naopak dosiahol bezchybné výsledky v kategóriách~A, C a~E, no slabšie sa
+správal pri analytických dopytoch na príjmy a v jednom scenári sémantického
+vyhľadávania.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Analýza prevádzkových metrík}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Okrem samotnej úspešnosti boli vyhodnocované aj latencia odpovede a spotreba
-tokenov. Pri modeli GPT-4o-mini dosiahol dopyt E3 (\enquote{Ukáž mi faktúry})
-latenciu 40\,541{,}1\,ms pri spotrebe 2\,523 výstupných tokenov. Pri modeli Claude
-3.5 Haiku dosiahol dopyt A2 (\enquote{Zobraz všetky nezaplatené faktúry})
-latenciu 42\,923{,}2\,ms a 2\,529 výstupných tokenov; veľmi podobne vysokú latenciu
-vykázal aj scenár E3 s hodnotou 40\,066\,ms a 2\,523 výstupných tokenov.
+Okrem samotnej úspešnosti boli vyhodnocované aj latencia odpovede a spotreba tokenov.
+Pri modeli GPT-4o-mini dosiahol dopyt E3 (\enquote{Ukáž mi faktúry}) latenciu 40\,541{,}1\,ms
+pri spotrebe 2\,523 výstupných tokenov. Pri modeli Claude 3.5 Haiku dosiahol
+dopyt A2 (\enquote{Zobraz všetky nezaplatené faktúry}) latenciu 42\,923{,}2\,ms a
+2\,529 výstupných tokenov; veľmi podobne vysokú latenciu vykázal aj scenár E3 s
+hodnotou 40\,066\,ms a 2\,523 výstupných tokenov.
 
-Tieto výsledky ukazujú, že najväčší vplyv na latenciu nemala samotná voľba
-modelu, ale najmä scenáre vedúce k neobmedzenému rozsahu textovej odpovede.
-Typickým problémom boli všeobecné dopyty bez explicitného obmedzenia rozsahu, pri
-ktorých model vypisoval veľký počet riadkov namiesto toho, aby výsledky stručne
-zhrnul alebo ich odovzdal frontendu v kompaktnejšej forme. Z praktického hľadiska
-to potvrdzuje potrebu guardrailov typu \texttt{LIMIT}, selektívneho výberu stĺpcov
-a prísnejšieho oddeľovania textovej a tabuľkovej prezentácie dát.
+Tieto výsledky ukazujú, že najväčší vplyv na latenciu nemala samotná voľba modelu,
+ale najmä scenáre vedúce k neobmedzenému rozsahu textovej odpovede. Typickým problémom
+boli všeobecné dopyty bez explicitného obmedzenia rozsahu, pri ktorých model
+vypisoval veľký počet riadkov namiesto toho, aby výsledky stručne zhrnul alebo ich
+odovzdal frontendu v kompaktnejšej forme. Z praktického hľadiska to potvrdzuje
+potrebu guardrailov typu \texttt{LIMIT}, selektívneho výberu stĺpcov a
+prísnejšieho oddeľovania textovej a tabuľkovej prezentácie dát.
 
-Obrázok~\ref{fig:benchmark_graf_models} znázorňuje porovnanie úspešnosti oboch modelov
-podľa jednotlivých kategórií dopytov.
+Obrázok~\ref{fig:benchmark_graf_models} znázorňuje porovnanie úspešnosti oboch
+modelov podľa jednotlivých kategórií dopytov.
 
 \begin{figure}[H]
 	\centering
@@ -1803,102 +1930,100 @@ podľa jednotlivých kategórií dopytov.
 \subsection{Identifikácia zraniteľností a okrajových prípadov}
 % -------------------------------------------------------------
 
-Finálné benchmarkové testovanie odhalilo niekoľko opakujúcich sa tried chýb,
-ktoré sú dôležité nielen pre interpretáciu výsledkov, ale aj pre budúce rozširovanie
-systému FinanceGPT. Ukázalo sa, že limity sa neprejavujú iba v samotnom generovaní
-SQL, ale aj v rozhodovaní medzi nástrojmi, v odolnosti voči neúplnému kontextu a v
-schopnosti udržať stručný a prevádzkovo efektívny výstup.
+Finálné benchmarkové testovanie odhalilo niekoľko opakujúcich sa tried chýb, ktoré
+sú dôležité nielen pre interpretáciu výsledkov, ale aj pre budúce rozširovanie
+systému FinanceGPT. Ukázalo sa, že limity sa neprejavujú iba v samotnom
+generovaní SQL, ale aj v rozhodovaní medzi nástrojmi, v odolnosti voči neúplnému
+kontextu a v schopnosti udržať stručný a prevádzkovo efektívny výstup.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Sémantická priepasť a mapovanie doménových pojmov}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Pri modeli GPT-4o-mini sa ako problematický ukázal najmä dopyt A7, v ktorom bolo potrebné
-prepojiť slovenský výraz \enquote{kategória produktu} s konkrétnym atribútom
-databázovej schémy. Hoci model zvolil správny nástroj a vygeneroval syntakticky validný
-dopyt, výsledok nebol úspešný, pretože sémantické mapovanie na databázový model nebolo
-úplne korektné. Tento jav potvrdzuje, že aj pri deterministickom nastavení modelu
-ostáva explicitný slovník doménových synoným dôležitou súčasťou systémového promptu~\cite{gao2023texttosql}.
+Pri modeli GPT-4o-mini sa ako problematický ukázal najmä dopyt A7, v ktorom bolo
+potrebné prepojiť slovenský výraz \enquote{kategória produktu} s konkrétnym atribútom
+databázovej schémy. Hoci model zvolil správny nástroj a vygeneroval syntakticky
+validný dopyt, výsledok nebol úspešný, pretože sémantické mapovanie na
+databázový model nebolo úplne korektné. Tento jav potvrdzuje, že aj pri
+deterministickom nastavení modelu ostáva explicitný slovník doménových synoným
+dôležitou súčasťou systémového promptu~\cite{gao2023texttosql}.
 
-Podobný problém sa prejavil aj pri dopyte A4, kde bolo potrebné správne
-interpretovať vzťah medzi dlžnou sumou, klientom a stavom faktúr po splatnosti.
-V oboch prípadoch išlo o scenáre, ktoré boli pre model náročnejšie nie z dôvodu syntaxe
-SQL, ale z dôvodu viac-krokového sémantického usudzovania.
+Podobný problém sa prejavil aj pri dopyte A4, kde bolo potrebné správne interpretovať
+vzťah medzi dlžnou sumou, klientom a stavom faktúr po splatnosti. V oboch prípadoch
+išlo o scenáre, ktoré boli pre model náročnejšie nie z dôvodu syntaxe SQL, ale z dôvodu
+viac-krokového sémantického usudzovania.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Kolízia medzi nástrojmi}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Pri modeli Claude 3.5 Haiku sa ako hlavný zdroj chýb ukázali dopyty B6 a B7. V
-oboch prípadoch systém nesprávne rozlíšil, či ide o klasický SQL agregačný dopyt,
-príjmový rozklad alebo sémantické vyhľadávanie. Výsledkom bola nesprávna voľba nástroja,
-hoci časť medzivýstupov ostala formálne validná.
+Pri modeli Claude 3.5 Haiku sa ako hlavný zdroj chýb ukázali dopyty B6 a B7. V oboch
+prípadoch systém nesprávne rozlíšil, či ide o klasický SQL agregačný dopyt, príjmový
+rozklad alebo sémantické vyhľadávanie. Výsledkom bola nesprávna voľba nástroja, hoci
+časť medzivýstupov ostala formálne validná.
 
-Táto trieda chýb je dôležitá z návrhového hľadiska. Naznačuje, že medzi
-nástrojmi \texttt{sql\_generator}, \texttt{income\_breakdown} a \texttt{semantic\_search}
-existuje čiastočný sémantický prekryv, ktorý model bez dostatočne prísnych inštrukcií
-nemusí vedieť jednoznačne rozlíšiť. V ďalšom vývoji by preto bolo vhodné doplniť
-do systémového promptu explicitné negatívne pravidlá, ktoré povedia nielen \enquote{kedy nástroj použiť},
+Táto trieda chýb je dôležitá z návrhového hľadiska. Naznačuje, že medzi nástrojmi
+\texttt{sql\_generator}, \texttt{income\_breakdown} a \texttt{semantic\_search} existuje
+čiastočný sémantický prekryv, ktorý model bez dostatočne prísnych inštrukcií
+nemusí vedieť jednoznačne rozlíšiť. V ďalšom vývoji by preto bolo vhodné doplniť do
+systémového promptu explicitné negatívne pravidlá, ktoré povedia nielen \enquote{kedy nástroj použiť},
 ale aj \enquote{kedy ho určite nepoužiť}.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Neobmedzené získavanie dát}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Najväčší negatívny dopad na latenciu a spotrebu tokenov mali scenáre s neobmedzeným
-rozsahom odpovede. Typickým príkladom bol dopyt E3 (\enquote{Ukáž mi faktúry}),
-pri ktorom GPT-4o-mini aj Claude 3.5 Haiku vygenerovali veľmi rozsiahly textový
-výstup. Pri GPT-4o-mini to viedlo k latencii 40\,541{,}1\,ms a k 2\,523 výstupným
+Najväčší negatívny dopad na latenciu a spotrebu tokenov mali scenáre s
+neobmedzeným rozsahom odpovede. Typickým príkladom bol dopyt E3 (\enquote{Ukáž mi faktúry}),
+pri ktorom GPT-4o-mini aj Claude 3.5 Haiku vygenerovali veľmi rozsiahly textový výstup.
+Pri GPT-4o-mini to viedlo k latencii 40\,541{,}1\,ms a k 2\,523 výstupným
 tokenom; pri Claude 3.5 Haiku dosiahol rovnaký scenár 40\,066\,ms a rovnako 2\,523
 výstupných tokenov.
 
-Tento jav ukazuje, že aj správne vyriešený dopyt môže byť z prevádzkového hľadiska
-problematický, ak model nemá explicitne obmedzený rozsah odpovede. Pre produkčné nasadenie
-je preto vhodné doplniť backendové obmedzenia počtu riadkov, preferovať súhrnný
-text pred úplným prepisom všetkých záznamov a pri väčších datasetoch prenášať
-dáta do frontendu v štruktúrovanej forme namiesto ich serializácie do dlhého
-textu.
+Tento jav ukazuje, že aj správne vyriešený dopyt môže byť z prevádzkového
+hľadiska problematický, ak model nemá explicitne obmedzený rozsah odpovede. Pre
+produkčné nasadenie je preto vhodné doplniť backendové obmedzenia počtu riadkov, preferovať
+súhrnný text pred úplným prepisom všetkých záznamov a pri väčších datasetoch prenášať
+dáta do frontendu v štruktúrovanej forme namiesto ich serializácie do dlhého textu.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsubsection{Autonómna imputácia parametrov a odklon od inštrukcií}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Pri dopytoch bez úplného kontextu sa ukázalo, že model má tendenciu autonómne
-dopĺňať chýbajúce parametre namiesto toho, aby si ich vypýtal od používateľa.
-Typickým príkladom bol scenár E4 (\enquote{Aký je môj cashflow?}), v ktorom
-systém automaticky predpokladal obdobie 12 mesiacov. Hoci bol takýto výsledok v benchmarku
-vyhodnotený ako úspešný, z pohľadu interakčného návrhu ide o správanie, ktoré môže
-byť v niektorých situáciách nežiaduce.
+Pri dopytoch bez úplného kontextu sa ukázalo, že model má tendenciu autonómne dopĺňať
+chýbajúce parametre namiesto toho, aby si ich vypýtal od používateľa. Typickým príkladom
+bol scenár E4 (\enquote{Aký je môj cashflow?}), v ktorom systém automaticky predpokladal
+obdobie 12 mesiacov. Hoci bol takýto výsledok v benchmarku vyhodnotený ako
+úspešný, z pohľadu interakčného návrhu ide o správanie, ktoré môže byť v
+niektorých situáciách nežiaduce.
 
-S týmto javom súvisí aj odklon od inštrukcií (\textit{instruction drift}), ktorý sa
-prejaví najmä po prijatí väčšieho objemu číselných alebo tabuľkových dát z nástroja.
-Model má potom tendenciu generovať rozsiahlejší opis, než bol pôvodne požadovaný,
-čo zvyšuje latenciu a znižuje konzistentnosť používateľskej skúsenosti~\cite{rothman2024transformers}.
+S týmto javom súvisí aj odklon od inštrukcií (\textit{instruction drift}), ktorý
+sa prejaví najmä po prijatí väčšieho objemu číselných alebo tabuľkových dát z
+nástroja. Model má potom tendenciu generovať rozsiahlejší opis, než bol pôvodne
+požadovaný, čo zvyšuje latenciu a znižuje konzistentnosť používateľskej skúsenosti~\cite{rothman2024transformers}.
 
 % -------------------------------------------------------------
 \subsection{Zhrnutie výsledkov}
 % -------------------------------------------------------------
 
-Testovanie systému FinanceGPT prebiehalo vo viacerých iteráciách, od baseline
-nastavenia cez úpravu promptov a guardrailov až po finálnu porovnávaciu štúdiu
-dvoch produkčne použiteľných modelov. Výsledky ukázali, že architektúra založená
-na kombinácii LLM, tool callingu a backendových ochranných mechanizmov je vhodná pre
-implementáciu inteligentného finančného asistenta v prostredí webovej aplikácie Ruby
-on Rails.
+Testovanie systému FinanceGPT prebiehalo vo viacerých iteráciách, od baseline nastavenia
+cez úpravu promptov a guardrailov až po finálnu porovnávaciu štúdiu dvoch produkčne
+použiteľných modelov. Výsledky ukázali, že architektúra založená na kombinácii LLM,
+tool callingu a backendových ochranných mechanizmov je vhodná pre implementáciu
+inteligentného finančného asistenta v prostredí webovej aplikácie Ruby on Rails.
 
-Vo finálnom benchmarku dosiahol model GPT-4o-mini úspešnosť 93{,}3\,\% (28/30),
-zatiaľ čo Claude 3.5 Haiku dosiahol 90{,}0\,\% (27/30). Ukázalo sa pritom, že
-rozhodujúcu úlohu nezohráva iba samotná kvalita modelu, ale aj správne nastavenie
-nástrojov, promptov, guardrailov a pravidiel pre obmedzenie rozsahu odpovede.
-Najväčšie slabiny systému sa neviazali na syntax SQL, ale na sémantické mapovanie
-doménových pojmov, kolíziu medzi nástrojmi a na neobmedzené textové výstupy pri
-všeobecných dopytoch.
+Vo finálnom benchmarku dosiahol model GPT-4o-mini úspešnosť 93{,}3\,\% (28/30), zatiaľ
+čo Claude 3.5 Haiku dosiahol 90{,}0\,\% (27/30). Ukázalo sa pritom, že rozhodujúcu
+úlohu nezohráva iba samotná kvalita modelu, ale aj správne nastavenie nástrojov, promptov,
+guardrailov a pravidiel pre obmedzenie rozsahu odpovede. Najväčšie slabiny systému
+sa neviazali na syntax SQL, ale na sémantické mapovanie doménových pojmov, kolíziu
+medzi nástrojmi a na neobmedzené textové výstupy pri všeobecných dopytoch.
 
-Z praktického hľadiska možno konštatovať, že navrhnutý prototyp FinanceGPT preukázal
-schopnosť bezpečne a spoľahlivo spracúvať prirodzené jazykové otázky nad finančnými
-dátami používateľa, generovať analytické odpovede a podporovať vizuálne výstupy
-vo forme grafov. Súčasne však výsledky jasne ukazujú oblasti, v ktorých je možné
-systém ďalej optimalizovať, najmä v oblasti presnejšieho tool routingu, riadenia
+Z praktického hľadiska možno konštatovať, že navrhnutý prototyp FinanceGPT
+preukázal schopnosť bezpečne a spoľahlivo spracúvať prirodzené jazykové otázky
+nad finančnými dátami používateľa, generovať analytické odpovede a podporovať vizuálne
+výstupy vo forme grafov. Súčasne však výsledky jasne ukazujú oblasti, v ktorých je
+možné systém ďalej optimalizovať, najmä v oblasti presnejšieho tool routingu, riadenia
 kontextu a výkonovej kontroly pri práci s rozsiahlejšími datasetmi.
 
 % \section{Ukážka glossaries}
