@@ -1,27 +1,33 @@
-V súčasnosti sú finančné systémy čoraz viac automatizované a digitalizované, čo prináša
-nové možnosti pre správu a analýzu finančných dát. Spolu s tým rastie aj dopyt
-po inteligentných riešeniach, ktoré dokážu efektívne spracovávať veľké množstvo dát
-a poskytovať užitočné informácie používateľom bez nutnosti zložitého manuálneho vyhľadávania.
-Jednou z moderných technológií, ktorá umožňuje efektívnejšiu prácu s dátami, sú
-modely spracovania prirodzeného jazyka (Large Language Models, LLM). Tieto
-modely dokážu porozumieť a interpretovať textové dotazy používateľov, čím umožňujú
-nový spôsob interakcie s finančnými systémami.
+Správa finančných dokumentov je pre malé a stredné podniky každodennou súčasťou
+každonennej prevádzky. Spolu s tým rastie aj dopyt po inteligentných riešeniach,
+ktoré dokážu efektívne spracovávať veľké množstvo dát.
+
+Vytvára sa tak priestor pre systémy, ktoré zjednodušujú prácu s finančnými dátami
+a umožňujú efektívnejšie získavanie požadovaných informácií. Takéto systémy
+zároveň predstavujú odpoveď na nedostatky tradičných prístupov, akými sú zdĺhavé vyhľadávanie
+alebo neefektívna správa veľkého objemu dokumentov.
+
+S príchodom veľkých jazykových modelov (LLM) sa objavilo elegantné riešenie,
+ktoré umožnilo jednoduchú interakciu pomocou prirodzeného jazyka. Umožňuje to tak
+položiť otázku bez nutnosti vedieť ako dané dáta nájsť.
 
 Cieľom tejto diplomovej práce je navrhnúť a implementovať inteligentného finančného
-asistenta s názvom FinanceGPT, ktorý bude využívať technológie LLM na interakciu
-s fakturačnou aplikáciou. FinanceGPT umožní používateľom zadávať dotazy v prirodzenom
-jazyku a získať relevantné finančné informácie, ako napríklad prehľad o
-faktúrach, zhrnutie príjmov a výdavkov či generovanie reportov. Integrácia
-umelých inteligencií do fakturačných systémov môže zjednodušiť správu finančných
-údajov a poskytnúť používateľom intuitívny spôsob, ako získať dôležité informácie
-bez potreby odborných znalostí.
+asistenta s názvom FinanceGPT. Tento asistent je integrovaný do fakturačnej
+aplikácie postavenej na frameworku Ruby on Rails, ktorá bola vyvinutá v rámci predchádzajúcej
+bakalárskej práce.
 
-Práca pozostáva z niekoľkých častí: analýza existujúcich riešení na trhu, návrh architektúry
-systému, výber vhodného LLM modelu a jeho integrácia do fakturačnej aplikácie
-postavenej na platforme Ruby on Rails. Na záver bol prototyp otestovaný na reálnych
-scenároch, aby sa vyhodnotila jeho schopnosť správne odpovedať na dotazy
-používateľov a poskytovať relevantné výstupy.
+FinanceGPT umožňuje používateľom zadávať dotazy v prirodzenom jazyku a na ich základe
+získať informácie ako napríklad prehľad o faktúrach, zhrnutie vlastných príjmov
+a výdavkov či generovanie reportov v grafovej alebo textovej forme.
 
-Výsledkom tejto diplomovej práce bude prototyp inteligentného finančného
-asistenta, ktorý nielen uľahčí správu faktúr, ale aj poskytne používateľom nové
-možnosti v oblasti analýzy finančných dát.
+Práca pozostáva z analytickej časti, v ktorej  sme sa zamerali na existujúce riešenia na
+trhu a na technologické možnosti integrácie LLM do webových aplikácií. Následne sme
+navrhli architektúru systému vrátane dátového modelu, LLM pipeline a
+bezpečnostných mechanizmov.
+
+V implementačnej časti sme opísali vývoj prototypu, otestovali systém na sade 30 evaluačných
+dopytov s dvoma rôznymi jazykovými modelmi a na záver porovnali vysledky.
+
+Výsledkom práce je teda funkčný prototyp, ktorý dokáže spracovávať dotazy v
+prirodzenom jazyku nad reálnymi finančnými dátami a poskytovať releventné
+odpovede bez potreby dodatočnej kontroly zo strany používateľa.
