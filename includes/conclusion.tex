@@ -1,45 +1,44 @@
-Cieľom tejto diplomovej práce bolo navrhnúť a~implementovať inteligentného
-finančného asistenta FinanceGPT, integrovaného do~existujúcej webovej aplikácie na~správu
-faktúr. Asistent mal umožniť používateľom komunikovať s~ich finančnými dátami
-prostredníctvom prirodzeného jazyka, pričom výstupom mali byť textové odpovede,
+Cieľom tejto diplomovej práce bolo navrhnúť a implementovať inteligentného
+finančného asistenta FinanceGPT, integrovaného do existujúcej webovej aplikácie na
+správu faktúr. Asistent umožňuje používateľom komunikovať s finančnými dátami
+prostredníctvom prirodzeného jazyka, pričom výstupom sú textové odpovede,
 numerické agregácie aj vizuálne reprezentácie dát.
 
-V~teoretickej a~analytickej časti sme sa zamerali na~súčasné možnosti
-spracovania prirodzeného jazyka s~využitím LLM. Ako spôsob integrácie sme zvolili
-architektúru Tool Calling, ktorá na~rozdiel od~klasických klasifikátorov
-prenecháva rozhodovanie priamo jazykovému modelu. Tento prístup odbremeňuje systém
-od~nutnosti definovať všetky používateľské cesty vopred.
+V teoretickej a analytickej časti sme sa zamerali na súčasné možnosti
+spracovania prirodzeného jazyka s využitím LLM. Ako spôsob integrácie sme zvolili
+architektúru Tool Calling, ktorá na rozdiel od klasických klasifikátorov
+ponecháva rozhodovanie o použití nástrojov priamo jazykovému modelu. Tento prístup
+odbremeňuje systém od potreby definovať všetky používateľské scenáre vopred.
 
-Architektúra systému rešpektuje konvencie framweorku Ruby on Rails. Konverzačné
-rozhranie sme implementovali pomocou technológie Hotwire (Turbo a~Stimulus), čím sme
-sa vyhli nutnosti budovať SPA architektúru. Generovanie SQL dopytov a~výpočet
-agregácií zostali izolované na~strane backendu, pričom asistent slúži ako prekladač
-medzi prirodzeným jazykom a~relačnou databázou.
+Architektúra systému rešpektuje konvencie frameworku Ruby on Rails. Konverzačné
+rozhranie sme implementovali pomocou technológie Hotwire (Turbo a Stimulus), čím sme
+sa vyhli potrebe budovať SPA architektúru. Generovanie SQL dopytov a výpočet
+agregácií zostali izolované na strane backendu, pričom asistent slúži ako prekladač
+medzi prirodzeným jazykom a relačnou databázou.
 
-V~implementačnej fáze sme vyvinuli funkčný prototyp. Asistent dokáže prijímať
-textový vstup, dynamicky extrahovať kontext z~databázovej schémy a~pri vizuálnych
-požiadavkách vygenerovať štruktúrovaný JSON pre klientske vykreslenie grafov prostredníctvom
+V implementačnej fáze bol vytvorený funkčný prototyp. Asistent dokáže prijímať
+textový vstup, dynamicky extrahovať kontext z databázovej schémy a pri vizuálnych
+požiadavkách generovať štruktúrovaný JSON pre klientské vykreslenie grafov pomocou
 Chart.js.
 
-Testovanie na~evaluačnej sade 30~dopytov ukázalo, že model GPT-4o-mini dosiahol
-úspešnosť 93,3\,\% a~model Claude~3.5 Haiku 90,0\,\%. Najväčšie limity sa neprejavili
-v~syntaktickom generovaní SQL, ale v~sémantickom mapovaní doménových pojmov na~databázovú
-schému a~v~kolíziách medzi nástrojmi pri nejednoznačných dopytoch. Výsledky zároveň
-potvrdili, že guardraily a~prompt engineering ovplyvňujú úspešnosť systému viac
-než samotná voľba modelu.
+Testovanie na evaluačnej sade 30 dopytov ukázalo, že model GPT-4o-mini dosiahol
+úspešnosť 93,3 \% a model Claude 3.5 Haiku 90,0 \%. Najväčšie limity sa neprejavili
+v syntaktickom generovaní SQL, ale v sémantickom mapovaní doménových pojmov na
+databázovú schému a v kolíziách medzi nástrojmi pri nejednoznačných dopytoch. Výsledky
+zároveň potvrdili, že guardraily a prompt engineering majú väčší vplyv na
+úspešnosť systému než samotná voľba modelu.
 
-%% AUTOR: Ak chceš, pridaj sem 1-2 vety o tom, čo ťa osobne prekvapilo alebo čo by si urobil inak
-V priebehu testovania ma prekvapilo, že dané modely boli schopné volať viacero nástrojov
-v jednom dopyte bez špecifického systémového promptu, a taktiež aj samotné
-zdôvodnenie odpovede pri chýbajúcom kontexte.
+V priebehu testovania ma prekvapilo, že modely dokázali volať viacero nástrojov v
+jednom dopyte aj bez špecifického systémového promptu, rovnako ako aj spôsob, akým
+dokázali zdôvodňovať odpovede pri neúplnom kontexte.
 
-Z~pohľadu ďalšieho vývoja sa ako najdôležitejšia ukazuje otázka bezpečnosti. Aktuálna
-verzia obsahuje validáciu SQL operácií a~tenant filtrovanie, avšak pre produkčné
-nasadenie by bolo vhodné doplniť pokročilejšie auditovanie databázových operácií
-a validáciu generovaných dopytov. Taktiež by bolo prínosné rozšíriť evaluačný dataset
-a~otestovať systém s~väčším objemom reálnych dát.
+Z pohľadu ďalšieho vývoja sa ako najdôležitejšia ukazuje oblasť bezpečnosti.
+Aktuálna verzia obsahuje validáciu SQL operácií a tenant filtrovanie, avšak pre produkčné
+nasadenie by bolo vhodné doplniť pokročilejšie auditovanie databázových operácií a
+validáciu generovaných dotazov. Prínosné by bolo aj rozšírenie evaluačného
+datasetu a testovanie systému na väčšom objeme reálnych dát.
 
-Primárny cieľ práce bol splnený. Navrhli a~implementovali sme prístup, ktorý posúva
-interakciu používateľa s~fakturačným systémom od~tradičných systemov smerom ku~konverzačnému
-rozhraniu. Výsledný prototyp predstavuje základ pre ďalší vývoj využívajúci LLM
-v~doméne finančných aplikácií.
+Primárny cieľ práce bol splnený. Navrhnutý a implementovaný bol prístup, ktorý
+posúva interakciu používateľa s fakturačným systémom od tradičných systémov
+smerom ku konverzačnému rozhraniu. Výsledný prototyp predstavuje základ pre ďalší
+vývoj využívajúci LLM v oblasti finančných aplikácií.

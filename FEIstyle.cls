@@ -699,6 +699,7 @@
     %\addtocontents{lof}{\protect\thispagestyle{plain}}
     %\addtocontents{lot}{\protect\thispagestyle{plain}}
     \printglossary[type=\acronymtype,title={\@zoznamZn}]
+    \setcounter{table}{0}
     \newpage
     \pagestyle{plain}
 }
