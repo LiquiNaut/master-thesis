@@ -1,359 +1,436 @@
-% bibliography.bib — FinanceGPT Diplomová práca
-% Bc. Boris Gašparovič, FEI STU Bratislava, 2026
+% Norma: STN ISO 690:2022
+% BibLaTeX + biblatex-iso690
+% FEI STU šablóna v2.0.1 (február 2025)
+
 % ============================================================
-% POZOR: Kľúče musia sedieť s \cite{} v texte!
-% Existujúce zdroje [1]–[11] + opravené kľúče + nové zdroje
+% EXISTUJÚCE ZDROJE
 % ============================================================
 
-% ----------------------------------------------------------
-% EXISTUJÚCE ZDROJE (pôvodné č. 1–11, zachované)
-% ----------------------------------------------------------
-
-@article{zhao2023,
-  author    = {Wayne Xin Zhao and Kun Zhou and Junyi Li and Tianyi Tang and Xiaolei Wang and Yupeng Hou and Yingqian Min and Beichen Zhang and Junjie Zhang and Zican Dong and Yifan Du and Chen Yang and Yushuo Chen and Zhipeng Chen and Jinhao Jiang and Ruiyang Ren and Yifan Li and Xinyu Tang and Zikang Liu and Peiyu Liu and Jian-Yun Nie and Ji-Rong Wen},
-  title     = {A Survey of Large Language Models},
-  journal   = {arXiv preprint arXiv:2303.18223},
-  year      = {2023}
+@online{zhao2023,
+  author     = {Zhao, Wayne Xin and Zhou, Kun and Li, Junyi and Tang, Tianyi
+                and Wang, Xiaolei and Hou, Yupeng and Min, Yingqian
+                and Zhang, Beichen and Zhang, Junjie and Dong, Zican
+                and Du, Yifan and Yang, Chen and Chen, Yushuo
+                and Chen, Zhipeng and Jiang, Jinhao and Ren, Ruiyang
+                and Li, Yifan and Tang, Xinyu and Liu, Zikang
+                and Liu, Peiyu and Nie, Jian-Yun and Wen, Ji-Rong},
+  title      = {A Survey of Large Language Models},
+  date       = {2023},
+  eprint     = {2303.18223},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2303.18223},
+  urldate    = {2025-10-10}
 }
 
 @book{rothman2024transformers,
-  author    = {Denis Rothman},
+  author    = {Rothman, Denis},
   title     = {Transformers for Natural Language Processing and Computer Vision},
+  edition   = {3},
   publisher = {Packt Publishing},
-  year      = {2023},
-  isbn      = {978-1805128724}
+  date      = {2024},
+  isbn      = {9781805128724}
 }
 
 @book{atkinson2025,
-  author    = {J. Atkinson-Abutridy},
+  author    = {Atkinson-Abutridy, John},
   title     = {Large Language Models: Concepts, Techniques and Applications},
+  edition   = {1},
   publisher = {CRC Press},
-  year      = {2023},
-  isbn      = {978-1032836089}
+  date      = {2025},
+  isbn      = {9781032836089}
 }
 
-@article{lipton2015,
-  author    = {Zachary C. Lipton and John Berkowitz and Charles Elkan},
-  title     = {A Critical Review of Recurrent Neural Networks for Sequence Learning},
-  journal   = {arXiv preprint arXiv:1506.00019},
-  year      = {2015}
+@online{lipton2015,
+  author     = {Lipton, Zachary C. and Berkowitz, John and Elkan, Charles},
+  title      = {A Critical Review of Recurrent Neural Networks for Sequence Learning},
+  date       = {2015},
+  eprint     = {1506.00019},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/1506.00019},
+  urldate    = {2025-09-15}
 }
 
 @inproceedings{vaswani2017,
-  author    = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Łukasz Kaiser and Illia Polosukhin},
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki
+               and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N.
+               and Kaiser, Łukasz and Polosukhin, Illia},
   title     = {Attention Is All You Need},
   booktitle = {Advances in Neural Information Processing Systems},
   pages     = {5998--6008},
-  year      = {2017}
+  date      = {2017},
+  url       = {https://arxiv.org/abs/1706.03762},
+  urldate   = {2025-09-01}
 }
 
-@misc{zakon431,
-  author    = {{Národná rada SR}},
-  title     = {Zákon č. 431/2002 Z. z. o účtovníctve v znení neskorších predpisov},
-  year      = {2002},
-  url       = {https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/2002/431/},
-  note      = {[cit. 2026-04-04]}
+@online{zakon431,
+  author   = {{Národná rada SR}},
+  title    = {Zákon č. 431/2002 Z. z. o účtovníctve v znení neskorších predpisov},
+  date     = {2002},
+  url      = {https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/2002/431/},
+  urldate  = {2025-10-01}
 }
 
-@misc{zakon222,
-  author    = {{Národná rada SR}},
-  title     = {Zákon č. 222/2004 Z. z. o dani z pridanej hodnoty v znení neskorších predpisov},
-  year      = {2004},
-  url       = {https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/2004/222/},
-  note      = {[cit. 2026-04-04]}
+@online{zakon222,
+  author   = {{Národná rada SR}},
+  title    = {Zákon č. 222/2004 Z. z. o dani z pridanej hodnoty v znení neskorších predpisov},
+  date     = {2004},
+  url      = {https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/2004/222/},
+  urldate  = {2025-10-02}
 }
 
-@misc{eu2016gdpr,
-  author    = {{Európsky parlament a Rada Európskej únie}},
-  title     = {Nariadenie (EÚ) 2016/679 o ochrane fyzických osôb pri spracúvaní osobných údajov (GDPR)},
-  year      = {2016},
-  url       = {https://eur-lex.europa.eu/eli/reg/2016/679/oj},
-  note      = {[cit. 2026-04-04]}
+@online{eu2016gdpr,
+  author   = {{Európsky parlament a Rada Európskej únie}},
+  title    = {Nariadenie (EÚ) 2016/679 o ochrane fyzických osôb pri spracúvaní osobných údajov ({GDPR})},
+  date     = {2016},
+  url      = {https://eur-lex.europa.eu/eli/reg/2016/679/oj},
+  urldate  = {2025-10-03}
 }
 
-@misc{zakon18,
-  author    = {{Národná rada SR}},
-  title     = {Zákon č. 18/2018 Z. z. o ochrane osobných údajov},
-  year      = {2018},
-  url       = {https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/2018/18/},
-  note      = {[cit. 2026-04-04]}
+@online{zakon18,
+  author   = {{Národná rada SR}},
+  title    = {Zákon č. 18/2018 Z. z. o ochrane osobných údajov},
+  date     = {2018},
+  url      = {https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/2018/18/},
+  urldate  = {2025-10-04}
 }
 
-@misc{euaiact2024,
-  author    = {{Európsky parlament a Rada Európskej únie}},
-  title     = {Nariadenie (EÚ) 2024/1689 — Akt o umelej inteligencii},
-  year      = {2024},
-  url       = {https://eur-lex.europa.eu/legal-content/SK/TXT/?uri=CELEX:32024R1689},
-  note      = {[cit. 2026-04-04]}
+@online{euaiact2024,
+  author   = {{Európsky parlament a Rada Európskej únie}},
+  title    = {Nariadenie (EÚ) 2024/1689 --- Akt o umelej inteligencii},
+  date     = {2024},
+  url      = {https://eur-lex.europa.eu/legal-content/SK/TXT/?uri=CELEX:32024R1689},
+  urldate  = {2025-10-05}
 }
 
 @book{ruby2025,
-  author    = {Sam Ruby and Dave Thomas},
+  author    = {Ruby, Sam and Thomas, Dave},
   title     = {Agile Web Development with Rails 8},
   publisher = {Pragmatic Bookshelf},
-  year      = {2024},
-  isbn      = {979-8888651346}
+  date      = {2024},
+  isbn      = {9798888651346}
 }
 
-% ----------------------------------------------------------
-% OPRAVENÉ / CHÝBAJÚCE KĽÚČE (odkazované v texte)
-% ----------------------------------------------------------
-
-@mastersthesis{gasparovic2023,
-  author    = {Boris Gašparovič},
-  title     = {Návrh a implementácia webovej aplikácie pre správu finančných dokumentov},
-  school    = {Slovenská technická univerzita v Bratislave, Fakulta elektrotechniky a informatiky},
-  year      = {2023},
-  type      = {Bakalárska práca}
+@thesis{gasparovic2023,
+  author      = {Gašparovič, Boris},
+  title       = {Webová aplikácia pre tvorbu finančných dokumentov},
+  date        = {2023},
+  type        = {bathesis},
+  institution = {Slovenská technická univerzita v Bratislave, Fakulta elektrotechniky a informatiky},
+  location    = {Bratislava}
 }
 
-@misc{ibm2024,
-  author    = {{IBM}},
-  title     = {AI Agents vs. AI Assistants: How Do They Differ?},
-  year      = {2024},
-  url       = {https://www.ibm.com/think/topics/ai-agents-vs-ai-assistants},
-  note      = {[cit. 2026-04-04]}
+@online{ibm2024,
+  author   = {{IBM}},
+  title    = {AI Agents vs. AI Assistants},
+  date     = {2024},
+  url      = {https://www.ibm.com/think/topics/ai-agents-vs-ai-assistants},
+  urldate  = {2026-04-01}
 }
 
 @article{gao2023texttosql,
-  author    = {Dawei Gao and Haibin Wang and Yaliang Li and Xiuyu Sun and Yichen Qian and Bolin Ding and Jingren Zhou},
-  title     = {Text-to-SQL Empowered by Large Language Models: A Benchmark Evaluation},
-  journal   = {Proceedings of the VLDB Endowment},
-  volume    = {17},
-  number    = {5},
-  year      = {2024},
-  note      = {arXiv:2308.15363}
+  author       = {Gao, Dawei and Wang, Haibin and Li, Yaliang and Sun, Xiuyu
+                  and Qian, Yichen and Ding, Bolin and Zhou, Jingren},
+  title        = {Text-to-SQL Empowered by Large Language Models: A Benchmark Evaluation},
+  journaltitle = {Proceedings of the VLDB Endowment},
+  volume       = {17},
+  number       = {5},
+  pages        = {1132--1145},
+  date         = {2024},
+  doi          = {10.14778/3641204.3641221},
+  url          = {https://www.vldb.org/pvldb/vol17/p1132-gao.pdf},
+  urldate      = {2026-02-10}
 }
 
-@misc{anthropic2024claude35,
-  author    = {{Anthropic}},
-  title     = {Claude 3.5 Haiku Model Card},
-  year      = {2024},
-  url       = {https://www.anthropic.com/news/claude-3-5-haiku},
-  note      = {[cit. 2026-04-04]}
+@online{openrouter2024claude35haiku,
+  author       = {{Anthropic}},
+  title        = {Claude 3.5 Haiku},
+  organization = {{OpenRouter}},
+  date         = {2024},
+  url          = {https://openrouter.ai/anthropic/claude-3.5-haiku},
+  urldate      = {2026-05-10},
+  note         = {Prístup k jazykovému modelu prostredníctvom API platformy OpenRouter}
+}
+
+@online{openrouter2024gpt4omini,
+  author       = {{OpenAI}},
+  title        = {{GPT-4o mini}},
+  organization = {{OpenRouter}},
+  date         = {2024},
+  url          = {https://openrouter.ai/openai/gpt-4o-mini},
+  urldate      = {2026-05-12},
+  note         = {Prístup k jazykovému modelu prostredníctvom API platformy OpenRouter}
 }
 
 % ----------------------------------------------------------
-% NOVÉ ZDROJE — NLP, LLM, Transformery
+% NLP, LLM, Transformery
 % ----------------------------------------------------------
 
 @inproceedings{devlin2019bert,
-  author    = {Jacob Devlin and Ming-Wei Chang and Kenton Lee and Kristina Toutanova},
+  author    = {Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
   title     = {{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding},
-  booktitle = {Proceedings of NAACL-HLT},
+  booktitle = {Proceedings of {NAACL-HLT}},
   pages     = {4171--4186},
-  year      = {2019}
+  date      = {2019},
+  url       = {https://arxiv.org/abs/1810.04805},
+  urldate   = {2025-10-20}
 }
 
 @article{brown2020gpt3,
-  author    = {Tom Brown and Benjamin Mann and Nick Ryder and Melanie Subbiah and others},
-  title     = {Language Models are Few-Shot Learners},
-  journal   = {Advances in Neural Information Processing Systems},
-  volume    = {33},
-  pages     = {1877--1901},
-  year      = {2020}
+  author       = {Brown, Tom and Mann, Benjamin and Ryder, Nick and Subbiah, Melanie and others},
+  title        = {Language Models are Few-Shot Learners},
+  journaltitle = {Advances in Neural Information Processing Systems},
+  volume       = {33},
+  pages        = {1877--1901},
+  date         = {2020},
+  url          = {https://arxiv.org/abs/2005.14165},
+  urldate      = {2025-10-25}
 }
 
-@techreport{openai2023gpt4,
-  author    = {{OpenAI}},
-  title     = {{GPT-4} Technical Report},
-  year      = {2023},
-  note      = {arXiv:2303.08774}
+@online{openai2023gpt4,
+  author     = {{OpenAI}},
+  title      = {{GPT-4} Technical Report},
+  date       = {2023},
+  eprint     = {2303.08774},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2303.08774},
+  urldate    = {2025-11-05}
 }
 
-@article{touvron2023llama,
-  author    = {Hugo Touvron and Thibaut Lavril and Gautier Izacard and Xavier Martinet and others},
-  title     = {{LLaMA}: Open and Efficient Foundation Language Models},
-  journal   = {arXiv preprint arXiv:2302.13971},
-  year      = {2023}
+@online{touvron2023llama,
+  author     = {Touvron, Hugo and Lavril, Thibaut and Izacard, Gautier and Martinet, Xavier and others},
+  title      = {{LLaMA}: Open and Efficient Foundation Language Models},
+  date       = {2023},
+  eprint     = {2302.13971},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2302.13971},
+  urldate    = {2025-11-10}
 }
 
 @article{wei2022cot,
-  author    = {Jason Wei and Xuezhi Wang and Dale Schuurmans and Maarten Bosma and others},
-  title     = {Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
-  journal   = {Advances in Neural Information Processing Systems},
-  volume    = {35},
-  year      = {2022}
+  author       = {Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and others},
+  title        = {Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
+  journaltitle = {Advances in Neural Information Processing Systems},
+  volume       = {35},
+  date         = {2022},
+  url          = {https://arxiv.org/abs/2201.11903},
+  urldate      = {2025-11-20}
 }
 
 % ----------------------------------------------------------
-% NOVÉ ZDROJE — Tool Calling, Agenty
+% Tool Calling, Agenty
 % ----------------------------------------------------------
 
 @article{schick2023toolformer,
-  author    = {Timo Schick and Jane Dwivedi-Yu and Roberto Dessì and Roberta Raileanu and Maria Lomeli and Luke Zettlemoyer and Nicola Cancedda and Thomas Scialom},
-  title     = {Toolformer: Language Models Can Teach Themselves to Use Tools},
-  journal   = {Advances in Neural Information Processing Systems},
-  volume    = {36},
-  year      = {2023},
-  note      = {arXiv:2302.04761}
+  author       = {Schick, Timo and Dwivedi-Yu, Jane and Dessì, Roberto
+                  and Raileanu, Roberta and Lomeli, Maria and Zettlemoyer, Luke
+                  and Cancedda, Nicola and Scialom, Thomas},
+  title        = {Toolformer: Language Models Can Teach Themselves to Use Tools},
+  journaltitle = {Advances in Neural Information Processing Systems},
+  volume       = {36},
+  date         = {2023},
+  url          = {https://arxiv.org/abs/2302.04761},
+  urldate      = {2025-12-01},
+  note         = {arXiv:2302.04761}
 }
 
-@article{patil2023gorilla,
-  author    = {Shishir G. Patil and Tianjun Zhang and Xin Wang and Joseph E. Gonzalez},
-  title     = {Gorilla: Large Language Model Connected with Massive {APIs}},
-  journal   = {arXiv preprint arXiv:2305.15334},
-  year      = {2023}
+@online{patil2023gorilla,
+  author     = {Patil, Shishir G. and Zhang, Tianjun and Wang, Xin and Gonzalez, Joseph E.},
+  title      = {Gorilla: Large Language Model Connected with Massive {APIs}},
+  date       = {2023},
+  eprint     = {2305.15334},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2305.15334},
+  urldate    = {2025-12-05}
 }
 
-@article{yao2023react,
-  author    = {Shunyu Yao and Jeffrey Zhao and Dian Yu and Nan Du and Izhak Shafran and Karthik Narasimhan and Yuan Cao},
-  title     = {{ReAct}: Synergizing Reasoning and Acting in Language Models},
-  journal   = {arXiv preprint arXiv:2210.03629},
-  year      = {2023}
+@online{yao2023react,
+  author     = {Yao, Shunyu and Zhao, Jeffrey and Yu, Dian and Du, Nan
+                and Shafran, Izhak and Narasimhan, Karthik and Cao, Yuan},
+  title      = {{ReAct}: Synergizing Reasoning and Acting in Language Models},
+  date       = {2023},
+  eprint     = {2210.03629},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2210.03629},
+  urldate    = {2025-12-10}
 }
 
 % ----------------------------------------------------------
-% NOVÉ ZDROJE — RAG, Vektorové vyhľadávanie, Embeddingy
+% RAG, vektorové vyhľadávanie, embeddingy
 % ----------------------------------------------------------
 
 @inproceedings{lewis2020rag,
-  author    = {Patrick Lewis and Ethan Perez and Aleksandra Piktus and Fabio Petroni and Vladimir Karpukhin and Naman Goyal and Heinrich Küttler and Mike Lewis and Wen-tau Yih and Tim Rocktäschel and Sebastian Riedel and Douwe Kiela},
+  author    = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra
+               and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman
+               and Küttler, Heinrich and Lewis, Mike and Yih, Wen-tau
+               and Rocktäschel, Tim and Riedel, Sebastian and Kiela, Douwe},
   title     = {Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
   booktitle = {Advances in Neural Information Processing Systems},
   volume    = {33},
   pages     = {9459--9474},
-  year      = {2020}
+  date      = {2020},
+  url       = {https://arxiv.org/abs/2005.11401},
+  urldate   = {2026-01-15}
 }
 
-@article{gao2024ragsurvey,
-  author    = {Yunfan Gao and Yun Xiong and Xinyu Gao and Kangxiang Jia and Jinliu Pan and Yuxi Bi and Yi Dai and Jiawei Sun and Meng Wang and Haofen Wang},
-  title     = {Retrieval-Augmented Generation for Large Language Models: A Survey},
-  journal   = {arXiv preprint arXiv:2312.10997},
-  year      = {2024}
+@online{gao2024ragsurvey,
+  author     = {Gao, Yunfan and Xiong, Yun and Gao, Xinyu and Jia, Kangxiang
+                and Pan, Jinliu and Bi, Yuxi and Dai, Yi and Sun, Jiawei
+                and Wang, Meng and Wang, Haofen},
+  title      = {Retrieval-Augmented Generation for Large Language Models: A Survey},
+  date       = {2024},
+  eprint     = {2312.10997},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2312.10997},
+  urldate    = {2026-01-20}
 }
 
-@article{neelakantan2022embeddings,
-  author    = {Arvind Neelakantan and Tao Xu and Raul Puri and Alec Radford and others},
-  title     = {Text and Code Embeddings by Contrastive Pre-Training},
-  journal   = {arXiv preprint arXiv:2201.10005},
-  year      = {2022}
+@online{neelakantan2022embeddings,
+  author     = {Neelakantan, Arvind and Xu, Tao and Puri, Raul and Radford, Alec and others},
+  title      = {Text and Code Embeddings by Contrastive Pre-Training},
+  date       = {2022},
+  eprint     = {2201.10005},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2201.10005},
+  urldate    = {2026-01-25}
 }
 
 % ----------------------------------------------------------
-% NOVÉ ZDROJE — Text-to-SQL
+% Text-to-SQL
 % ----------------------------------------------------------
 
 @inproceedings{yu2018spider,
-  author    = {Tao Yu and Rui Zhang and Kai Yang and Michihiro Yasunaga and others},
+  author    = {Yu, Tao and Zhang, Rui and Yang, Kai and Yasunaga, Michihiro and others},
   title     = {Spider: A Large-Scale Human-Labeled Dataset for Complex and Cross-Database Semantic Parsing and Text-to-{SQL} Task},
-  booktitle = {Proceedings of EMNLP},
+  booktitle = {Proceedings of {EMNLP}},
   pages     = {3911--3921},
-  year      = {2018}
+  date      = {2018},
+  url       = {https://arxiv.org/abs/1809.08887},
+  urldate   = {2026-02-15}
 }
 
-@article{rajkumar2022texttosql,
-  author    = {Nitarshan Rajkumar and Raymond Li and Dzmitry Bahdanau},
-  title     = {Evaluating the Text-to-{SQL} Capabilities of Large Language Models},
-  journal   = {arXiv preprint arXiv:2204.00498},
-  year      = {2022}
+@online{rajkumar2022texttosql,
+  author     = {Rajkumar, Nitarshan and Li, Raymond and Bahdanau, Dzmitry},
+  title      = {Evaluating the Text-to-{SQL} Capabilities of Large Language Models},
+  date       = {2022},
+  eprint     = {2204.00498},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2204.00498},
+  urldate    = {2026-02-20}
 }
 
 @article{katsogiannis2023texttosqlsurvey,
-  author    = {George Katsogiannis-Meimarakis and Georgia Koutrika},
-  title     = {A Survey on Deep Learning Approaches for Text-to-{SQL}},
-  journal   = {The VLDB Journal},
-  volume    = {32},
-  number    = {4},
-  pages     = {905--936},
-  year      = {2023}
+  author       = {Katsogiannis-Meimarakis, George and Koutrika, Georgia},
+  title        = {A Survey on Deep Learning Approaches for Text-to-{SQL}},
+  journaltitle = {The VLDB Journal},
+  volume       = {32},
+  number       = {4},
+  pages        = {905--936},
+  date         = {2023}
 }
 
 % ----------------------------------------------------------
-% NOVÉ ZDROJE — Bezpečnosť LLM
+% Bezpečnosť LLM
 % ----------------------------------------------------------
 
-@misc{owasp2025llm,
-  author    = {{OWASP Foundation}},
-  title     = {{OWASP} Top 10 for Large Language Model Applications 2025},
-  year      = {2025},
-  url       = {https://genai.owasp.org/llm-top-10/},
-  note      = {[cit. 2026-04-04]}
+@online{owasp2025llm,
+  author   = {{OWASP Foundation}},
+  title    = {{OWASP} Top 10 for Large Language Model Applications 2025},
+  date     = {2025},
+  url      = {https://genai.owasp.org/llm-top-10/},
+  urldate  = {2026-03-15}
 }
 
-@article{perez2022prompt,
-  author    = {Fábio Perez and Ian Ribeiro},
-  title     = {Ignore This Title and {HackAPrompt}: Exposing Systemic Weaknesses of {LLMs} through a Gamified Red-Team Challenge},
-  journal   = {arXiv preprint arXiv:2311.16119},
-  year      = {2023}
+@online{perez2022prompt,
+  author     = {Perez, Fábio and Ribeiro, Ian},
+  title      = {Ignore Previous Prompt: Attack Techniques For Language Models},
+  date       = {2022},
+  eprint     = {2211.09527},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2211.09527},
+  urldate    = {2026-03-20}
 }
 
-@article{greshake2023indirect,
-  author    = {Kai Greshake and Sahar Abdelnabi and Shailesh Mishra and Christoph Endres and Thorsten Holz and Mario Fritz},
-  title     = {Not What You've Signed Up For: Compromising Real-World {LLM}-Integrated Applications with Indirect Prompt Injection},
-  journal   = {arXiv preprint arXiv:2302.12173},
-  year      = {2023}
+@online{greshake2023indirect,
+  author     = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh
+                and Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+  title      = {Not What You've Signed Up For: Compromising Real-World {LLM}-Integrated Applications with Indirect Prompt Injection},
+  date       = {2023},
+  eprint     = {2302.12173},
+  eprinttype = {arXiv},
+  url        = {https://arxiv.org/abs/2302.12173},
+  urldate    = {2026-03-25}
 }
 
 % ----------------------------------------------------------
-% NOVÉ ZDROJE — Web technológie, Ruby on Rails, pgvector
+% Web technológie, Ruby on Rails, pgvector
 % ----------------------------------------------------------
 
 @book{hartl2022railstutorial,
-  author    = {Michael Hartl},
+  author    = {Hartl, Michael},
   title     = {Ruby on Rails Tutorial: Learn Web Development with Rails},
-  edition   = {7th},
+  edition   = {7},
   publisher = {Addison-Wesley},
-  year      = {2022},
-  isbn      = {978-0138049843}
+  date      = {2022},
+  isbn      = {9780138049843}
 }
 
-@misc{hotwire2021,
-  author    = {{Basecamp}},
-  title     = {Hotwire: HTML Over The Wire},
-  year      = {2021},
-  url       = {https://hotwired.dev/},
-  note      = {[cit. 2026-04-04]}
+@online{hotwire2021,
+  author   = {{Basecamp}},
+  title    = {Hotwire: {HTML} Over The Wire},
+  date     = {2021},
+  url      = {https://hotwired.dev/},
+  urldate  = {2026-04-15}
 }
 
-@misc{pgvector2023,
-  author    = {Andrew Kane},
-  title     = {pgvector: Open-source vector similarity search for {PostgreSQL}},
-  year      = {2023},
-  url       = {https://github.com/pgvector/pgvector},
-  note      = {[cit. 2026-04-04]}
+@online{pgvector2023,
+  author   = {Kane, Andrew},
+  title    = {pgvector: Open-source vector similarity search for {PostgreSQL}},
+  date     = {2023},
+  url      = {https://github.com/pgvector/pgvector},
+  urldate  = {2026-04-18}
 }
 
-@misc{chartjs2024,
-  author    = {{Chart.js Contributors}},
-  title     = {Chart.js: Simple yet flexible {JavaScript} charting library},
-  year      = {2024},
-  url       = {https://www.chartjs.org/},
-  note      = {[cit. 2026-04-04]}
+@online{chartjs2024,
+  author   = {{Chart.js Contributors}},
+  title    = {Chart.js: Simple yet flexible {JavaScript} charting library},
+  date     = {2024},
+  url      = {https://www.chartjs.org/},
+  urldate  = {2026-04-20}
 }
 
 % ----------------------------------------------------------
-% NOVÉ ZDROJE — FinTech, Elektronická fakturácia
+% FinTech, elektronická fakturácia
 % ----------------------------------------------------------
 
-@techreport{kpmg2021fintech,
-  author    = {{KPMG}},
-  title     = {The Pulse of Fintech H1 2021},
-  year      = {2021},
-  url       = {https://kpmg.com/xx/en/home/campaigns/2021/09/pulse-of-fintech-h1-2021.html},
-  note      = {[cit. 2026-04-04]}
+@online{kpmg2021fintech,
+  author   = {{KPMG}},
+  title    = {Pulse of Fintech H1'21},
+  date     = {2021},
+  url      = {https://assets.kpmg.com/content/dam/kpmg/xx/pdf/2021/08/pulse-of-fintech-h1.pdf},
+  urldate  = {2026-01-10}
 }
 
-@misc{ec2020einvoicing,
-  author    = {{European Commission}},
-  title     = {eInvoicing in the {European Union}},
-  year      = {2020},
-  url       = {https://ec.europa.eu/digital-building-blocks/sites/display/DIGITAL/eInvoicing},
-  note      = {[cit. 2026-04-04]}
+@online{ec2020einvoicing,
+  author   = {{European Commission}},
+  title    = {eInvoicing in the {European Union}},
+  date     = {2020},
+  url      = {https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/467108637/eInvoicing},
+  urldate  = {2026-01-12}
 }
 
-@misc{openrouter2024,
-  author    = {{OpenRouter, Inc.}},
-  title     = {OpenRouter: A Unified Interface for {LLMs}},
-  year      = {2024},
-  url       = {https://openrouter.ai/},
-  note      = {[cit. 2026-04-04]}
+@online{openrouter2024,
+  author   = {{OpenRouter, Inc.}},
+  title    = {OpenRouter: A Unified Interface for {LLMs}},
+  date     = {2024},
+  url      = {https://openrouter.ai/},
+  urldate  = {2026-04-10}
 }
 
-@misc{rubyllm2025,
-  author    = {Carmine Paolino},
-  title     = {ruby\_llm: A delightful {Ruby} way to work with {AI}},
-  year      = {2025},
-  url       = {https://github.com/crmne/ruby_llm},
-  note      = {Verzia 1.13, [cit. 2026-04-04]}
+@online{rubyllm2025,
+  author   = {Paolino, Carmine},
+  title    = {ruby\_llm: A delightful {Ruby} way to work with {AI}},
+  date     = {2025},
+  url      = {https://github.com/crmne/ruby_llm},
+  urldate  = {2026-04-12},
+  note     = {Verzia 1.13.0}
 }
